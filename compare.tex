@@ -1,4 +1,182 @@
-\include{header}
+% cpedoc.tex V2.0, 13 May 2010
+
+\documentclass[times]{cpeauth}
+
+\usepackage{moreverb}
+
+\usepackage[colorlinks,bookmarksopen,bookmarksnumbered,citecolor=red,urlcolor=red]{hyperref}
+
+\newcommand\BibTeX{{\rmfamily B\kern-.05em \textsc{i\kern-.025em b}\kern-.08em
+T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+\def\volumeyear{2012}
+%\documentclass[acmjacm,acmnow]{acmtrans2m}
+%\documentclass[conference,final]{IEEEtran}
+%\documentclass[10pt,letterpaper]{article}
+%\documentclass[preprint,12pt]{article}
+%\documentclass[11pt,letterpaper]{article}
+
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{color}
+\usepackage{enumerate}
+\usepackage{longtable}
+%\usepackage{authblk} % Is used internally within the CPE Class
+%\usepackage[firstpage]{draftwatermark}
+
+
+%\SetWatermarkLightness{0.7}
+%\SetWatermarkScale{4}
+
+
+%\usepackage{pdfsync}
+% \acmVolume{}
+% \acmNumber{}
+% \acmYear{}
+% \acmMonth{}
+
+
+%\usepackage{sectsty}
+%\usepackage{setspace}
+
+% \usepackage{ifpdf}
+% \usepackage{wrapfig}
+% %\usepackage[cm]{fullpage}
+% \usepackage{textcomp}
+% \usepackage{srcltx}
+% \usepackage{fancyhdr}
+% \usepackage{setspace}
+\usepackage{lscape}
+% \usepackage{longtable}
+% \usepackage{paralist}
+
+%\usepackage{hyperref}
+\usepackage[novbox]{pdfsync}
+
+% \usepackage{ams}
+
+% \ifpdf
+%              \usepackage[pdftex,
+%               colorlinks=true,
+%               linkcolor=red,
+%               citecolor=red,
+%               filecolor=red,
+%               ]{hyperref}
+% \else
+%   \usepackage[hypertex]{hyperref}
+% \fi
+
+% Space saving
+%\usepackage[small,compact]{titlesec}
+%\usepackage[small,it]{caption}
+
+% \renewcommand\floatpagefraction{.9}
+% \renewcommand\topfraction{.9}
+% \renewcommand\bottomfraction{.9}
+%\renewcommand\textfrare{.1}
+
+\setcounter{totalnumber}{50}
+\setcounter{topnumber}{50}
+\setcounter{bottomnumber}{50}
+
+%\textwidth = 6in
+%\textheight = 8.5 in
+%\oddsidemargin = 0.0 in
+%\evensidemargin = 0.0 in
+
+% \topmargin = 0.0 in
+% \headheight = 0.0 in
+% \headsep = 0.0 in
+%\parskip = 0.0in
+%\parindent = 0.5cm
+\parskip = 0.04in
+% \parindent = 0.0cm
+% \textfloatsep = 0.1in
+
+% \usepackage[draft,pdftex,colorlinks=true, linkcolor=blue,citecolor=blue,
+%        urlcolor=blue]{hyperref}
+
+% \ifpdf
+% \pdfinfo{ /Author (Shantenu Jha et al.)  /Title (Programming Abstractions for Large-Scale Distributed Applications) }
+% \fi
+
+%\newcommand{\projectnamefull}{\textit{Programming Abstractions for
+%    Large-Scale Distributed Applications} }
+
+
+\newcommand{\upup}{\vspace*{-0.5em}}
+\newcommand{\up}{\vspace*{-0.25em}}
+\newcommand{\I}[1]{\textit{#1}}
+\newcommand{\B}[1]{\textbf{#1}}
+\newcommand{\T}[1]{\texttt{#1}}
+\newcommand{\BI}[1]{\B{\I{#1}}}
+
+ \newenvironment{shortlist}{
+        \vspace*{-0.8em}
+  \begin{itemize}
+  \setlength{\itemsep}{-0.3em}
+}{
+  \end{itemize}
+        \vspace*{-0.6em}
+}
+
+ \newenvironment{shortenum}{
+        \vspace*{-0.8em}
+  \begin{enumerate}
+  \setlength{\itemsep}{-0.3em}
+}{
+  \end{enumerate}
+        \vspace*{-0.6em}
+}
+
+
+% \ifpdf
+%   \DeclareGraphicsExtensions{.pdf, .png, .jpg}
+% \else
+%   \DeclareGraphicsExtensions{.ps, .eps}
+% \fi
+
+\definecolor{orange}{rgb}{1.0,0.3,0.0}
+\definecolor{violet}{rgb}{0.75,0,1}
+\definecolor{darkgreen}{rgb}{0,0.6,0}
+\definecolor{cyan}{rgb}{0.2,0.7,0.7}
+\definecolor{blueish}{rgb}{0.2,0.2,0.8}
+
+\long\def\comment#1{{\bf \textcolor{magenta}{\bf #1}}}
+\long\def\ccomment#1{{\bf \textcolor{blue}{\bf #1}}}
+\newcommand{\C}{\comment}
+\newcommand{\CC}{\ccomment}
+
+\newcommand{\yes}{$\bullet$}
+
+\long\def\finalcomment#1{{\bf \textcolor{red}{\bf #1}}}
+\newcommand{\CF}{\finalcomment}
+
+\newif\ifdraft
+\drafttrue
+\ifdraft
+ \newcommand{\katznote}[1]{ {\textcolor{magenta}    { ***Dan:      #1 }}}
+ \newcommand{\rananote}[1]{ {\textcolor{cyan}    { ***Omer:     #1 }}}
+ \newcommand{\omernote}[1]{ {\textcolor{cyan}    { ***Omer:     #1 }}}
+ \newcommand{\note}[1]{ {\textcolor{red}    { #1 }}}
+ \newcommand{\jhanote}[1]{  {\textcolor{blue}     { ***Shantenu: #1 }}}
+ \newcommand{\jonnote}[1]{  {\textcolor{red}      { ***Jon: #1 }}}
+ \newcommand{\alnote}[1]{  {\textcolor{darkgreen}      { ***Andre: #1 }}}
+ \newcommand{\nchnote}[1]{  {\textcolor{orange}      { ***Neil: #1 }}}
+ \newcommand{\ysnote}[1]{  {\textcolor{violet}      { ***Yogesh: #1 }}}
+ \newcommand{\sdnote}[1]{  {\textcolor{blueish}      { ***Simon: #1 }}}
+% \usepackage[pdftex,colorlinks=true, linkcolor=blue,citecolor=blue,
+%       urlcolor=blue]{hyperref}
+\else
+ \newcommand{\katznote}[1]{}
+ \newcommand{\rananote}[1]{}
+ \newcommand{\note}[1]{}
+ \newcommand{\jhanote}[1]{}
+ \newcommand{\jonnote}[1]{}
+\newcommand{\alnote}[1]{}
+ \newcommand{\nchnote}[1]{}
+ \newcommand{\ysnote}[1]{}
+\fi
 
 \begin{document}
 \runningheads{S.~Jha et al.}{Understanding Applications and Infrastructure for D3 Science}
@@ -27,7 +205,7 @@
 \affilnum{4}University of Chicago\break
 \affilnum{5}Argonne National Laboratory\break
 \affilnum{6}Cardiff University\break
-\affilnum{7}University of Southern California\break
+\affilnum{7}Indian Institute of Science\break
 }
 
 %\affilnum{9}University of Minnesota\break
@@ -1552,7 +1730,7 @@ file.
 %\alnote{Is the workflow part still part of the app as defined before with the stages: data transformation \& decision and storage?} \katznote{I think this is data transformation.}\alnote{ok}
 This is followed by followed by scientific workflows, based on Trident, that load the files
 into individual databases daily, and merges them with a master distributed-database on a weekly basis on an
-HPC cluster. Data extraction and mining operations by astronomers are composed using a pseudo-SQL
+HPC cluster~\cite{Simmhan:Building:2009}. Data extraction and mining operations by astronomers are composed using a pseudo-SQL
 language with user defined functions and submitted for execution on the master database using a batch system.
 
 %\subsubsection{old material follows}
@@ -3283,7 +3461,7 @@ environmental applications.  It consists of data storage and processing stages.
 
 %\katznote{from answers to questions 2,3,5,6 below, also address cyberinfrastructure (where does the app run) -- perhaps have a diagram here of what happens in the app}
 
-The application~\cite{modisAzure} is used to handle the processes of downloading data from different
+The application~\cite{modisAzure, modis:ipdps:2010} is used to handle the processes of downloading data from different
 sites and integrating them. The integration consists of reprojecting the data from one map projection to another,
 spatial and temporal resampling, and gap filling. The application itself is a loosely-coupled data
 pipeline that coordinates these processes.
@@ -4358,7 +4536,7 @@ In this section, we focus on the {\em software} infrastructure that is
 provided to support D3 applications, specifically components that deal
 with distributed or dynamic data. The components that make up the infrastructure can be categorized
 based on the function provided, namely (i) infrastructure that supports {\it data management},
-(ii) infrastructure that supports {\it data analysis}, and (iii) infrastructure that supports the structure of the applications.
+(ii) infrastructure that supports {\it data analysis}, and (iii) infrastructure that supports the \emph{coordination within applications}.
 Each of these components may be present at three different levels of the infrastructure: programming frameworks, services and tools (e.g., MapReduce, workflow engines); middleware and platform services (e.g., databases, message queues); and system-level
 software capabilities (e.g., notifications, file system consistency).
 
@@ -4369,10 +4547,10 @@ software capabilities (e.g., notifications, file system consistency).
 % \katznote{we should think about how the items in this section map to the boxes and arrows in Figure~\ref{fig:figures_application-stages}.  For data sources, storage, access, and movement, it's fairly clear.  For discovery and notification, it's less clear.}
 
 {\em Data Sources} are used in the acquisition stage as inputs of data
-into the application. Broadly speaking they include types such as
+into the application. Broadly speaking these sources include types such as
 files, servers, sensors, instruments, simulations and models.
 Additionally, databases are often considered as an intermediate data
-source in types of system. The dynamic characteristics are primarily
+source in some systems. The dynamic characteristics are primarily
 due to availability. These are often accessed in the Data Generation stage of the application
 (\figurename~\ref{fig:figures_application-stages}).
 
@@ -4385,7 +4563,8 @@ published), or replicated; and also in the structure of the data
 stored, e.g., schema free tables as opposed to relational tables. There
 may also be dynamic characteristics of storage due to rate of growth
 of data, e.g., a field survey may bring in a lot of data during summer
-but none during other times. These are commonly used in the Data Storage stage of the application (\figurename~\ref{fig:figures_application-stages}),
+but none during other times. Some storage components like files and databases may also serve as data
+sources. These are commonly used in the Data Storage stage of the application (\figurename~\ref{fig:figures_application-stages}),
 but may also be present at the boundaries between the stages for transient staging of data.
 
 {\em Data Access} components are gateways to Data Sources and Data
@@ -4400,20 +4579,20 @@ and after data movement.
 
 {\em Data Movement} components are used for bulk or continuous
 movement of data between parts of the application, or to and from the
-application. % (often called staging) Data movement may be explicit
+application, % (often called staging) Data movement may be explicit
 and visible to the application (e.g., staging), or implicit (e.g.,
 automatic replication of files). Components may operate on streams or
 blocks (files). Dynamic characteristics include partitioning,
 scheduling and planning (e.g., edge caching of ``hot'' data, where
 datasets that are being used frequently during some period are
 replicated close to the application). Data movement can be considered
-to be real-time (i.e., as it happens, e.g., sensor data), as real-time
+to be real-time (i.e., as it happens, e.g., sensor data), `as real-time'
 (e.g., a storage buffer has been introduced into the transport system,
 but the data source is still real-time, as with time-series data), or
 asynchronous (where the ordering of the data movement is independent
 of the data itself).  Latency may be considered as an important
 characteristic of the data movement infrastructure depending on the
-application e.g. real-time processing of sensor data for disaster
+application, e.g., real-time processing of sensor data for disaster
 analysis. Other dynamic aspects of data movement include data rates,
 their variability from data sources, and the ``freshness'' of
 data. These infrastructure appear on the edges between the application
@@ -4424,7 +4603,8 @@ sources, and include Catalogs, Information Services, and Metadata
 stores. The dynamic characteristics pertain to the evolution or
 recalibration of information held in these components. These components are orthogonal to the
 applications stages and can be used by any of the
-stages to guide their selection or identification of incoming data sources and outgoing data sinks.
+stages to guide their selection or identification of incoming data sources and outgoing data sinks
+or storage.
 %\ysnote{rate of growth of data may be an issue.
 %Catalogs that perform nightly ``crawling'' or data loading (e.g., sky surveys) may not be suitable if the
 %latest data needs to be accessible to applications. Catalog update will have to keep up with data
@@ -4457,7 +4637,7 @@ derived from data rather than raw data) and visualization. These components leve
 the computational aspects of the infrastructure.
 Based on the application stages outlined in
 \figurename~\ref{fig:figures_application-stages}, we identify a number
-of infrastructure services that can be associated with these stages.
+of infrastructure services for data analysis that can be associated with these stages.
 
 {\em Conversion} components (associated with the Data Transformation
 and Decisions stage) deal with the changing of data into a different
@@ -4481,7 +4661,7 @@ Transformation and Decisions stage.
 exploration of the data. These are often closely supervised by the end-user and may even be
 interactive. The proliferation of ``big data'' has caused data mining libraries, machine-learning
 toolboxes and visualization environments to become part of the infrastructure, some of which are
-deployed for specific domains but others which are more generic (e.g., Weka, GraphLab). These components are associated
+deployed for specific domains but others which are more generic (e.g., Weka, GraphLab, Apache Mahout). These components are associated
 with the Data Processing stage.
 
 \subsection{Infrastructure to Support Coordination within Applications}
@@ -4497,17 +4677,21 @@ interchangeability of components with similar functionality, such as those descr
 {\em Orchestration} components handle the management and
 choreography of data placement, code placement, communication, and
 messaging to allow complex analyses to be performed on distributed
-data sources. They may also be dynamic if they have the capability to
+data sources. These are often composed as workflows or Directed Acyclic Graphs (DAGs) that capture
+the execution dependency between
+components. They may also be dynamic if they have the capability to
 adapt their behavior based on earlier parts of the workflow or can be
 steered based on external notification received during execution. In
-addition to supporting choreography, often making use of one or more
+addition to supporting choreography, while often making use of one or more
 resource manager/scheduler components, an orchestration component may also
 include specialist support for conversion and analysis components
 discussed above.
 
 {\em Bulk Data-parallel} frameworks use ``Bulk'' operators to express computations over 
 collections of data which are executed in a loosely-coupled, data-parallel manner.
-The {\em MapReduce} paradigm~\cite{MapReduce} and its variants~\cite{twister,hmr} are the most prominent among these. MapReduce forces programmers to model computation in two stages: 
+The {\em MapReduce} paradigm~\cite{MapReduce} and its variants~\cite{twister,hmr} are the most
+prominent among these, with recent ones like Pregel and Apace Giraph~\cite{pregel} supporting specific domains like
+graph analytics. MapReduce forces programmers to model computation in two stages: 
 a \emph{map} phase in which a transformation is applied to every element of a collection independently of every other;  and a \emph{reduce} phase in which the transformed results 
 are aggregated through a binary function that is associative and commutative. 
 These properties serve to guarantee that the MapReduce computation can be efficiently 
@@ -4568,7 +4752,7 @@ have larger requirements on notification and orchestration components.
 \hline	
 \multicolumn{2}{|l|}{{\textbf{Application Name}}} \\ \hline	
 %\nchnote{For example, workload decomposition and distribution must be determined dynamically in order to optimally use resources, e.g., compute resource selection can be based on data location, processing profile and/or network capacity. Workflows? Resource selection?}
-Infrastructure for Dynamic Properties & Infrastructure for Distributed Properties
+Infrastructure to support Dynamic Properties & Infrastructure to support Distributed Properties
  \\ \hline
 %\begin{footnotesize}
 %	 \begin{longtable}[h!]{|p{6.7cm}|p{6.7cm}|}
@@ -4578,7 +4762,7 @@ Infrastructure for Dynamic Properties & Infrastructure for Distributed Propertie
 %                &\textbf{Infrastructure to support Distributedness} \\		
 %		 \endhead
 		\hline	
-\multicolumn{2}{|l|}{{\textbf{Next Generation Sequencing (NGS) Analytics}}} \\ \hline	
+\multicolumn{2}{|l|}{{\textbf{Next Generation Sequencing (NGS) Analytics} (\S\ref{bioSilvia})}} \\ \hline	
 %\nchnote{For example, workload decomposition and distribution must be determined dynamically in order to optimally use resources, e.g., compute resource selection can be based on data location, processing profile and/or network capacity. Workflows? Resource selection?}
 Dynamic workload decomposition and distribution for resource optimization \emph{(Orchestration)}
 		&
@@ -4592,7 +4776,7 @@ Distributing data from source (generation) to the computing destination (analysi
 %		machines, different repositories)
 \\
 		\hline
-\multicolumn{2}{|l|}{{\textbf{ATLAS (an example of use of the WLCG) Reconstruction app}}} \\ \hline
+\multicolumn{2}{|l|}{{\textbf{ATLAS (an example of use of the WLCG) Reconstruction app} (\S\ref{WLCGSteve})}} \\ \hline
 Manage gradual growth of data using SRM \emph{(Data Storage, Access)}
 % Management, subset replication and partitioning to go inf components: data replication, (gLite), data movement
 % specify SRM as standard and then they leave choice of implementation to the organisations as part of consortium.
@@ -4608,7 +4792,7 @@ Management, subset replication, data movement and partitioning using gLite and S
 % 		artificial), data not partitioned}\ysnote{These details are not fully present in the actual application description of its dynamism (Sec 2.2). Should we trim there and move some content there? }
               \\
 		\hline
-\multicolumn{2}{|l|}{{\textbf{LSST}}} \\ \hline	
+\multicolumn{2}{|l|}{{\textbf{LSST} (\S\ref{astroAdam})}} \\ \hline	
 	
 Steering observations, Databases to manage data growth \emph{(Notification, Data Storage)}
 % DE decisions based on observed data (2, 5) \ysnote{what do these numbers mean? specific
@@ -4618,7 +4802,7 @@ Coordinate classification, distributed databases, data movement to distributed o
 \emph{(Notification, Data Access, Data Movement, Data Storage)} %Analysis, % , natural distribution of telescopes
 \\
 		\hline
-\multicolumn{2}{|l|}{{\textbf{SOA Astronomy Applications}}} \\ \hline	
+\multicolumn{2}{|l|}{{\textbf{SOA Astronomy Applications} (\S\ref{astroSOAAdam})}} \\ \hline	
 	
 Catalog contents updated, Query mix changes \emph{(Data Discovery)}
 % data is continuously updated, thus dynamic data (pre-defined schedules or on-demand), queries change (7)\note{timescale clarification!}
@@ -4627,18 +4811,18 @@ Distributed VO Services for data storage and access \emph{(Data Discovery, Data 
 % moving data sources, services and storage are distributed across institutions
 \\
 		\hline
-\multicolumn{2}{|l|}{{\textbf{Cosmic Microwave Background}}} \\ \hline	
-	      Dynamic resource selection
+\multicolumn{2}{|l|}{{\textbf{Cosmic Microwave Background} (\S\ref{astroJulian})}} \\ \hline	
+	      Dynamic resource selection  \emph{(Data Discovery)}
 %dynamic utilization of resources (4)
 & Compute on distributed HPC centers \emph{(Data Movement)}
 % (sub-set) replication (during application run) \note{What phases of the application do we consider? data acquisition? app run?}\ysnote{Can any of the supercomputers be selected? If so, the data is moved to distributed compute (or it is dynamic resource selection)}
 \\
 		\hline
-\multicolumn{2}{|l|}{{\textbf{Sensor Network Application}}} \\ \hline	
+\multicolumn{2}{|l|}{{\textbf{Sensor Network Application} (\S\ref{sensorSimon})}} \\ \hline	
 	     Notification of sensor data when in range, data rates and volumes \emph{(Data Movement, Notification)} %data rate, volume dynamic (1-2)
 &Aggregating distributed sensor data \emph{(Data Movement, Notification)}  \\
 		\hline
-\multicolumn{2}{|l|}{{\textbf{Climate (ESGF)}}} \\ \hline	
+\multicolumn{2}{|l|}{{\textbf{Climate (ESGF)} (\S\ref{climateDan})}} \\ \hline	
 	      Manage data growth % New data generated over time (ESGF-wide - is this in scope of the application?)
              &
 Distributed, replicated catalogs using ESGF software stack (GridFTP, wget/HTTP) \emph{(Data Access,
@@ -4647,7 +4831,7 @@ Distributed, replicated catalogs using ESGF software stack (GridFTP, wget/HTTP) 
 % Can come in via website - cookie / OpenID
 % Come in through command line script - grid cert
 		\hline
-\multicolumn{2}{|l|}{{\textbf{Interactive Exploration of Environmental Data}}} \\ \hline	
+\multicolumn{2}{|l|}{{\textbf{Interactive Exploration of Environmental Data} (\S\ref{envJon})}} \\ \hline	
 On-demand data subsetting, caching and versioning, real-time instrument data \emph{(Data Discovery, Data
   Movement, Data Sources)}
 % at moment services are hosted on a single address. There may be farming for load balancing in the future.
@@ -4680,7 +4864,7 @@ Distributed Data Services, Access Restrictions \emph{(Data
 	    %     (realtime feeds) (2)
 	    %     &natural (sensor sources, simulations), (sub-set) replication\\
 	    %     \hline
-\multicolumn{2}{|l|}{{\textbf{PowerGrids}}} \\ \hline	
+\multicolumn{2}{|l|}{{\textbf{PowerGrids} (\S\ref{power})}} \\ \hline	
 	
 Stream processing over variable sources, rates and volumes, Event processing over different
 patterns, Trigger analysis on-demand  \emph{(Data
@@ -4701,7 +4885,7 @@ Dispersed event sources and sinks, Launch ensemble modeling on distributed clust
  \\
 
 		\hline
-\multicolumn{2}{|l|}{{\textbf{Fusion (ITER)}}} \\ \hline	
+\multicolumn{2}{|l|}{{\textbf{Fusion (ITER)} (\S\ref{fusionScott})}} \\ \hline	
 	     Stream and transform data between simulation sites on-demand \emph{(Data Movement, Enrichment)}
 %  (multiple distinct data
 	    % flows), on-the-fly
@@ -4711,19 +4895,19 @@ Run analysis on available, distributed resources \emph{(Data Movement)} %Analysi
 % natural, coupled, transient sub-set replicated
             \\
 		\hline
-\multicolumn{2}{|l|}{{\textbf{Industrial Incident Notification and Response}}} \\ \hline	
+\multicolumn{2}{|l|}{{\textbf{Industrial Incident Notification and Response} (\S\ref{Kees})}} \\ \hline	
 	     Acquire different data sources and rates, Processing determined by data
              \emph{(Data Sources, Data Access, Notification, Orchestration)}   %Analysis,  % (1),
 	    % data itself changes (2), dynamic data sources (3), processing changes
 	    % based on data
             %(5)
 &
-Distributed data sources, Analysis by agents across institutions \emph{(Data Sources, Data
+Distributed data sources, Analysis by agents across institutions, Access control \emph{(Data Sources, Data
   Access)} % , Analysis
 % natural, coupled
             \\
 		\hline
-\multicolumn{2}{|l|}{{\textbf{MODIS Data Processing}}} \\ \hline	
+\multicolumn{2}{|l|}{{\textbf{MODIS Data Processing} (\S\ref{modisKeith})}} \\ \hline	
 
 % Satellite is already well known - static set of FTP sites.
 --
@@ -4744,7 +4928,7 @@ Data from distributed FTP sources, Cloud queues for coordination, Partitioned No
 %		& spatial-temporal correlated, coupled \\
 %		\hline
 
-\multicolumn{2}{|l|}{{\textbf{Distributed Network Intrusion Detection}}} \\ \hline	
+\multicolumn{2}{|l|}{{\textbf{Distributed Network Intrusion Detection} (\S\ref{detectionJon})}} \\ \hline	
 Analyze dynamic network traffic rates \emph{(Data Movement)} % , Analysis
 	    %  data rate variable (1), data
 	    % highly dynamic changing (2), application responds to data (5),
@@ -4794,17 +4978,17 @@ extra processing steps to existing computations.)
         sequencers~\cite{illumina}; workflows~\cite{Taverna} \\
         \hline ATLAS & custom algorithms; job submission tied to WLCG \\
         \hline LSST & custom layer; scripted workflows; queries \\
-        \hline SOA Astronomy & web services \\
+        \hline SOA Astronomy & web services~\cite{barker} \\
         \hline Cosmic Microwave Background & \textit{ad hoc} \\
         \hline Sensor Network Application & focused on data collection \\
         \hline Climate & \textit{ad hoc} \\
         \hline Interactive Exploration of Environmental Data &
-        visualization tools \\
-        \hline Power Grids & stream processing; data mining \\
-        \hline Fusion (ITER) & scripted pipeline \\
+        visualization tools~\cite{blower2} \\
+        \hline Power Grids & stream processing~\cite{Simmhan:sciencecloud:2011}; data mining~\cite{Yin:mapreduce:2012} \\
+        \hline Fusion (ITER) & scripted pipeline~\cite{adios} \\
         \hline Industrial Incident Notification and Response &
-        agent-based  \\
-        \hline MODIS Data Processing & scripted pipeline \\
+        agent-based~\cite{emergency4}  \\
+        \hline MODIS Data Processing & scripted pipeline~\cite{modis:ipdps:2010} \\
 %        \hline Floating Sensors & \textit{ad hoc} \\
         \hline Distributed Network Intrusion Detection & monolithic
         packages \\
@@ -4907,18 +5091,18 @@ as a verification and validation step.
 
 Revisiting the overall issue of infrastructure, which we defined as
 the hardware and software needed to run the applications, we
-note that the specific hardware isn't a primary issue.  The
-applications we've discussed all use a mix of the systems that exist
+note that the specific hardware is not a primary issue.  The
+applications we have discussed all use a mix of the systems that exist
 today, which have aspects of web, grid, and cloud, and can be
 considered a hybrid of the three.  The key infrastructure components
 are really the software and services on top of the hardware.  In this
-section, we've discussed infrastructure to support data management and
+section, we have discussed infrastructure to support data management and
 data analysis, as well as the tools and systems used to program
 applications, and the specific components used for the application in
 \S\ref{sec:scenarios}.  However, there is not much commonality in the
 software and services that the applications use, so the software and programming infrastructure
-we've described here is much more broad than what is used by the
-applications we've studied.
+we have described here is much more broad than what is used by the
+individual applications we have studied.
 
 
 
@@ -4997,13 +5181,12 @@ This section brings together some key observations
 from the applications and infrastructure
 analysis carried out in this paper.
 %as take away messages. 
-Section~\ref{sec:observations}
-summarize the dynamic and distributed characteristics of
-data associated with the applications we've studied in this work,
+Section~\ref{sec:discussion}
+provides a discussion of dynamic and distributed characteristics of
+data associated with the applications we analyze in this work,
 attempting to infer more general characteristics that %can be applied
 may apply
-to other similar applications.  In \S\ref{sec:discussion}, we
-suggest two metrics that may
+to other similar applications.  We also suggest two metrics that may
 be associated with such applications, primarily as a basis to compare
 how compute and data processing (in terms of their number and
 distribution) may be used to find common features between them. Such
@@ -5077,12 +5260,24 @@ unique even if current solutions require a level of customization.
 
 %Table~\ref{tab:characteristics} compares the applications across the four axes identified at the beginning of this section.
 
-\subsection{Observations}
-\label{sec:observations}
+\subsection{Discussion}
+\label{sec:discussion}
 
-In this subsection we summarize the source and nature of dynamic data that we observe in
-the application surveyed in \S\ref{sec:scenarios}, and the types of
-data distribution that we observe in such applications.
+In this section we attempt to summarize four key themes from previous
+sections: (i) the source and nature of dynamic data that we observe in
+the application surveyed in \S\ref{sec:scenarios}; (ii) the types of
+data distribution that we observe in such applications; (iii) the
+general characteristics that can be associated with D3 science
+applications; (iv) the characteristics of a computational
+infrastructure that may be most suited for D3 science
+applications. Whereas (i) and (ii) are primarily observations that we
+can make on existing applications that we have discussed in
+\S\ref{sec:scenarios}, (iii) and (iv) attempt to synthesize general
+trends that can be applied to other applications we have not
+considered. \katznote{should this be split into two subsections then? Perhaps Observations \& Trends?}
+
+%\katznote{Some text is needed here to introduce the discussion subsection.}
+%\rananote{Added some text above -- does this make sense Dan?}
 
 
 \subsubsection{Understanding Dynamic Data }
@@ -5199,7 +5394,7 @@ applications that process sensor data and make near-realtime
 decisions based on streaming data, e.g., the power grid and sensor
 network applications. These applications process much less data;
 often, sensor data is also archived and aggregated for historical
-analyses, which leads to higher data volumes.
+analyses, which leads to higher data volumes. \katznote{not sure about the `other' part of this...}
 
 \begin{figure}[ht]
 	\centering
@@ -5324,18 +5519,6 @@ versa.
 % Nonetheless, understanding the trend of say, $\beta_1$ as the degree
 % of distribution changes can be insightful.
 
-\subsection{Discussion}
-\label{sec:discussion}
-
-Now that we have discussed dynamic data and distributed data in the
-context of specific applications, we can use this experience to
-understand the characteristics that can be associated with D3 science
-applications, and the characteristics of a computational
-infrastructure that may be most suited for D3 science
-applications. 
-We believe these are general
-trends that can be applied to other applications we have not
-considered. 
 
 
 \subsubsection{Understanding Distributed Dynamic Applications: }
