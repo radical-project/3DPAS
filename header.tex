@@ -1,0 +1,120 @@
+% cpedoc.tex V2.0, 13 May 2010
+
+\documentclass[times]{cpeauth}
+
+\usepackage{moreverb}
+
+%\usepackage[colorlinks,bookmarksopen,bookmarksnumbered,citecolor=red,urlcolor=red]{hyperref}
+
+\newcommand\BibTeX{{\rmfamily B\kern-.05em \textsc{i\kern-.025em b}\kern-.08emT\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+\def\volumeyear{2012} 
+%\documentclass[acmjacm,acmnow]{acmtrans2m}
+%\documentclass[conference,final]{IEEEtran}
+%\documentclass[10pt,letterpaper]{article}
+%\documentclass[preprint,12pt]{article}
+%\documentclass[11pt,letterpaper]{article}
+
+\usepackage{graphicx}
+\usepackage{url} 
+\usepackage{color} 
+\usepackage{enumerate}
+\usepackage{longtable} 
+%\usepackage{authblk} % Is used internally within the CPEClass 
+
+\usepackage[firstpage]{draftwatermark}
+
+
+%\SetWatermarkLightness{0.7} %\SetWatermarkScale{4}
+
+
+%\usepackage{pdfsync} % \acmVolume{} % \acmNumber{} % \acmYear{} % \acmMonth{}
+
+
+%\usepackage{sectsty} %\usepackage{setspace}
+
+% \usepackage{ifpdf} % \usepackage{wrapfig} % %\usepackage[cm]{fullpage} %
+\usepackage{textcomp} % \usepackage{srcltx} % \usepackage{fancyhdr} %
+\usepackage{setspace} \usepackage{lscape} % \usepackage{longtable} %
+\usepackage{paralist}
+
+%\usepackage{hyperref} \usepackage[novbox]{pdfsync}
+
+% \usepackage{ams}
+
+% \ifpdf % \usepackage[pdftex, % colorlinks=true, % linkcolor=red, %citecolor=red, % filecolor=red, % ]{hyperref} % \else %\usepackage[hypertex]{hyperref} % \fi
+
+% Space saving %\usepackage[small,compact]{titlesec}
+%\usepackage[small,it]{caption}
+
+% \renewcommand\floatpagefraction{.9} % \renewcommand\topfraction{.9} %\renewcommand\bottomfraction{.9} %\renewcommand\textfrare{.1}
+
+\setcounter{totalnumber}{50} \setcounter{topnumber}{50}
+\setcounter{bottomnumber}{50}
+
+%\textwidth = 6in %\textheight = 8.5 in %\oddsidemargin = 0.0 in
+%\evensidemargin = 0.0 in
+
+% \topmargin = 0.0 in % \headheight = 0.0 in % \headsep = 0.0 in
+%\parskip = 0.0in
+%\parindent = 0.5cm
+\parskip = 0.04in
+% \parindent = 0.0cm % \textfloatsep = 0.1in
+
+% \usepackage[draft,pdftex,colorlinks=true, linkcolor=blue,citecolor=blue, %urlcolor=blue]{hyperref}
+
+% \ifpdf % \pdfinfo{ /Author (Shantenu Jha et al.)  /Title (ProgrammingAbstractions for Large-Scale Distributed Applications) } % \fi
+
+%\newcommand{\projectnamefull}{\textit{Programming Abstractions for %Large-Scale Distributed Applications} }
+
+
+\newcommand{\upup}{\vspace*{-0.5em}} \newcommand{\up}{\vspace*{-0.25em}}
+\newcommand{\I}[1]{\textit{#1}} \newcommand{\B}[1]{\textbf{#1}}
+\newcommand{\T}[1]{\texttt{#1}} \newcommand{\BI}[1]{\B{\I{#1}}}
+
+ \newenvironment{shortlist}{ \vspace*{-0.8em}
+  \begin{itemize} \setlength{\itemsep}{-0.3em} }{
+  \end{itemize} \vspace*{-0.6em} }
+
+ \newenvironment{shortenum}{ \vspace*{-0.8em}
+  \begin{enumerate} \setlength{\itemsep}{-0.3em} }{
+  \end{enumerate} \vspace*{-0.6em} }
+
+
+% \ifpdf % \DeclareGraphicsExtensions{.pdf, .png, .jpg} % \else %\DeclareGraphicsExtensions{.ps, .eps} % \fi
+
+\definecolor{orange}{rgb}{1.0,0.3,0.0} \definecolor{violet}{rgb}{0.75,0,1}
+\definecolor{darkgreen}{rgb}{0,0.6,0} \definecolor{cyan}{rgb}{0.2,0.7,0.7}
+\definecolor{blueish}{rgb}{0.2,0.2,0.8}
+
+\long\def\comment#1{{\bf \textcolor{magenta}{\bf #1}}} \long\def\ccomment#1{{\bf
+\textcolor{blue}{\bf #1}}} \newcommand{\C}{\comment} \newcommand{\CC}{\ccomment}
+
+\newcommand{\yes}{$\bullet$}
+
+\long\def\finalcomment#1{{\bf \textcolor{red}{\bf #1}}}
+\newcommand{\CF}{\finalcomment}
+
+\newif\ifdraft \drafttrue \ifdraft 
+\newcommand{\katznote}[1]{{\textcolor{magenta} { ***Dan: #1 }}} 
+\newcommand{\rananote}[1]{{\textcolor{cyan} { ***Omer: #1 }}} 
+\newcommand{\omernote}[1]{ {\textcolor{cyan}{ ***Omer: #1 }}} 
+\newcommand{\note}[1]{ {\textcolor{red} { #1 }}}
+\newcommand{\jhanote}[1]{ {\textcolor{blue} { ***Shantenu: #1 }}}
+\newcommand{\jonnote}[1]{ {\textcolor{red} { ***Jon: #1 }}}
+\newcommand{\alnote}[1]{ {\textcolor{darkgreen} { ***Andre: #1 }}}
+\newcommand{\nchnote}[1]{ {\textcolor{orange} { ***Neil: #1 }}}
+\newcommand{\ysnote}[1]{ {\textcolor{violet} { ***Yogesh: #1 }}}
+\newcommand{\sdnote}[1]{ {\textcolor{blueish} { ***Simon: #1 }}} 
+\else 
+\newcommand{\katznote}[1]{}
+\newcommand{\rananote}[1]{} 
+\newcommand{\note}[1]{} 
+\newcommand{\jhanote}[1]{}
+\newcommand{\jonnote}[1]{} 
+\newcommand{\alnote}[1]{} 
+\newcommand{\nchnote}[1]{}
+\newcommand{\ysnote}[1]{} 
+\fi
+
+\usepackage[pdftex,colorlinks=true, linkcolor=blue,citecolor=blue]{hyperref} 
