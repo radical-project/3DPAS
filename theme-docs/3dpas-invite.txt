@@ -1,0 +1,59 @@
+I'm writing to invite you to participate in a Research Theme on
+Dynamic Distributed Data-Intensive Programming Systems and
+Applications (3DPAS), jointly funded by the UK EPSRC and the US
+NSF: 
+ http://wiki.esi.ac.uk/3DPAS
+
+3DPAS is a data-intensive extension of a soon-to-conclude research
+theme on "Distributed Programming Abstractions" (DPA).  You can find
+more about the DPA theme at:
+ http://wiki.esi.ac.uk/Distributed_Programming_Abstractions
+
+This research theme will involve a series of meetings and workshops.
+The second of these will be held on the 17, 18 and 19 February in
+Edinburgh, UK. The second meeting (by invitation only; website will go
+live soon) of 3DPAS, aims to continue to explore and refine the
+specific objectives and roadmap of the 3DPAS theme.  
+
+The main areas we want to cover are: (i) Understanding the
+requirements and challenges of Distributed BIG-DATA applications and
+Distributed Dynamic applications, (ii) Cyberinfrastructure,
+Programming Systems and Abstractions for such Applications, and (iii)
+Propose and investigate "real" solutions for "real" problems.  This
+meeting will follow a working-group format: Half a dozen predetermined
+& invited presentations, break-out sessions, with group-leads
+reporting back to the rest of the participants. This meeting will
+provide a venue for the working-group to formulate and highlight the
+critical, interesting and tractable challenges/questions/issues along
+each of the three areas outlined above.
+
+We were hoping you'd be able to come and speak to the < XXXXXXX place
+customised text here XXXXXXX > strand of the workshop, which will
+complement two other strands on < XXXXXX delete one of the next three,
+the one you used above: applications and infrastructure and programming
+systems XXXXXX >. We're trying to get speakers who < XXXXXXX place customised
+text here XXXXXXX >
+
+If you are able to join us, we think you will bring a unique
+perspective to the theme. We think coupling 3DPAS activities to other
+data-intensive activities that you're involved with will be very
+interesting and fruitful. We're constantly refining the
+aims/objectives of the theme, so your involvement will also be helpful
+in shaping the direction.  Ideally, you will be able to commit to
+participating and contributing to all the workshops and follow-on
+reports; but if for some reason you can't make the upcoming workshop
+in February, we'd be more than glad for you to contribute/participate
+in subsequent meetings.
+
+Ultimately 3DPAS proposes to engender some, or all of the following:
+possible new proposals, state-of-the-art report to government/funding
+agencies, identify new grand challenges and facilitate prototype
+implementations of novel abstractions and architectures (such as on
+the US FutureGrid).
+
+If could let us know what you think, that'd be great. We have some
+funding available to support travel etc and I will be glad to discuss
+specific details of support <remove / add as necessary (as per terms of agreement with NSF)>.
+
+Best regards,
+

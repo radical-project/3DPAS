@@ -1,0 +1,106 @@
+From N.ChueHong@epcc.ed.ac.uk Wed Oct  3 21:51:05 2012
+Date: Thu, 4 Oct 2012 03:50:59 +0100
+From: neil p chue hong <N.ChueHong@epcc.ed.ac.uk>
+To: Shantenu Jha <shantenu.jha@rutgers.edu>
+Subject: Notes on 3DPAS
+
+Hardware infrastructure blurring of lines between whether there is
+distributed, coordinated hardware infrastructure or where there is a
+distributed system which makes use of distributed but independent
+hardware
+
+sensor nets
+
+HDFS - distributed file systems are different? where does the control lie?
+
+Do we need to add something about software?
+
+Is the section too "data intensive"?
+
+change round the order of first two paragraphs to introduce software
+focus then go on to the distinction between infrastructure and
+application
+
+Data sources (if you introduce hardware then keep in sensors and instruments)
+
+Notification - both management (notification) and analysis (e.g. triggers)
+
+Processing instead of Enrichment
+
+Workflow section needs to be shortened and reference 3DPAS properties
+- dataflow driven systems?
+Application section X shows these characteristics. Do any actually
+show dataflows? Workflows? Why did applications not use particular
+workflows / dataflows?
+What controls the flow is the distinction?
+Say that this is the theory, but it turns out to be harder to define
+in practice when analysing applications
+Keep sentence beginning "the granularity..." etc.
+
+workflows vs programming models
+User Defined Function
+
+Explain why breaking POSIX-compliance makes hdfs more able to handle
+3DPAS characteristics
+
+Remove BSP section? The sentence "The key approach..." shows BSP is
+amenable to distribution - is this enough to keep it in?
+
+Put workflows, mapreduce, stream processing (event processing?) in new
+section called Infrastructure to support coordination of 3DPAS
+applications?
+Adaptive Programming Systems - speak to the dynamic nature of 3DPAS
+
+Context required to provide connective tissue between subsections
+
+Adaptation
+- add some reference to this in Section 1/2/3 referring to adaptation
+as some response to dynamism
+- show in section 4 what infrastructure is needed to support
+adaptation as an example of infrastructure to support dynamism
+- in section 5 identify a comparative quantativie measure of
+adaptation as a characteristic of dynamism e.g. the change in
+"operations"/"application" over time or increasing data?
+
+In Section 5, alpha is more a measure of data intensive than dynamic
+(no rate of change)
+
+Opening text for Table III. What's the take home message
+Table shows that individual components can support both dynamic and
+distributed nature of applications but that one does not imply the
+other
+Many implementations - even if a common type of component is present
+in different applications to support the same type of
+dynamic/distributed characteristic, it is not necessarily the same
+component.
+
+Enrichment components are generally at to low a level to be
+distributed. You can see how enrichment components could be dynamic in
+the sense that they are responsive to external stimuli but this is not
+evident in the aplications in the table (but might have been in, e.g.
+fish4knowledge)
+
+Tone down questions in 4.4, treat as examples and analysis. Revisit
+adaptive pipelines briefly.(Do we need mention of pipelines in earlier
+section on coordination infrastructure)
+
+"There is also significant variations in where the pipeline..."
+another example of the "blurriness" we should add something at the end
+to summarise and restate this blurriness of the boundaries of the
+infrastructure.
+
+
+
+-- 
+Neil Chue Hong
+Director, Software Sustainability Institute
+EPCC, University of Edinburgh, JCMB, Edinburgh, EH9 3JZ, UK
+Tel: +44 (0)131 650 5957
+http://www.software.ac.uk/
+
+LinkedIn: http://uk.linkedin.com/in/neilchuehong
+Twitter: http://twitter.com/npch
+
+The University of Edinburgh is a charitable body, registered in
+Scotland, with registration number SC005336.
+

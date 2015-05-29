@@ -1,0 +1,194 @@
+%the aim of the next subsection.
+
+% What is quite noticeable is that the aspects of dynamism and
+% distribution change even within a single application, and so can
+% invalidate prior assumptions. \katznote{I don't think I understand the
+%   point the previous sentence is trying to make.}
+ 
+% The techniques developed are being applied ever more
+% widely, both in terms of the application domains taking advantage of
+% copious computing power and in terms of the volumes of data being
+% processed.   
+
+% so any
+% reusable infrastructure will need to support a diversity of approaches
+% if it is to gain broad applicability.
+
+
+% : aside from the widespread (but far from ubiquitous) use of
+% workflows,
+% \jhanote{Rather than Science and Trends, I propose ``D3 Science
+%   Trends'' -- maybe 1 trend along each ``D''? Then we could do some
+%   similar prognostication for infrastructure and programming systems,
+%   which would reflect the structure of the document?}
+
+
+
+
+% Data science seems to be positioned in the same manner as network
+% science:\jhanote{will network science be obvious? network -- as in
+%   physical/layer network?} \katznote{I also have no idea what `network
+%   science' means here.} a field that draws upon several disciplines and
+% impacts upon many more, without actually being part of any single
+% recognized speciality. \jhanote{What about the mouthful term: CDS\&E
+%   -- computational and data-enabled science and engineering?}
+
+
+% Scientific codes tend to be long-lived, and it therefore makes sense
+% to design them for maintenance, for evolution, and specifically to
+% facilitate the introduction of dynamic aspects over their
+% lifetime. Software engineers have developed a host of techniques by
+% which this can be accomplished, but these techniques need broader
+% visibility---or at least broader application---in scientific
+% computing.
+
+\subsubsection{D3 Applications: Development and Software:} 
+%\katznote{what is the title of this subsection? see latex source for
+%  confusion}\jhanote{fixed} 
+
+Dynamism and distribution are not unique to data science, and many of
+the techniques developed in enterprise settings may usefully be
+deployed.  Autonomic computing and communications can enormously
+improve the utilization of physical infrastructure, and can contribute
+to supporting dynamism. Autonomic principles can be applied at the
+front end (in sensor networks) and the back end (in processing and
+storage capabilities) of scientific infrastructure. \katznote{do we
+  have examples of this being done we can refer to?}\jhanote{as
+  mentioend, this is a candidate for en masse removal} While the
+techniques developed for the latter are often not a perfect fit for
+scientific applications, being transactional rather than
+stream-oriented or stateful, there are certainly significant
+opportunities both for deployment and for further research.  The
+deployment of autonomic control is made easier if the application code
+is structured as components, for example within a workflow, where
+there are substantial opportunities for management interventions in
+moving, replicating and otherwise adjusting the code ``in flight''.
+\jhanote{The above paragraph is shaky and a candidate for removal if
+  it cannot be linked with specific application examples or other
+  sections of the paper}
+
+
+
+% \jhanote{Above are fair points. We should expand this sub-section to
+%   mirror Section 4 more closely}
+
+% %\subsubsection{D3 Best Practices}
+% \jhanote{I propose we move a discussion of autonomic computing out of
+%   Infrastructure section and into best practises section, along with
+%   S/W engineering etc.}
+
+
+% \katznote{I wonder if this section is based on the evidence of this
+%   paper, or more on what we think should be done.  I'm uncomfortable
+%   with it, at least the first 2 paragraphs.  If nothing else, we
+%   shouldn't call this Best Practices---rather, it is ``our''
+%   opinions---but overall, I don't think it's the right way to go.}
+
+% \jhanote{I echo Dan's comment that it is unclear whether this follows
+%   from the paper, or if these are our (manufactured?) opinions?. There
+%   is a need for citation to relevant sections/text of the paper.}
+
+The growth in data science also suggests an elongation of the
+lifetimes of both the code and data concerned, in the sense that data
+is collected and analyzed with regard to a large-scale and often
+long-running experimental program that may make its data widely
+available. \katznote{Is the previous a general statement?  Or is it
+  specific to something?  I don't think I understand what point is
+  being made.}\jhanote{once again, this is entire paragraph is a
+  candidate for en-masse removal, hence not responding to specific
+  comments within the paragraph.} These developments change the game
+for software development and maintenance. The use of proper software
+engineering practices---architecture, design, reflection,
+componentization, documentation, end-to-end engineering---become
+vitally important in dealing with more dynamic scientific
+domains. While these considerations can be avoided for single
+applications, and often are seen as overheads to development and
+experimentation, research in software engineering practice leaves no
+room to doubt their effectiveness in constructing and (above all)
+maintaining long-lived systems. It is important to remember the maxim
+that a system that is not being changed is simply not being used, and
+its corollary that a code will spent enormously more of its lifetime
+being maintained and evolved than it spent being
+developed. \katznote{does this previous maxim make sense here?  Even
+  it so, do we need to state it as a maxim? Didn't we say this at the
+  end of 6.3.1 already, anyhow?}  \jhanote{Is the maxim even correct?}
+Maximizing our ability to manage this evolution makes good economic
+and scientific sense.  \jhanote{Candidate to be removed entirely}
+
+The components of scientific computations need themselves to be
+managed, individually and collectively. Autonomic computing can
+provide this, \emph{if} the relevant monitoring and control points are
+available. The telecommunications industry has a long history of
+constructing ``managed components'' that export independent functional
+and management/monitoring interfaces. While this idea has not gained
+enormous traction \katznote{does this mean almost no one uses it?}  in
+much of the IT industry, it offers a way of integrating better, more
+flexible management and adaptation to dynamism for scientific
+applications, and frees the individual component developer from
+worrying about global adaptation and decision-making issues. Dividing
+the landscape in this way, separating scientific from management
+functionalities, will help the development of re-usable
+platforms. \jhanote{Again previous paragraph has to be linked to
+  specific application and gaps.} \jhanote{Dan, more helpful than
+  adding new comments, would be if you could help integrate as per
+  existing comments. Else its already flagged as a deletion candidate
+  and unlikely I will address new/different comments. Thanks!}
+
+% \jhanote{propose we merge this paragraph with above
+%   (industrial/enterprise developments) and the paragraph on autonomic
+%   computing into a couple of sentences saying best practises abound in
+%   specific contexts..}
+
+% Scientific applications are not alone in having extensive data
+% requirements: no matter to what extent this may have been true in the
+% past, modern e-commerce generates data at similar rates and volumes as
+% many scientific domains. This means that the techniques developed in
+% industry to address these issues may be applicable to scientific
+% codes, albeit with some modifications to suit different computational
+% patterns, privacy constraints and other features.  Cloud computing and
+% web services are both prime examples, and their use massively
+% simplifies integration with other commodity services.
+
+The rapid adoption of cloud computing in many industries perhaps masks
+some of its limitations. Current cloud architectures are quite basic,
+often either requiring very specific programming techniques or simply
+providing low-level virtual machine management. The former is often
+targeted at transactional, stateless computations that are a poor fit
+to many scientific applications. The latter provide a certain degree
+of elasticity but often provide interfaces without guidance as to
+\emph{when} to change resources, or provide management consoles that
+cannot be automated within an autonomic workflow. Nevertheless we can
+confidently expect cloud computing to address these issues in time,
+and further engagement of the scientific community with the providers
+and researchers involved would help guide its
+evolution. \katznote{again, do we have examples that we can point to
+  in this section?}  \jhanote{We could have a bit of a discussion on
+  how cloud computing (an increasingly important infrastructure issue)
+  will influence D3 science?}
+
+
+One technology that remains under-used \katznote{Again I would say
+  that this is more opinion than evidence supported} is the semantic
+web and the associated ideas of linked open data. While these might
+seem like ideal technologies for scientific systems, they remain
+marginalized. In many cases this may be due to unfamiliarity, the need
+for quite sophisticated data handling, and the lack of decent
+tooling. However scientific data retains many aspects of privacy,
+sharing, and confidentiality that must be respected, and that can have
+complex geographic, collaborative, organizational, and temporal
+aspects. If these issues are handled in an integrated way---for
+example by being specified as part of the overall experimental
+workflow---then one might reasonably hope that linked open data would
+be more widely adopted. \katznote{I again wonder if we are saying what
+  we think should happen here}\jhanote{Yes, I agree. Either we relate
+  this back to the applications or reduce in scope}
+
+We also need to recognize the limitations on the reuse of scientific
+codes. Aside from some common processing and visualization steps, much
+code is too specific to be widely reused across domains (or even
+within them). It is important not to overly prioritize the reuse of
+components into unsuitable domains. \katznote{here I wonder if we
+  should ask why there is so little reuse and suggest how there could
+  be more.} \jhanote{also what aspects of the above are unique to
+  3DPAS is important; candidate to go too}
+

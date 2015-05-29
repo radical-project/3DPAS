@@ -1,0 +1,78 @@
+\subsection{Old Notes from 3.2}
+
+\note{Old classification:
+\begin{itemize}
+	\item distributed by design (prev. naturally distributed): the data sources
+	themselves are naturally distributed, e.g. scientific instruments or sensors
+	collecting observational data.
+    \item replicated: the data is replicated and therefore distributed to
+	multiple locations
+	\item partitioned: the data is partitioned and distributed across
+	multiple locations
+    \note{possible replacements for the three above - problem: all applications have them!} \note{What is a data source? How many data sources are in Atlas?}
+	\item coupled \alnote{alternatively aggregation?}: multiple data sources (M)
+	are combined at one or more locations (N), M$>$N
+   \jhanote{do we propose natural, replicated and or partitioned as the 3
+   types? for coupled can be used as a qualifier for all three of the
+   above.}
+   \item replicated: multiple data sources (M) are expanded to
+          one or more locations (N): M$ <$ N \jhanote{can this be
+          merged with above replicated?}
+\end{itemize}
+}
+
+
+\note{View point: We should probably aim to classify applications with respect to the data processing piece? How do we describe application with multiple
+distributed execution units and the dataflow in between?}
+
+\note{Is the production of the data inside or outside of the application? When
+is data production infrastructure and when is it application? DK: Floating
+sensors are an instrument that happened to physically distributed. Are sensor as a whole designed to function at all}
+\note{What kind of control do you have over the data source?}
+
+
+\note{federated data? is partition a form of federated? federation consists of partitioning, replication and uniformity. Uniformity not covered federation. properties: autonomy, heterogeneity}
+
+\note{replication could have a value: how many copies? average number of sites
+that store a data element; distributedness: average distance to data; does it
+make sense to merge partitioning and replicated?}
+
+\note{new properties: coupling and integration (federation is a potential way to do integration).}
+
+\note{federation: loosely coupled, partitioning == loosely coupled? Who is
+carrying out the integration of sources? user, application, infrastructure}
+
+\note{data storage vs. data production: Is natural the point where the data
+storage is?}
+
+\note{notion of geographic distribution}
+
+\note{This needs to be incorporated in prior subsections: Types of Distributed Data Infrastructure}
+
+\note{volume of data is almost always increasing. Is this not dynamic? We need
+to refine the timescale property}
+
+\note{distributed properties: subset (partial replication?) vs. partitioning}
+
+\note{4 could be an entry in every item (except FUSION - since it is always
+1 machine). Applies not to special high-end supercomputer. For multi-purpose,
+distributed setup infrastructure is an element: data-world analog for a static
+execution model. We need to talk about data's use of infrastructure... Would the
+data be able to exploit infrastructural changes?
+DK: costs for data storage to high to actually do that
+}
+
+\katznote{Fusion is not one machine.  4 doesn't apply to a number of applications - it only applies to the applications which have been designed to do this}
+
+\note{view point: application consumer of data? We need to clarify the
+viewpoint for each application.}
+
+\note{need to define relationship between production and consumption of data}
+
+\note{not all apps are input-proc-post-proc; there are also feedback systems...}
+
+\note{Use of ``natural'' needs to be defined more carefully. Table needs to be re-visited. }
+
+\note{How to handle feedback to sensors?}
+
+

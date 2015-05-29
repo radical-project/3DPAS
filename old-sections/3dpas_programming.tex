@@ -1,0 +1,637 @@
+\section{Programming Systems and Abstractions}
+\label{sec:prog_sys}
+
+% \note{The issue of programming systems for scientific applications is always
+% vexing. On the one hand, scientific codes place requirements on
+% applications that are often substantially different from commercial
+% applications in terms of their data volumes and flow rates -- although
+% this is becoming less true as industry discovers the value of ``big
+% data''; on the other hand, scientific codes must increasingly
+% interoperate with other services on the web, and so must appeal to
+% standard protocols, data formats and libraries. The latter can be at
+% odds with addressing the former, since it complicates the use of
+% radically different programing models and tools.  However, the
+% convergence of scientific and commercial interest in large-scale
+% dynamic data should lead to improvements in the approaches applied in
+% both domains.}
+
+
+%\subsection{Architecture}
+
+% Top-level views of a system is typically as a processing pipeline from
+% collection, through pre-processing, to storage and then
+% post-processing and querying. (Collection includes both simulation and
+% sensing.) Different applications place different emphasis on the
+% different stages: some collect and store all the data they can, with
+% only minor pre-processing to remove noise; others must perform
+% enormous pre-processing to reduce the data volumes to manageable
+% dimensions. Another point in this spectrum is a classifier system that
+% uses a data stream to recognise higher-level events which it then
+% propagates, so it's the events that are interesting, not the data.
+
+% \note{Scientific codes have long lifespans, as tools are refined and
+% extended along with improving theoretical models and experimental
+% techniques. Many experiments are inherently long-lived, for example in
+% fundamental physics or space science, with the associated analysis
+% software often being refined over the length of the mission.}
+
+The design of scientific software evolved from an early emphasis on fully-functioning 
+  monolithic applications to a library-based
+  approach with a core of reusable code by one or more,
+  perhaps changing, user environments. More recently there has been a
+  further move to re-use through the use of workflow tools such as
+  Taverna~\cite{Taverna}, Kepler~\cite{Kepler}, and
+  Trident~\cite{Trident}. A data analysis process is
+  expressed as an explicit dataflow or control flow composition of components each serving a
+  dedicated function. This has simplified the development and the maintenance of complex
+  codes, both by allowing common component re-use and by highlighting
+  the structure of the processing pipeline.
+% Unsurprisingly, more
+  % recent domains such as genomics have adopted such technologies from
+  % the start; older domains still have substantial legacy codebases
+  % with less transparent structuring} \katznote{previous sentence is
+  % far too absolute to be correct.}
+
+% The view of scientific applications as pipelines hides significant
+% differences between (and within) domains, since the different stages
+% of the pipeline receive different emphasis in different
+% applications. Some applications must collect and store all the
+% incoming data, with only minor pre-processing to clean the data ahead
+% of the main processing. For others, a major constraint is to reduce
+% the incoming data stream as quickly as possible, perhaps discarding a
+% large fraction of the data before any processing occurs. Taking some
+% of the examples from \S\ref{sec:scenarios}, medical imaging and
+% astrophysics often fall into the first category, whilst particle
+% physics (especially in the case of the Large Hadron Collider) often
+% falls dramatically into the second -- to the extent that principled
+% data reduction forms one of the major scientific challenges for the
+% project.
+
+% \note{One way to integrate legacy code -- or those codes too
+%   tightly-coupled for a workflow structure -- is to build pipelines
+%   from ``macro'' components. In this view the pipeline connects groups
+%   of components that are not themselves pipelines. Conversely one
+%   might have multiple pipelines running concurrently over a partially
+%   shared set of components, driven by data dependencies and exchanging
+%   data in more complex ways than are seen in simple pipelines.}
+
+% There are also significant variations in where ``the pipeline'' begins
+% and ends. Many systems are driven by data sets collected and shared
+% widely, against which several different applications may be
+% applied. Climate science is a good example of this approach. In this
+% case the data is ``pre-collected'' in the sense of existing outside
+% most of the applications, although its collection may have been a
+% complex task. The raw data required for gene sequencing
+% (\S\ref{bioSilvia}), for example, while being collected using a
+% dedicated and very sophisticated computerized processing system, would
+% generally be regarded as ``given'' and not part of the processing
+% pipeline, since the pipeline would not affect the collection
+% task. Another way to look at this is that data is collected
+% \emph{independently} of its further processing.
+
+% Alternatively the application may be driven directly
+% from a live data stream, with processing happening on the
+% fly. The front-end data collection sub-system is becoming increasingly
+% flexible and capable, with the introduction of sensor networks to
+% replace more passive approaches, and it may often make sense to
+% include the sensor network into the application workflow pipeline. All
+% these choices have implications for design and provisioning to which
+% we return below.
+
+% % Question: where does each application lie in this space?
+
+% % Question: is it the case that each application can be placed at an
+% % appropriate point \textit{a priori}, or do characteristics change?
+
+% The choice of which sort of pipeline a particular application uses may
+% well be fixed, or will change only slowly as the experimental
+% environment evolves. In particular we see some systems which (for
+% example) add simulation alongside experimental data collection to act
+% as a verification and validation step.
+
+% \note{Viewed from the perspective of the 3DPAS vectors
+% (\S\ref{sec:vectors}), programming systems can be seen to exert
+% comprehensive influence. In terms of \textit{communication and data},
+% the key question is the complexity and extent of the system being
+% discussed: does it extend to the collection of data, or to its
+% presentation and interaction, or does it simply focus on the
+% ``traditional'' processing steps? Does it provide a simple, coherent
+% structure (like a pipeline), or does it require more complex,
+% \textit{ad hoc} communications? Similarly, the \textit{coordination}
+% vector is influenced both by how a computation adapts to on-going
+% changes and to where control of this adaptation resides. The
+% \textit{execution environment} vector is more centrally the topic of
+% this section, and we explore these issues in more depth below,
+% \S\ref{sec:issues} after examining some alternatives to pipelined
+% architectures.}
+ 
+
+%\subsection{Beyond Simple Pipelines}
+
+% Question: what are the issues that face developers in using standard
+% scientific workflow approaches?
+
+The workflow approach is simple and attractive to compose sequential data processing pipelines and
+offers the flexibility of modeling more complex constructs. However, more specialized programming
+abstractions are becoming popular to address large scale and dynamic data processing.
+% abstract-away many of the issues that are of immense relevance to
+% efficient scientific computing. We will first 
+We consider two alternative paradigms of bulk and stream data processing, before considering the
+issues of adaptation and provisioning of these models.
+%  and otherwise refining scientific
+% workflows. Note that in many cases these alternative paradigms
+% actually integrate very well into an overall pipeline, architecture,
+% providing components that can fit into a general pipelined framework.
+
+\subsection{MapReduce and Bulk Synchronous Parallel (BSP) Models}
+
+% Often limited to pipeline \textit{versus} some stylised large-scale
+% process such as map-reduce, within the large architectural
+% pipeline. Often find scientific workflow systems like Taverna
+% describing pipelines in terms of components, possibly with specialised
+% high-performance constructions for some intensive
+% components. Generally find this in the ``traditional'' space of codes
+% running on workstations and servers; sensor networks themselves are
+% immature in this respect and typically focus on robust data
+% transmission without much in the way of in-network processing
+% (although this is changing, slowly).
+
+% Many criticisms of traditional programming languages begin from the
+% challenges posed by the so-called \emph{von Neumann bottleneck}
+% introduced by processing data in small chunks, for example within
+% iterative loops of tail-recursive functions. In either case, the
+% bottleneck comes from imposing linearity into the way the data is
+% processed. Many high-performance approaches, perhaps beginning with
+% various vectorizing Fortran compilers, have sought to sidestep the
+% bottleneck by providing \emph{bulk} operators that express
+% computations over collections of data, that can be more effectively
+% parallelized.
+
+The MapReduce paradigm~\cite{MapReduce} is the most prominent and recent example of
+using \emph{bulk} operators that express computations over collections of data, that can be more
+effectively parallelized.  MapReduce forces programmers to model computation in two
+stages: a \emph{map} phase in which a transformation is applied to
+every element of a collection independently of every other; and a
+\emph{reduce} phase in which the transformed results are aggregated
+through a binary function that is associative and commutative. These
+properties serve to guarantee that the MapReduce computation can be
+efficiently parallelized, by performing the map phase concurrently and
+then reducing without the reduction order affecting the final
+result. The result is to provide a large amount of ``excess''
+parallelism that can utilize as many cores or processors as are
+available.
+
+% MapReduce arose in part from earlier work on ``skeletal parallelism''
+% that generalize the idea of bulk operators to encompass any
+% structure that can perform efficient parallel computation. The
+% skeleton is essentially a higher-order function that captures the
+% structure of the computation, which is then populated with
+% application-specific functions to provide the actual calculation. The
+% skeleton ensures that the overall structured computation can be
+% computed efficiently, potentially making use of significant code
+% generation and optimization. Flask~\cite{FlaskHaskell} is a modern example of this
+% approach applied to sensor networks.
+
+Whilst often not suitable as a complete system architecture,
+MapReduce can be used in a workflow environment to provide scalability to
+processor-intensive components, or for data-intensive applications
+where it can address the relatively low scalability of I/O
+capacity. It does not necessarily work effectively in a streaming
+mode, and cannot be relied upon to adapt its structure according to
+different data volumes: the structure is generally parameterized by
+the processing resources available regardless of the data, rather than
+making requests for appropriate resourcing based on the data
+presented~\cite{DataIntensiveMapReduce}. Variants of the basic MapReduce model have been proposed,
+such as iterative~\cite{twister} and hierarchical~\cite{hmr} MapReduce, to address some of these limitations. Framework implementations
+such as Apache Hadoop~\cite{hadoop}, Microsoft Daytona~\cite{daytona}, and Twister~\cite{twister} are available, among others.
+
+Bulk Synchronous Parallel (BSP) processing~\cite{valiant1990bsp} was developed in the 1990 as a bridging model for
+parallel computing. This programming abstraction is garnering attention as a way to reduce the I/O complexity of
+MapReduce and offer an easier message passing model than MPI. It is being used for data intensive
+applications such as matrix and graph processing, with framework implementations by Apache Hama~\cite{hama},
+Google Pregel~\cite{pregel} and others~\cite{goldenorb}. The key approach is to separate processing into supersteps where independent
+processes operate concurrently on messages received from the previous superstep. This processing is
+interleaved with message passing to processes in the next superstep. When a process completes its
+execution of a superstep, it reaches a barrier that is synchronized with all other processes in the
+superstep. Once synchronized, the next superstep starts. 
+
+\subsection{Stream and Event Processing}
+
+% Stream processing is a variant on pipelines where the stream is
+% processed locally and in real time, typically with only fairly small
+% operations allowed at each stage (for example calculating time
+% derivatives of a time series).
+
+Stream processing is an approach modeled on signal processing, in
+which a stream of data is transformed on-the-fly to produce one or
+more further streams of values. As such it is a programming abstraction suitable for
+continuous data feeds, or when results need to be pushed to users of interactive applications. Since
+the data is not assumed to be available 
+\textit{en masse}, it can be used in situations where storing the
+entire data set is undesirable, unnecessary or impossible. Equally,
+the approach is simple to understand and mirrors the composition of workflows. However, since
+they operate continuously on a seemingly infinite stream of data, notions of data freshness,
+processing latencies, resilience/checkpointing, and incremental completion become more
+interesting. These introduce new data and composition abstractions
+(e.g., Landmarks~\cite{chandrasekaran:telegraphcq2003}, Dynamic Stream
+Rates~\cite{Simmhan:sciencecloud:2011}) and trade-offs during execution.
+
+A simple example of stream processing occurs at the front end of a
+pipeline, in data cleansing. A processor might perform simple sanity
+checks such as outlier removal based on expert knowledge or on
+properties calculated from the stream itself -- for example to remove
+any data that lies more than two standard deviations from the running
+mean. The analogy to signal processing is quite clear: the stream is
+processed as a sequence of samples, used to extract stream-level
+values such as moving average (mean), time derivatives and the
+like. These values may be used in further processing, or may be output
+in their own right alongside the raw data and used to feed other
+processing steps.
+
+A higher level of abstraction in stream processing is \emph{complex event processing}, where a
+stream is processed to extract ``events'' that 
+are notionally occurring at a higher semantic level than the raw
+data. An example might be the detection of lights being left on in a room (ambient light sensor
+stream) when no one is occupying it (infra-red sensor stream). The significant point is that the raw data
+stream pre-processed, classified and packaged as a stream of events with timestamps, identifiers and properties on which
+higher-order operations like standing-queries and pattern-matching can be performed. Events can even
+be associated with semantic annotations~\cite{Teymourian:EDBT:2010, Zhou:debs:2011}. 
+
+There are many examples of stream
+~\cite{chandrasekaran:telegraphcq2003, abadi:borealis2005, liew:streamgraph2010} and event
+~\cite{ESPER, siddhi, MicrosoftInsight} processing frameworks, and recent works have combined
+streaming with more traditional file-based workflows~\cite{ZinnCluster,Herath:CCGrid:2010}.
+
+
+
+% Question: are there any significant application codes that use
+% anything other than pipelines, streams and map-reduce?
+
+% \note{\subsubsection{Specialized Algorithms} Inevitably many
+%   scientific codes do not fit into either of these broad schemata and
+%   so must be coded in a more \textit{ad hoc} manner. Pattern-matching
+%   for gene sequencing (\S\ref{bioSilvia}) and particle physics
+%   (\S\ref{WLCGSteve}) are good examples, where domain-specific
+%   knowledge is used to optimize traditional pattern-matching.}
+
+% \note{Programming systems such as MPI~\cite{MPI} provide a basis for distributed
+% applications, although it is vital not to under-estimate the
+% difficulties involved. While such systems allow developers to generate
+% very complex patters of distribution and concurrency, they do so at
+% the cost of a massive increase in coding complexity -- often beyond
+% the programmers' capacities to manage efficiently. Significant
+% performance figures are often elusive, and may be fragile in the sense
+% that small changes in approach and algorithm destroy the
+% gains. Systems that \emph{can} be phrased according to a structured
+% algorithm or processing schema with known performance benefits
+% therefore \emph{should} be.}
+
+% \subsection{Issues}
+% \label{sec:issues}
+
+% \note{So far little we have said has addressed the essential aspects
+%   of dynamic data, in particular the unpredictability and scaling
+%   features that seem inherent in dealing with such data sets and
+%   sources: the \textit{application adaptation} vector. However, it is
+%   clear that dynamic data raises some important questions about the
+%   management of scientific codes, many of which cross between the
+%   various paradigms chosen for expressing the problems.}
+
+% % Question: is there a problem with multiple applications running on the
+% % same fabric and interfering? -- for example a classifier system
+% % running alongside a collection system and generating storms of events?
+
+% \note{We may divide the issues raised into two broad categories. The first
+% pair of \textit{intrinsic} issues capture concerns such as
+% provisioning and adaptation that relate to codes themselves in terms
+% of their development, composition and management. The second set of
+% \textit{extrinsic} issues are more concerned with software engineering
+% factors such as the extent of the pipeline and the representation of a
+% dataset's history and provenance.}
+
+\subsection{Provisioning}
+
+Chief among the management questions for dynamic data processing frameworks is the
+issue of \emph{provisioning}: allocating sufficient and appropriate
+resources to a component to allow it to perform most efficiently. This
+must be set against the need to manage the interactions of components,
+leading to a difficult resource allocation and scheduling problem.
+
+Provisioning can have two different goals: one of optimally using
+resources (maximizing resource usage), while the other to ensure
+efficient application execution. While the former goal optimizes
+provisioning from an infrastructure provider's perspective, the latter
+goal is more driven by the application's quality of service (QoS) requirement -- something that
+is necessary to be met for the results of the application to be
+useful. The latter can be expressed as in specific terms (e.g. makespan, freshness, throughput), or may
+simply be a best effort. Expressing requirements becomes difficult in
+itself with dynamic applications that may produce continuous,
+intermediary results.
+
+Even if one can appropriately calculate the resource needs of a
+component for a given data set -- which is in itself non-trivial --
+dynamic data adds the need to deal with an unknown and possibly
+changing optimal allocation. Changes to data rates, sizes, number of streams and processing
+complexities can impact resource needs. Further, the programming
+model itself can be inflexible when it comes to allowing dynamic
+provisioning. Algorithms may not allow more nodes to be added midway
+through a computation, and some data processing systems require all tasks to
+be mapped to resources at the time the execution launches. All these
+restrictions impede flexible adaptation.
+
+% Commercial systems have addressed provisioning in part by using
+% \emph{virtualization}, splitting a computation between a variable
+% number of identical virtual machines that can be spun-up and -down on
+% top of a smaller number of more capable servers. Scientific codes
+% highlight many of the broader problems and benefits of
+% virtualization. It can be hard to determine \textit{a priori} the
+% computational needs of a component, which makes it hard to
+% provision. Co-locating an unexpectedly large component with others may
+% impact on the overall performance of the system. However, virtualizing
+% the components as independent virtual machines potentially allows
+% components to be frozen and re-located, allowing dynamic
+% re-provisioning and optimization. This of course leads to further
+% problems in the analysis and planning of such operations, but at least
+% provides a technical basis for managing the performance of services
+% across their execution lifetimes.
+
+While most attention is given to
+scaling-out computations (to handle more data), scaling down to
+prevent waste of resources is equally problematic. This is particularly so as 
+\emph{cloud computing} gains prominence as a cyber-infrastructure. Cloud platforms take
+resource virtualization to another level, 
+presenting computing as an elastic service than can be ramped up and down.
+However, current cloud computing platforms are
+highly targeted at scenarios of commercial interest such a
+large volumes of independent transactions. While these may match some
+scientific problems (such as some issues described in
+ \S\ref{bioSilvia}  and \S\ref{WLCGSteve}), it is by no means suitable for
+others. The multi-tenancy of clouds whereby the same resource is shared across customers also
+introduces dynamism in the performance offered by the
+infrastructure~\cite{iosup:ccgrid:2011}. 
+Programming models such as MapReduce and the ease of getting access to resources have increased the
+use of clouds for eScience, and cloud vendors such as Amazon have also responded to scientific
+computing needs with HPC and GPGPU infrastructure. \ysnote{should we move the preceding line to ``D3 Infrastructure''?}
+Significantly more research is needed to determine 
+the gaps in existing cloud computing platforms, be it on the cloud provider's end or in developing
+novel scientific programming models  to meet the needs of the broader scientific domains.
+
+
+% \note{\subsubsection{Co-existing Services}}
+
+% \note{Provisioning also extends to the co-existence of multiple services and
+% components on the same substrate, where their provisioning needs may
+% conflict or interact in peculiar ways. Indeed, much of the interest
+% that computer scientists have in virtualization comes from these
+% interactions. The variability of provisioning makes these challenges
+% even more severe for scientific codes.}
+
+% \note{At another level, service co-existence is strongly linked with
+%   service-oriented architectures. Scientific codes that provide common
+%   and widely-utilized services, for example in astronomy
+%   (\S\ref{astroSOAAdam}), demonstrate the potential that these
+%   architectures have. Even in systems for which there are fewer
+%   outside users, SOA is a useful structuring mechanism within
+%   pipelines and can be deployed generically by workflow engines. The
+%   advantages in terms of the availability of re-usable components --
+%   whether or not such re-use is foreseen -- are potentially highly
+%   significant in fields (such as climate modeling, \S\ref{modisKeith})
+%   where variations on analytic themes are commonly employed. SOA also
+%   raises the issue that the program may be using existing shared or
+%   external services that cannot be relocated because it is not in the
+%   workflow author's control. It may or may not be possible to locate
+%   the user-controlled service to co-locate with the external shared
+%   service.}
+
+\subsection{Adaptive Programming Systems}
+
+% Question: would there be any need to push lots of processing to the
+% front end, near the sensing? And if so, what would this do to the
+% later stages?
+
+As noted earlier, it is often not clear where a particular scientific
+pipeline begins and ends. In particular we are seeing increasing use
+of sensor networks and other intelligent front-end data collection
+systems, as well as the integration of simulation and stream
+processing. These components often have the feature of being
+\emph{adaptive}, in that they can vary their exact behavior according
+either to external control stimuli or from observations made of the
+data they are themselves observing.
+
+Adaptation may also be through users' interactively changing the
+direction of the pipeline, either by changing parameters or by
+adding or removing tasks in the pipeline. This allows decision logic
+to be initiated by the pipeline itself, or using an external
+control signal that may come from users or an instrument. This form of
+``computational steering'' is especially useful in systems being used
+to explore a data set.
+
+What impact does this have on other stages? The advantage of including
+such systems is that the pipeline then provides an end-to-end
+description of the entire scientific process. This is valuable both
+for documentation purposes, but also in pursuing issues of component
+and data re-use.
+
+
+% A lot of scientific processes are predicated on data being collected
+% and then analysed off-line, which emphasises both query performance
+% but also the collection and use of meta-data about the data set (for
+% example the precision of sensing and the provenance effects of any
+% pre-processing).
+
+% \note{Adaptivity brings its own challenges, many of which are often captured
+% under the notion of \emph{autonomic systems} which sense their own
+% operation, decide on appropriate management actions to maintain their
+% quality-of-service parameters, and then act to affect their own
+% operation~\cite{KephartAutonomics,AC-Survey}. This is substantially
+% different from the user-driven adaptations discussed above, focusing
+% on managing a process rather than changing it on the fly. A
+% substantial amount of research is already on-going in computer
+% science, often centered on data centre management and provisioning (see
+% above); an emerging strand of work is looking at autonomic techniques
+% applied to scientific systems. The importance of these approaches is
+% that they allow improvements in the service offered to workflows by
+% adaptive components. However, this is accompanied by the danger that
+% adaptation may not be scientifically benign, and may affect the
+% results of the workflow itself. This leads on to issues of data
+% provenance below.}
+
+% \note{Many current techniques in autonomic systems approach the
+%   problem very much from a systems perspective rather than from a
+%   scientific or workflow perspective. This matters, as it makes it
+%   harder for users to affect, control or understand the impact that
+%   autonomic adaptation may have on their overall analysis. (An example
+%   of this is the adaptive processing of a sensor data stream that --
+%   if not recorded -- may affect the validity of later statistical
+%   analyses. These are to some extent issues of provenance and are
+%   discussed more below.)}
+
+% \note{Including sensing into the pipeline (\S\ref{sensorSimon})
+% allows analysis to inform collection. A good
+% example is where a feature-recognition analysis detects a feature of
+% interest, which can then be examined in more detail. Not all
+% application areas are amenable to this approach, for example where
+% data is collected \textit{en masse} and at a consistent granularity
+% and regularity, perhaps independent of \emph{any} particular
+% processing function. For many systems, however, the ability to
+% feed-back analysis from later stages is of great
+% significance. Understanding the stability and dynamics of such
+% feedback loops remains a challenge in autonomic systems, especially
+% when the feedback deviates from the simple closed-form specifications
+% amenable to control theory: more dynamic approaches from game theory,
+% physics and econometrics show promise.}
+
+% \note{At the other end of the pipeline, interactive exploration and
+%   computational steering (\S\ref{envJon}) involve the scientist and
+%   data analyst in providing guidance as to the way in which
+%   computation should proceed, affecting either current or future
+%   runs. The challenge here is that the ``user'' at this stage is often
+%   not the ``programmer'', and so may only be able to provide guidance
+%   at a scientific level, rather than at a algorithmic or architectural
+%   level. This having been said, such guidance is potentially extremely
+%   valuable and allows insights directly from the level of the
+%   ``mission'' of the scientific system. This suggests that data
+%   visualization and interaction should be considered core to the
+%   processing pipeline, and that attention be paid to how scientific
+%   and data insights can be fed-back as autonomic control
+%   parameters. This is not an area that has received any significant
+%   attention from the autonomic systems community, and so offers a
+%   major research avenue.}
+
+% %\subsubsection{Collecting Provenance}
+
+% % Question: is there a need to retain meta-data across the lifetime of a
+% % system and across the complete architecture?
+
+% \note{Finally we must consider the fact that data processing in a scientific
+% setting is itself a scientific process, which introduces properties
+% into the data that must be accounted for in a predictable and
+% well-founded manner. This implies that the process is well-defined,
+% describable and analyzable to explore its effects on the results
+% obtained.}
+
+% \note{A simple example of the effects of different choices comes from data
+% cleansing. Deciding which elements are ``noise'' in a data set (or
+% data stream) may exert a profound effect on the results of further
+% processing. Discarding data that is \textit{not} noise will distort
+% the results; discarding too many data points may damage the
+% statistical properties of the data; while discarding too few may be
+% distorting in other ways. The point is not that the data is
+% transformed in ways that change its properties: rather, the issue is
+% the \textit{hiding} of these transformations in ways that cannot be
+% accounted for in future processing stages or interpretation.}
+
+% \note{There is no way that a programming system or model can automate
+% decisions of this kind, which remain essentially scientific. What a
+% system \textit{can} do, however, is to ensure that the decisions made
+% are recorded and propagated with the data and its results. This is the
+% issue of the \emph{provenance} of the data and the results: recording
+% the transformations that have been made to a data set or data stream
+% and associating this \emph{meta-data} alongside any derived data. We
+% can view provenance meta-data as a generalized kind of error bar on
+% computations -- or, equally, as the information needed to produce
+% standard error bars in a well-founded and traceable
+% manner.}
+
+% \note{There has been several years' work in developing a community standard,
+% the Open Provenance Model~\cite{OPM}, which is leading to more formal
+% standards such as the efforts of the W3C Provenance Working Group to
+% provide frameworks for the capture and representation of
+% provenance. Scientific workflow systems like Taverna are increasingly
+% able to handle provenance attachments automatically and maintain them
+% between processing stages~\cite{Taverna}, and there are dozens of stand-alone
+% provenance systems as well. One may regard this as another example of
+% moving analysis into the computer systems and away from the scientists
+% to ensure faithful recording.}
+
+
+% \subsection{Coverage}
+% \label{sec:coverage}
+
+
+% \begin{table}
+%   \begin{scriptsize}
+%     \begin{center}
+%       \caption{Programming systems used by the applications\label{table:progSystems}}
+%       \begin{tabular}{|p{6.3cm}|p{7.2cm}|}
+%         \hline Application  & Current approaches \\
+%         \hline
+%         \hline NGS Analytics & pipelines that ship with
+%         sequencers~\cite{illumina}; workflows~\cite{Taverna} \\
+%         \hline ATLAS & custom algorithms; job submission tied to WLCG \\
+%         \hline LSST & custom layer; scripted workflows; queries \\
+%         \hline SOA Astronomy & web services \\
+%         \hline Cosmic Microwave Background & \textit{ad hoc} \\
+%         \hline Sensor Network Application & focused on collection \\
+%         \hline Climate & \textit{ad hoc} \\
+%         \hline Interactive Exploration of Environmental Data &
+%         visualization tools \\
+%         \hline Power Grids & stream processing; data mining \\
+%         \hline Fusion (ITER) & scripted pipeline \\
+%         \hline Industrial Incident Notification and Response &
+%         agent-based  \\
+%         \hline MODIS Data Processing & scripted pipeline \\
+% %        \hline Floating Sensors & \textit{ad hoc} \\
+%         \hline Distributed Network Intrusion Detection & monolithic
+%         packages \\
+%         \hline
+%       \end{tabular}
+%     \end{center}
+%   \end{scriptsize}
+% \end{table}
+
+% We conclude this section by revisiting the application scenarios of
+% \S\ref{sec:scenarios} in terms of their programming system and using
+% this to pose two questions:
+
+% \begin{enumerate}
+% \item What programming systems and techniques are \emph{currently}
+%   used in implementing the different systems?, and
+% \item What elements identified in this section \emph{could} usefully
+%   be deployed or further explored in each system?
+% \end{enumerate}
+
+% Table~\ref{table:progSystems} summarizes the programming systems
+% currently dominant in each application case study. It is worth noting
+% that -- in common with most long-lived systems -- many of the cases
+% have accreted substantial code bases over time and so show little in
+% the way of systematic architecture. (One reason for the dominance of
+% pipelines may be that such architectures are quite suitable for adding
+% extra processing steps to existing computations.) 
+ 
+% From this we can make several observations and recommendations. The
+% use of scripted or \textit{ad hoc} pipelines can in most cases be
+% easily replaced with a structured workflow engine. Doing so brings
+% immediate benefits in terms of reproducibility, but also in terms of
+% standardization of components and interfaces. Standardization is not
+% simply a software issue: it has scientific significance in the sense
+% that data produced using well-documented, well-used and well-debugged
+% suites of components is often more trusted -- and trustworthy -- that
+% data produced using locally-produced components that, while they may
+% be more innovative and targeted, also run the risk of undetected
+% assumptions and errors.
+
+% A further implication of standardization is that component re-use is
+% greatly improved. This is perhaps best illustrated by observing the
+% need for collecting data provenance over processing runs. The
+% recording of processing of processing steps and the like is completely
+% generic and can be carried out by the workflow engine uniformly across
+% all workflows. The use of standard component-based software techniques
+% such as web services, coupled with web technologies for metadata
+% representation, can further assist in re-use, re-purposing and
+% integration.
+ 
+% \note{One place in which \textit{ad hoc} approaches may improve over
+% standardized engines is in adaptation: the \textit{coordination}
+% vector. A targeted approach can make use of application-specific
+% analysis and control, whereas a generic approach needs to be able to
+% describe the adaptation strategy for \textit{any} application. This is
+% a challenge at the current state of the art in autonomic systems, but
+% again, if addressed, would make it easier to apply advanced solutions
+% across domains and reduce the barriers to entry in creating adaptive
+% codes.}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "3dpas_intro"
+%%% End: 

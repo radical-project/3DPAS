@@ -1,0 +1,56 @@
+Efficient Processing in Real-Time Complex Distributed Information Systems
+Dr. Kees Nieuwenhuis, Thales Nederland, D-CIS Lab
+Acknowledgement: The use case and working prototype system discussed here are realized with the help of the DIADEM project grant from the EC (FP7 grant 224318).
+
+Introduction
+Contemporary net-centric applications, such as large scale crisis management, maritime security, disease and pollution monitoring, environmental control and management etc. cab greatly benefit from the fusion of large amounts of heterogeneous information, coming from static and mobile sensors as well as intelligence obtained from human observers, various databases and the World Wide Web. This is because new AI based techniques are available that help to combine multiple information modalities and thereby increase the amount of information for (real-time) fusion systems, which in turn can mitigate the impact of noise and reduce ambiguities and overcome the unavailability of specific information sources.
+
+However, the compute and networking requirements for this new type of applications that we need to build are significantly different from the more traditional massive data processing or distributed computing applications that are known and deployed in professional business and scientific domains today.
+
+Use case description: DIADEM
+The area of greater Rotterdam in the Netherlands is a highly industrialized area with the largest harbor in Europe, very many chemical, petrochemical, pharmaceutical and other processing plants. Economically, it is the most important area of the country. In addition, the same area is home to more than 15% of the Dutch population. Safety and security are therefore a major concern, especially with the type of hazards involved and because major evacuations are just not an option. Some leakage of chemicals into the air however, is an every day event and cannot be avoided. Therefore, the environmental protection agency (EVA) is actively monitoring air quality and incidents (that by law must be reported immediately) from a command and control center which includes a dedicated call center for the population. They employ a number of chemical and other hazard experts that can be deployed in the field for inspection (prevention) and measurements. Due to the sheer size of the area and the (so far) inadequate techniques and resources for continuous data gathering, data sharing, data processing and sensor management, there are very few sensors in the area that the EVA has continuous access to.
+
+The tasks of the EVA are to 1) monitor the environment (mainly air quality and sewage), 2) in case of an incident locate the source, 3) identify the threat and 4) provide the public authorities, the emergency response organization and the public with situation awareness and possible courses of action. For that, they must liaise and coordinate with other expert organizations (health and hazard experts, public order and safety experts, the harbor authority, traffic experts, etc.) and share and exchange information and knowledge. An important aspect of the latter is that the information that is available is always incomplete, uncertain and no single element is conclusive by itself. In order to process and use that information, inside and outside knowledge must be accessed.
+
+Dynamic versus static data
+For continuous monitoring and incident detection continuous streams of data are necessary that need to be processed and scanned for anomalies. Typically, a low frequency stream of reasonable fidelity data from a small number of physical sensors and an even lower frequency stream of air analysis data (gas-chromatographs outputs) is trickling in. A much larger amount of data from private sensors from hazard sources is potentially available, but currently not accessible. If an incident happens or an anomaly is detected, new streams of data become available and must be processed, such as low fidelity data from people in the area calling the call centre with complaints, field(ed) inspectors calling in with results of expert observations and additional high fidelity measurements, information from social media and maybe pictures from cell phones from individuals in the area (solicited or not-solicited). In case of an incident, suddenly also other more static information such as current weather conditions and forecast and information about chemicals (hazards, risks, air-borne or water-borne behavior, health aspects, neutralizing methods and agents, etc.) is needed for further processing. This other information may be stored in different places and access may or may not be granted automatically and formats may be ‘special’ and validity and update frequencies may not match expectations or needs and thus demand for specialized pre-processing emerges.
+
+Use of data
+The real-time data is mainly stochastic in nature. The fidelity is variable, which means that different knowledge based processing models must be used concurrently to take into account not only the uncertainty in the data / measurements itself, but also to take into account sensor behavior. Most of the data are observations of the effects of the root cause and therefore robust fusion (processing) with the help of knowledge based models is necessary to provide situation awareness and decision support. Some fusion requires data that is confidential in nature or commercial in confidence and may not leave the place where it is stored. Therefore the special event based processing algorithms must be brought to the data and only aggregated results can be communicated to other processing entities. This means that both the data and the processing are dynamic in nature, which the application and its computer infrastructure must support. Relationships with static or semi-static (e.g. weather) data are often built in to the processing algorithms, which means that these data sources need to be accessed during real-time processing also. This requires multiple simultaneous accesses to remote data stores. The processing will also produce new intermediate and final data, sometimes with different retention characteristics, which need to be stored and made accessible to special visualization and analysis applications in different workflows.
+
+Infrastructure use
+In current applications the three main network technologies used are the telephone and cell phone network and a centralized computer network with internet connection (for emails). Data is filtered and entered manually into locally housed databases and files and processed in semi-real-time or batch mode processing on a private and limited computer infrastructure. Therefore scalability is lacking and dynamics of workflows is kept under strict human control to match the capabilities of a set of static resources.
+The need however, is to have more scalable solutions where resource usages can actually follow demand from an escalating (and de-escalating) incident and information availability point of view. This is complemented by the need to support the dynamic creation of workflows in a multi-stakeholder (and no longer single stakeholder) setting. In addition, security is an important aspects that drives a separate set of requirements which impact data availability and processing availability that must comply with a dynamic network centric processing model. That model must support secure access at the data-item level and without restrictions at the network or compute platform level. A mixture of the Cloud and Grid approaches may offer a solution here.
+
+Use of dynamic data
+The use of dynamic data has two origins: the first is the real world situation that may begin with a small scale event such as a minor gas leak. If such an event is undetected at first, it may escalate and trigger more and more disturbances that add data about different other anomalies to the data streams. The second source of dynamic behavior is that with the escalation of the event, more and more special repression an management process come into play, each requesting and adding their own sort of processing to the mix.
+
+How does the application get the data?
+In a typical application a number of special data and sensor interface processes will be part of the development. Whether packaged as software agents or some other form of software process, they will normally be distributed over various platforms and ‘fixed’ in place. There task is to make the data available via a distributed shared data space (used here as a logical concept that can be implemented in different ways) that abstracts from physical storage. The information processing algorithms are packaged as autonomous processing entities such as software agents, that are managed by a multi agent system infrastructure (middleware) and humans (via GUIs).
+
+QoS aspects
+Quality of service aspects that are important for real world and real time applications are the dynamics of scheduling from an application perspective, multi independent level of security support, processing service discovery support, autonomous reconfiguration support and logging-for-traceability. Because of the nature of the application aspects like sustained communication bandwidth, processor availability, checkpoint-restart etc. are not important. Most of the dynamic data that these applications use has a short validity period i.e. it must be processed now or we process the next update coming in. The data is uncertain i.e. it may have dynamically changing S/N ratio and although expected at some base frequency, may not be available for some period of time. 
+
+
+
+
+
+Application Scenario Characteristics for Dynamic Data (Various)
+Identify:
+(1) what is the case scenario within the application;
+(2) what data is dynamic; 
+(3) how the data is being used in the context of each of these scenarios.
+Currently trying to do this by asking the following questions:
+1. What is the purpose of the application?
+2. How is the application used to do this?
+3. What infrastructure is used? (including compute, data, network, instruments,
+etc.)
+4. What dynamic data is used in the application?
+(a) What are the types of data,
+(b) What is the size of the data set(s)?
+5. How does the application get the data?
+6. What are the time (or quality) constraints on the application?
+***Dan: new suggested questions from Don Middleton: How much diverse
+data integration is involved? how diverse is the data?
+ 
+
