@@ -24,7 +24,6 @@
 
 \usepackage[firstpage]{draftwatermark}
 
-
 %\SetWatermarkLightness{0.7} %\SetWatermarkScale{4}
 
 
@@ -95,7 +94,9 @@
 \long\def\finalcomment#1{{\bf \textcolor{red}{\bf #1}}}
 \newcommand{\CF}{\finalcomment}
 
-\newif\ifdraft \drafttrue \ifdraft 
+\newif\ifdraft 
+%\drafttrue 
+\ifdraft 
 \newcommand{\katznote}[1]{{\textcolor{magenta} { ***Dan: #1 }}} 
 \newcommand{\rananote}[1]{{\textcolor{cyan} { ***Omer: #1 }}} 
 \newcommand{\omernote}[1]{ {\textcolor{cyan}{ ***Omer: #1 }}} 
