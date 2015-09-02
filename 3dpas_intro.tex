@@ -54,6 +54,7 @@
 \keywords{dynamic, distributed, data intensive, scientific applications}
 
 \begin{abstract}
+
 %   Many problems at the forefront of science, engineering, medicine,
 %   and the social sciences are increasingly complex and
 %   interdisciplinary due to the plethora of data sources and
@@ -95,35 +96,32 @@
 \jhanote{NCH points out that we are inconsistent in the order of the
   ``D''s. SJ to fix globally. Good catch Neil!}
 
-The landscape of scientific and enterprise
-computing is being fundamentally altered by the current surge in data. The
-resulting upheaval, grandiosely named BigData science by the Lilliputians
-in the data science community, represents a new reality where
-the volumes of data produced by scientific applications are increasing
-rapidly, driven by advancing technologies (e.g., increasing compute
+The landscape of scientific and enterprise computing is being fundamentally
+altered by the current surge in data. The resulting upheaval represents a new
+reality where the volumes of data produced by scientific applications are
+increasing rapidly, driven by advancing technologies (e.g., increasing compute
 capacity and higher resolution sensors) and decreasing costs for data
 acquisition and storage~\cite{tony-propaganda}. With the increase in data
-volumes, types, and sources of data, an important concomitant
-development has been an increase in the requirement for and complexity
-in the processing of data. Data are often naturally distributed and have
-to be processed in situ, and occasionally data that are localized
-have to be distributed in order to be processed, either for reasons
-of performance or for collaborative analytics.  Furthermore when
-processing large volumes of data, data source/destination, data
-production and transfer rates, and data processing capacity can
-all vary over time. Thus properties such as resource scheduling, data
-placement, and transfer decisions, that were statically determinable at
-small scales, emerge as dynamic and important considerations at
-large scales of data and distribution.  The BigData science problem
-is therefore only partly about large volumes of data.
+volumes, types, and sources of data, an important concomitant development has
+been an increase in the requirement for and complexity in the processing of
+data. Data are often naturally distributed and have to be processed in situ, and
+occasionally data that are localized have to be distributed in order to be
+processed, either for reasons of performance or for collaborative analytics.
+Furthermore when processing large volumes of data, data source/destination, data
+production and transfer rates, and data processing capacity can all vary over
+time.
 
-Our focus is on a subspace of the BigData problem space, namely that
-which is characterized by the distributed and dynamic aspects of
-data-intensive science. We introduce the concept of Dynamic
-Distributed Data-intensive science and refer to this subspace of
-BigData science as D3 science.  In order to appreciate the D3 subspace
-we will briefly discuss the importance and role of distribution and
-the pervasiveness of dynamical aspects.
+The set of challenges is only partly defined by the large volumes of
+data. Properties such as resource scheduling, data placement, and transfer
+decisions, that were statically determinable at small scales, emerge as dynamic
+and important considerations at large scales of data and distribution.
+
+Our focus is on a subspace of the large set of problems associated with
+data-intensive sciences, namely that which is characterized by the distributed
+and dynamic aspects. We introduce the concept of Dynamic Distributed
+Data-intensive science and refer to this subspace of data-intensive science as
+D3 science.  In order to appreciate the D3 subspace we will briefly discuss the
+importance and role of distribution and the pervasiveness of dynamical aspects.
 
 % \begin{itemize}
 % 	\item Centralized: data is at one location
@@ -132,23 +130,6 @@ the pervasiveness of dynamical aspects.
 
 % \jhanote{I intend to convert these bullet points into a paragraph
 %   about the importance of treating distributed data}
-
-Although the capacity to store data centrally is
-growing faster than Moore's Law, it is not sufficient in all cases to
-be able to ``dump the data'' in one place (or in the cloud.)
-Oftentimes the costs (data transfer, storage, consequences of
-catastrophic failure) prevent the centralization of data, and
-decentralization---storing or place data in multiple locations---become prudent.
-
-Conversely, not all production of data is centralized; in some cases
-there are multiple producers (and consumers) of data, not to mention
-one-of-a-kind data that must be shared across multiple consumers.
-Furthermore in collaborative science, data output from one analytical
-engine are often the input for the next stage of the analytical
-pipeline.  Last but not least, distribution via replication is a
-tested and effective approach to reliability and fault-tolerance; we
-will argue that it is also potentially a great performance enhancer
-and a means to ensure data consistency too.
 
 Whether data are a priori distributed or localized, a critical
 challenge is to find an efficient and effective means to either
@@ -172,24 +153,25 @@ distribute the initially localized data, or manage the distribution
 % \ysnote{distributed to ensure security also? Privacy
 %           controls on moving data out of a location or country.}
 
-The challenges of distributed data-intensive applications span beyond
-the management and curation of large volumes of data. A critical
-requirement is to make sense of this data, i.e., transform the data
-into information en route to assembling knowledge. Among other things,
-the transformation from data to information requires extensive amounts
-of computational processing of the data; thus the data-intensive
-nature of the BigData science problem is strongly coupled with
-compute-intensive requirements.  As the data are often distributed, a
-consequence is that many attributes of distributed systems permeate to
-data. Thus almost naturally, distributed data have attributes of
-dynamism, both at the data level as well as the infrastructure
-level.
+The challenges of distributed data-intensive applications span beyond the
+management and curation of large volumes of data. A critical requirement is to
+make sense of this data, i.e., transform the data into information en route to
+assembling knowledge. Among other things, the transformation from data to
+information requires extensive amounts of computational processing of the data;
+thus the data-intensive nature of the data-intensive science problem is strongly
+coupled with compute-intensive requirements.  As the data are often distributed,
+a consequence is that many attributes of distributed systems permeate to
+data. 
 
-That is not to say all data-intensive applications have elements of
-both data and compute dynamism and are always distributed, but it is a
-reflection that at extreme scales, dynamism and and distribution
-become increasingly important and often correlated issues.  Thus,
-analyzing the applications along an analytical space spanned by the
+% Thus almost naturally, distributed data have attributes of dynamism, both
+% at the data level as well as the infrastructure level.
+
+% That is not to say all data-intensive applications have elements of
+% both data and compute dynamism and are always distributed, but it is a
+% reflection that at extreme scales, dynamism and and distribution
+% become increasingly important and often correlated issues.  Thus,
+
+Analyzing the applications along an analytical space spanned by the
 three ``D''s of data-intensive, distributed, and dynamic provides a
 general and effective framework.  The diverse set of requirements to
 support D3 scenarios points to the need for a careful understanding of
@@ -360,6 +342,22 @@ cyberinfrastructure in general, with less than desirable consequences.
 %  motivation...''  Perhaps these two paras should be
 %  combined?}\jhanote{DSK, this should not be an issue now, given that
 %  this has now moved upstream}
+
+Although the capacity to store data centrally is growing faster than Moore's
+Law, it is not sufficient in all cases to be able to ``dump the data'' in one
+place (or in the cloud.)  Oftentimes the costs (data transfer, storage,
+consequences of catastrophic failure) prevent the centralization of data, and
+decentralization---storing or place data in multiple locations---become prudent.
+
+Conversely, not all production of data is centralized; in some cases there are
+multiple producers (and consumers) of data, not to mention one-of-a-kind data
+that must be shared across multiple consumers.  Furthermore in collaborative
+science, data output from one analytical engine are often the input for the next
+stage of the analytical pipeline.  Last but not least, distribution via
+replication is a tested and effective approach to reliability and
+fault-tolerance; we will argue that it is also potentially a great performance
+enhancer and a means to ensure data consistency too.
+
 
 
 \subsection{Scope}
