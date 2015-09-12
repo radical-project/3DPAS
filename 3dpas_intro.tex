@@ -55,15 +55,18 @@
 
 \begin{abstract}
 
-%   Many problems at the forefront of science, engineering, medicine,
-%   and the social sciences are increasingly complex and
-%   interdisciplinary due to the plethora of data sources and
-%   computational methods available today.  A common feature across many
-%   of these problems is the amount and diversity of data and
-%   computation that must be integrated to yield insights. Such data is
-%   increasingly large-scale and distributed: the datasets, their
-%   locations, and associated scheduling decisions are
-%   time-dependent.
+  A common feature across many science and engineering applications is the
+  amount and diversity of data and computation that must be integrated to yield
+  insights. Often data is increasingly large-scale and distributed. Often the
+  datasets, their locations, availability, analysis and associated scheduling
+  decisions are time-dependent. Collectively these give rise to dynamic
+  distributed data intensive applications.  The characteristics, requirements,
+  and software systems for the analysis of large volumes of ``static'' data have
+  received significant attention; dynamic, distributed and data intensive have
+  received relatively less. This work will ameliorate the state by surveying
+  several representative application scenarios, to provide a common conceptual
+  framework to understand them as well as examine the infrastructure used in
+  support of applications.
 
 %   Applications need access
 %   to these disparate data-sets and to the methods that operate on
@@ -97,31 +100,26 @@
   ``D''s. SJ to fix globally. Good catch Neil!}
 
 The landscape of scientific and enterprise computing is being fundamentally
-altered by the current surge in data. The resulting upheaval represents a new
-reality where the volumes of data produced by scientific applications are
-increasing rapidly, driven by advancing technologies (e.g., increasing compute
-capacity and higher resolution sensors) and decreasing costs for data
-acquisition and storage~\cite{tony-propaganda}. With the increase in data
-volumes, types, and sources of data, an important concomitant development has
-been an increase in the requirement for and complexity in the processing of
-data. Data are often naturally distributed and have to be processed in situ, and
-occasionally data that are localized have to be distributed in order to be
+altered by the prodigious volumes of data.  Not only are the volumes of data
+produced by scientific applications increasing rapidly, there is also a
+corresponding increase in the amount of data that needs to be processed and
+analyzed.  With the increase in data volumes, types, and sources of data, an
+important concomitant development has been an increase in the requirement for
+and complexity of the infrastructure needed to support these requirements.
+Furthermore, data are often naturally distributed and have to be processed in
+situ; occasionally data that are localized have to be distributed in order to be
 processed, either for reasons of performance or for collaborative analytics.
-Furthermore when processing large volumes of data, data source/destination, data
-production and transfer rates, and data processing capacity can all vary over
-time.
+The scale and significance of varying data source/destination and
+transfer/production rates makes temporal variations important, which in turn
+eventually impact the design and development of infrastructure to support them:
+resource scheduling, data placement, and transfer decisions that were statically
+determinable at small scales, emerge as dynamic and important considerations at
+large scales of data and distribution.
 
-The set of challenges is only partly defined by the large volumes of
-data. Properties such as resource scheduling, data placement, and transfer
-decisions, that were statically determinable at small scales, emerge as dynamic
-and important considerations at large scales of data and distribution.
+% driven by advancing technologies (e.g., increasing compute capacity and higher
+% resolution sensors) and decreasing costs for data acquisition and
+% storage~\cite{tony-propaganda}. 
 
-Our focus is on a subspace of the large set of problems associated with
-data-intensive sciences, namely that which is characterized by the distributed
-and dynamic aspects. We introduce the concept of Dynamic Distributed
-Data-intensive science and refer to this subspace of data-intensive science as
-D3 science.  In order to appreciate the D3 subspace we will briefly discuss the
-importance and role of distribution and the pervasiveness of dynamical aspects.
 
 % \begin{itemize}
 % 	\item Centralized: data is at one location
@@ -131,10 +129,10 @@ importance and role of distribution and the pervasiveness of dynamical aspects.
 % \jhanote{I intend to convert these bullet points into a paragraph
 %   about the importance of treating distributed data}
 
-Whether data are a priori distributed or localized, a critical
-challenge is to find an efficient and effective means to either
-distribute the initially localized data, or manage the distribution
-(or localization) of a priori distributed data.
+% Whether data are a priori distributed or localized, a critical
+% challenge is to find an efficient and effective means to either
+% distribute the initially localized data, or manage the distribution
+% (or localization) of a priori distributed data.
 
 
 % \begin{itemize}
@@ -160,8 +158,21 @@ assembling knowledge. Among other things, the transformation from data to
 information requires extensive amounts of computational processing of the data;
 thus the data-intensive nature of the data-intensive science problem is strongly
 coupled with compute-intensive requirements.  As the data are often distributed,
-a consequence is that many attributes of distributed systems permeate to
-data. 
+a consequence is that many attributes of distributed systems permeate to data.
+
+Subjecting a range of otherwise distinct applications to a
+common analytical framework provides advantages to the infrastructure
+scientists and cyberinfrastructure experts, namely suggestions for
+where effort is both needed and likely to yield maximum returns. In
+other words, as D3 applications evolve, our analysis can provide
+guidance on where to focus effort on infrastructure.  Last but not
+least, the advantages of providing a common but extensible vocabulary
+that can be used by the entire community, application end-users,
+developers and infrastructure scientists alike, in an emerging field
+cannot be overstated. One may argue that such vocabulary and
+terminology has been missing from the practice of distributed
+cyberinfrastructure in general, with less than desirable consequences.
+
 
 % Thus almost naturally, distributed data have attributes of dynamism, both
 % at the data level as well as the infrastructure level.
@@ -171,12 +182,20 @@ data.
 % reflection that at extreme scales, dynamism and and distribution
 % become increasingly important and often correlated issues.  Thus,
 
-Analyzing the applications along an analytical space spanned by the
-three ``D''s of data-intensive, distributed, and dynamic provides a
-general and effective framework.  The diverse set of requirements to
-support D3 scenarios points to the need for a careful understanding of
-D3 characteristics as well as sophisticated, extensible, and
-skillfully architected infrastructure and programming systems.
+The focus of this paper is on a subspace of the large set of problems associated
+with data-intensive sciences, namely that which is characterized by {\it both}
+distributed and dynamic aspects. We introduce the concept of Dynamic Distributed
+Data-intensive science and refer to this subspace of data-intensive science as
+D3 science.  Analyzing the applications along an analytical space spanned by the
+three ``D''s of data-intensive, distributed, and dynamic provides a general and
+effective framework.  The diverse set of requirements to support D3 scenarios
+points to the need for a careful understanding of D3 characteristics as well as
+sophisticated, extensible, and skillfully architected infrastructure and
+programming systems.
+
+
+%  In order to appreciate the D3 subspace we will briefly discuss the
+% importance and role of distribution and the pervasiveness of dynamical aspects.
 
 
 %\ysnote{Since we're clearly positioning around BigData,
@@ -192,9 +211,8 @@ skillfully architected infrastructure and programming systems.
 %  more diverse and complex) than business applications. That said, the
 %  volume and velocity dimensions of the 3V's partially capture the
 %  data-intensive and dynamic aspects of our study.''}  
-\jhanote{we do
-  not discuss explicitly the 4th D, i.e. diversity (courtesy AL) it is
-  assumed but not discussed} 
+\jhanote{we do not discuss explicitly the 4th D, i.e. diversity (courtesy AL) it
+  is assumed but not discussed}
   
 %\subsubsection*{Terminology}
 
@@ -204,19 +222,9 @@ skillfully architected infrastructure and programming systems.
 %  vocabulary. Not sure this would be a conflict or self-plagiarism?
 %  Either way, this should be in the sub-section on ``Scope''}
 
-Distribution can occur on many levels.
-%, as shown in
-%\figurename~\ref{fig:figures_terminology}.
-In this paper, we use {\em locally distributed} to indicate that
-data/compute resides on multiple nodes within one data center.
-{\em Geographically distributed} describes the distribution of data and/or compute
-across multiple data centers. Further, we define the degree as the
-number of data sources and sites that are used for storing and
-processing the data. A distributed application is an application that
-is composed of entities (i.e., either storage/compute resource or a
-data source) from at least two physical locations. In this work, our
-focus is almost exclusively on geographically distributed data and
-applications.
+%, as shown in  
+%\figurename~\ref{fig:figures_terminology}.  
+
 
 %\jhanote{terminology defined elsewhere in the paper isn't defined
 %  here.. so a bit misleading to call this part terminology. AL points
@@ -301,49 +309,36 @@ applications.
 %  approaches/inference/statistics and its 'implication' on dynamic
 %  data via dymamic models, i'd love to hear / learn more}
 
-\jhanote{refine next two paragraph...} Analogous to the distinction between programming in
-the large versus system level programming, there is a distinction
-between the ``cyberinfrastructure/systems considerations/design at the
-large-scale'' versus ``CI considerations at the small-scale''. This
-paper is primarily about CI/systems considerations at the large-scale.
-Searching for common solutions and patterns at the large-scale is
-likely to be more fruitful than at small-scales where customized tools
-and optimization of low-level systems features is likely to return
-greater yield.
 
-
-Thus, subjecting a range of otherwise distinct applications to a
-common analytical framework provides advantages to the infrastructure
-scientists and cyberinfrastructure experts, namely suggestions for
-where effort is both needed and likely to yield maximum returns. In
-other words, as D3 applications evolve, our analysis can provide
-guidance on where to focus effort on infrastructure.  Last but not
-least, the advantages of providing a common but extensible vocabulary
-that can be used by the entire community, application end-users,
-developers and infrastructure scientists alike, in an emerging field
-cannot be overstated. One may argue that such vocabulary and
-terminology has been missing from the practice of distributed
-cyberinfrastructure in general, with less than desirable consequences.
 
 %\katznote{some of this is repeating ideas from the para ``An important
 %  motivation...''  Perhaps these two paras should be
 %  combined?}\jhanote{DSK, this should not be an issue now, given that
 %  this has now moved upstream}
 
-Although the capacity to store data centrally is growing faster than Moore's
-Law, it is not sufficient in all cases to be able to ``dump the data'' in one
-place (or in the cloud.)  Oftentimes the costs (data transfer, storage,
-consequences of catastrophic failure) prevent the centralization of data, and
-decentralization---storing or place data in multiple locations---become prudent.
+\jhanote{refine next four paragraph...} 
 
-Conversely, not all production of data is centralized; in some cases there are
-multiple producers (and consumers) of data, not to mention one-of-a-kind data
-that must be shared across multiple consumers.  Furthermore in collaborative
-science, data output from one analytical engine are often the input for the next
-stage of the analytical pipeline.  Last but not least, distribution via
-replication is a tested and effective approach to reliability and
-fault-tolerance; we will argue that it is also potentially a great performance
-enhancer and a means to ensure data consistency too.
+% Further, we define the degree as the number of data sources and sites that are
+% used for storing and processing the data. A distributed application is an
+% application that is composed of entities (i.e., either storage/compute resource
+% or a data source) from at least two physical locations. In this work, our focus
+% is almost exclusively on geographically distributed data and applications.
+
+
+% Although the capacity to store data centrally is growing faster than Moore's
+% Law, it is not sufficient in all cases to be able to ``dump the data'' in one
+% place (or in the cloud.)  Oftentimes the costs (data transfer, storage,
+% consequences of catastrophic failure) prevent the centralization of data, and
+% decentralization---storing or place data in multiple locations---become prudent.
+
+% Conversely, not all production of data is centralized; in some cases there are
+% multiple producers (and consumers) of data, not to mention one-of-a-kind data
+% that must be shared across multiple consumers.  Furthermore in collaborative
+% science, data output from one analytical engine are often the input for the next
+% stage of the analytical pipeline.  Last but not least, distribution via
+% replication is a tested and effective approach to reliability and
+% fault-tolerance; we will argue that it is also potentially a great performance
+% enhancer and a means to ensure data consistency too.
 
 
 
@@ -369,44 +364,50 @@ capabilities, trends, and limitations---available to the complexity,
 challenges and characteristics of dynamic and distributed data at
 scale.
 
-We would like the reader to keep in mind three primary context and
-scope-setting points:
+We would like the reader to keep in mind some context and scope-setting points:
 
 %\katznote{a lot of this paragraph seems too repetitive of the previous
 %  section} \jhanote{Dan, I fixed the previous paragraph. OK?}
 
 \begin{itemize}
 
-\item This {\it survey} is not meant to be complete, either in scope
-  of domains covered or types of infrastructure and application
-  surveyed.  They by definition represent the interests and experience
-  of the authors.
+\item This {\it survey} is not meant to be complete, either in scope of domains
+  covered or types of infrastructure and application surveyed.  They by
+  definition represent the interests and experience of the authors.
 
-\item The focus is on applications and infrastructure that arise from
-  science and engineering projects in academia; this is not exclusive
-  but is more a guiding principle.  While we are cognizant of
-  enterprise applications and infrastructure, and recognize the
-  impressive advances made therein, we also acknowledge that the
-  factors such as scale, distribution, open-source, and
-  interoperability influence the solutions employed and infrastructures
-  used; it is important to therefore focus on problems that emerge as
-  in the space defined by these ``academic constraints''.
+\item The focus is on applications and infrastructure that arise from science
+  and engineering projects in academia; this is not exclusive but is more a
+  guiding principle.  While we are cognizant of enterprise applications and
+  infrastructure, and recognize the impressive advances made therein, we also
+  acknowledge that the factors such as scale, distribution, open-source, and
+  interoperability influence the solutions employed and infrastructures used; it
+  is important to therefore focus on problems that emerge as in the space
+  defined by these ``academic constraints''.
 
-\item Almost by definition, any attempt to capture the
-  state-of-the-art of such a dynamic and emerging domain is bound to
-  be fraught with limitations and issues of scoping.  A complete and
-  rigorous survey of the landscape of BigData is bound to be obsolete
-  by the time it emerges; so given the rate of change, we asked what
-  could be done. What we present is a partial analysis motivated by a
-  set of existing and active D3 applications, their trials and
-  tribulations, successes and solutions. We believe there is merit in
-  capturing the state-of-play as is, deriving a research agenda
-  and set of specific yet crosscutting issues, and presenting these
-  to the community.
+\item Almost by definition, any attempt to capture the state-of-the-art of such
+  a dynamic and emerging domain is bound to be fraught with limitations and
+  issues of scoping.  A complete and rigorous survey is bound to be obsolete by
+  the time it emerges; so given the rate of change, we asked what could be
+  done. What we present is a partial analysis motivated by a set of existing and
+  active D3 applications, their trials and tribulations, successes and
+  solutions. We believe there is merit in capturing the state-of-play as is,
+  deriving a research agenda and set of specific yet crosscutting issues, and
+  presenting these to the community.
+
+\item Distribution can occur on many levels.  In this paper, we use {\em locally
+    distributed} to indicate that data/compute resides on multiple nodes within
+  one data center.  {\em Geographically distributed} describes the distribution
+  of data and/or compute across multiple data centers.  Also, our focus is
+  primarily on infrastructure considerations at the large-scale, as searching
+  for common solutions and patterns at the large-scale is likely to be more
+  fruitful than at small-scales where customized tools and optimization of
+  low-level systems features is likely to return greater yield.
+
+  % Analogous to the distinction between programming in the large versus system
+  % level programming, there is a distinction between the ``infrastructure''
+  % considerations at the large-scale versus the small-scale.
+
 \end{itemize}
-
-
-
 
 
 %\jhanote{I think these two points can be ignored. To be discussed. But
@@ -475,80 +476,6 @@ scope-setting points:
 %
 %\end{verbatim}
 
-
-\subsection{Methodology}
-
-This paper originated in work at the UK e-Science Institute (eSI) at
-the University of Edinburgh, in a research theme examining Dynamic
-Distributed Data-intensive Programming Abstractions and Systems,
-called 3DPAS~\cite{3dpas-theme}.  The description of
-this theme's work was:
-
-\begin{quote}
-Many problems at the forefront of science, engineering, medicine, and the social sciences, are increasingly complex and interdisciplinary due to the plethora of data sources and computational methods available today. A common feature across many of these problem domains is the amount and diversity of data and computation that must be integrated to yield insights.
-
-For many complex data-intensive applications, moving the data may have restrictions. Increasingly important type of data-intensive applications are data-driven applications. For example, data is increasingly large-scale, distributed arising from sensors, scientific instruments \& simulations. Such data-driven applications will involve computational activities triggered as a consequence of independent data creation; thus it is imperative for an application to be able to respond to unplanned changes in data load or content. Understanding how to support dynamic computations is a fundamental, but currently a critical missing element in data-intensive computing.
-
-The 3DPAS theme seeks to understand the landscape of dynamic, distributed, data-intensive computing: the programming models and abstractions, the run-time and middleware services, and the computational infrastructure. It will analyze existing tools and services, identify missing pieces and new abstractions, and propose practical solutions and best practices.
-\end{quote}
-
-The theme held three workshops, and in each, application scientists and computing technologists
-were invited to give presentations on their work, and then to be involved in discussions to
-organize and understand the presented materials.  Between the workshops, the theme
-organizers also drafted outlines of a report that was a predecessor of this paper, for
-discussion in the next workshop.  Overall, there were about 50 workshop attendees.
-
-In order to select applications and gather information about
-them, during the various workshop discussions, when an
-application that ``felt'' new was mentioned, we asked the person who
-mentioned it to provide a written set of answers to the following questions about the
-application:
-
-\begin{enumerate}
-\item What is the purpose of the application?
-\item How is the application used to do this?
-\item What infrastructure is used? (including compute, data, network, instruments, etc.)
-\item What dynamic data is used in the application?
-\begin{enumerate}
-\item What are the types of data,
-\item What is the size of the data set(s)?
-\end{enumerate}
-\item How does the application get the data?
-\item What are the time (or quality) constraints on the application?
-\item How much diverse data integration is involved?
-\item How diverse is the data?
-\item Please feel free to also talk about the current state of the
-application, if it exists today, and any specific gaps that you know
-need to be overcome.
-\end{enumerate}
-
-We then used the text of these answers to describe each of the applications (in \S\ref{sec:scenarios}) in terms of:
-
-\begin{itemize}
-\item What does the application do? What problem does it solve?
-\item How does it do it? How does the application run?  What infrastructure does it need/use?
-\item What are the big data aspects of the application?
-\item What are the distributed aspects of the application?
-\item What are the dynamic aspects  of the application?
-\item What else is important about the application?  What does it do well?  Poorly? How was the app written? What tools does it use?
-\end{itemize}
-
-After the workshops, the theme organizers and a set of attendees who
-were interested in participating started discussing how to organize
-and analyze the applications and the technologies, including
-infrastructure, programming systems and abstractions.  These
-participants are the current authors of this paper, and this paper is
-the result of that process.
-
-As part of the theme, two 3DPAS workshops~\cite{3dapas,D3-escience}
-were organized at major conferences: HPDC 2011 and IEEE eScience 2011.
-These workshops had both peer-reviewed and invited papers.
-
-A combination of invitation-only focused discussion meetings and
-broader community engagement events were used to ensure that the
-applications surveyed and ideas captured in this paper are
-representative of current community thinking as well as of
-intellectual relevance.
 
 
 \subsection{Outline of this paper}
@@ -5567,92 +5494,94 @@ characteristics? If so, what are these characteristics?
 \subsection{Conclusions}
 \label{sec:conclusion}
 
-Many fields, such as biology, that until recently were not
-characterized by their intensive use of data are rapidly becoming
-data-driven.  The growth in data has profound implications for the
-design and implementation of services and infrastructure.  For
-example, there is a lifecycle to data that has often been ignored
-until recently: the decreasing cost of storage has made it attractive
-to archive \emph{everything}, just in case it becomes useful. This
-approach is becoming untenable in many areas: some datasets are simply
-too big to archive, and so must be summarized and their raw form
-discarded (possibly in real time). Others are easier to regenerate
-than to store.  Still others are too transient to justify their
-storage, and may in aggregate be too big to store even when being
-small individually.
+The growth in data volumes and its importance is having profound implications on
+the way applications are designed to the way we develop infrastructure and
+provision associated services.  Many fields, such as biology, that until
+recently were not characterized by their intensive use of data are rapidly
+becoming data-driven.
 
-Additionally, it is useful to observe that the trend toward more
-unstructured and more dynamic data sources lead to higher demands on
-data processing infrastructure.~\cite{snia_2012}
-Any data science architecture needs to
-explicitly recognize, capture, and manage the lifecycle requirements
-of different datasets, within the constraints of available time and
-storage. Associated with the growth in data volumes are increasing
-levels of dynamism and distribution; sometimes distribution is
-logical, but sometimes the data is physically distributed for reasons
-of performance or convenience. At large scales, dynamism becomes
-intrinsic to the application and infrastructure; sometimes it occurs
-because of changing experimental or analytic conditions, sometimes due
-to the availability of infrastructure and resources.
-%We close out this paper with a brief
-%discussion of a range of issues associated with the distribution and
-%dynamism of data.
 
-We have identified many different application approaches, programming
-systems, and infrastructure techniques applicable to dynamic data.
-Consistent with experience in other related fields, there seems no
-reason to expect that these approaches and techniques will disappear
-in the near future. While a convergence in approaches and techniques
-might be expected, this has proved to be elusive; there remains a
-diversity in the design, implementation, and execution of scientific
-codes.  It may even be argued that it is premature to have convergence;
-after all, D3 Science is still an emerging domain.
+Associated with the growth in data volumes are increasing levels of dynamism and
+distribution; sometimes distribution is logical, but sometimes the data is
+physically distributed for reasons of performance or convenience. At large
+scales, dynamism becomes intrinsic to the application and infrastructure;
+sometimes it occurs because of changing experimental or analytic conditions,
+sometimes due to the availability of infrastructure and resources. In this
+paper, we have identified many different applications characteristics,
+programming systems, and infrastructure techniques that either support dynamic
+data or produce it.
 
-From the previous discussion we can draw out some conclusions about
-the trends within dynamic, distributed, data-intensive science. For
-instance, in \S\ref{sec:scenarios}, we divided applications into
-groups: traditional and infrastructural applications.  Traditional
-applications have been built by one or more authors in order to solve
-a particular problem or to answer a science question.  Infrastructural
-applications have been built by groups or communities to allow the
-solution of a set of problems, or to answer a set of science
-questions.  In both cases, we can observe that the same set of
-applications stages (as shown in
-\figurename~\ref{fig:figures_application-stages}) can be applied, with
-APIs defined as the inputs and outputs of those stages.  These APIs
-are very informal and loose for the traditional applications, but more
-fixed and conservative for the infrastructural applications.
-% \jhanote{is there a basis for these conjectures?} \katznote{just the
-%   evidence of the applications themselves}
-These APIs limit how new application paradigms %\jhanote{new paradigms of what?}
-can be introduced for the infrastructural applications, unless those
-paradigms happen to fit the existing APIs.  Another way of saying this
-is that the abstractions for dynamism and distribution that can be
-used in the infrastructural applications are those abstractions that
-the developers of the original applications were aware of at the time
-the infrastructural applications were defined.  This leads to a
-possible mismatch, where computer scientists have new ideas that could
-be applied to the class of problems that an infrastructural
-application was designed to solve, but that the infrastructural
-application doesn't allow, due to the fixed APIs.
-New tools may be developed to address a
-narrow set of features while ignoring the larger set of problems that
-prevented earlier tools from being used.  These tools then may be used
-be new applications as those applications are developed; however, they
-are unlikely be used by the existing applications they were meant to
-help.
+% For example, there is a lifecycle to data that has often been ignored until
+% recently: the decreasing cost of storage has made it attractive to archive
+% \emph{everything}, just in case it becomes useful. This approach is becoming
+% untenable in many areas: some datasets are simply too big to archive, and so
+% must be summarized and their raw form discarded (possibly in real time). Others
+% are easier to regenerate than to store.  Still others are too transient to
+% justify their storage, and may in aggregate be too big to store even when being
+% small individually.  Additionally, it is useful to observe that the trend toward
+% more unstructured and more dynamic data sources lead to higher demands on data
+% processing infrastructure~\cite{snia_2012}. Any data science architecture needs
+% to explicitly recognize, capture, and manage the lifecycle requirements of
+% different datasets, within the constraints of available time and storage.
 
-This is because applications
-(particularly infrastructural applications)
-aren't developed in a vacuum, and that the constraints on the
-applications lead to new tools that are or could be developed not
-being able to be applied in practice.  For example, while
-workflow systems are often sufficiently domain-independent that
-there does not seem to be a tie of a particular system to a particular
-infrastructural application, there are a very large number of workflow
-systems that exist, and it is common in the authors' experience to
-hear about new ones being developed from scratch because ``the
-ones that exist don't quite do what is needed for my application or system.''
+
+% Consistent with experience in other related fields, there seems no reason to
+% expect that these approaches and techniques will disappear in the near
+% future. While a convergence in approaches and techniques might be expected, this
+% has proved to be elusive; there remains a diversity in the design,
+% implementation, and execution of scientific codes.  It may even be argued that
+% it is premature to have convergence; after all, D3 Science is still an emerging
+% domain.
+
+% From the previous discussion we can draw out some conclusions about the trends
+% within dynamic, distributed, data-intensive science. For instance, 
+
+In \S\ref{sec:scenarios}, we divided applications into groups: traditional and
+infrastructural applications.  Traditional applications have been built by one
+or more authors in order to solve a particular problem or to answer a science
+question.  Infrastructural applications have been built by groups or communities
+to allow the solution of a set of problems, or to answer a set of science
+questions. All applications in general, but infrastructural applications in
+particular cannot be developed in vacuum; they must be executed on shared
+infrastructure, and are thus sensitive to the external tools and services, as
+well as their provisioning as software-systems.
+
+As part of this survey, we observe that there exist patterns in the described
+applications; however, implementation and deployment specific details can often
+mask these patterns.  For example, applications often differ in the way they
+handle distribution and dynamism, such as managing such as data/compute
+localities. This makes it difficult to support patterns of distribution and
+dynamism in a general-purpose fashion, for anything but the simplest patterns.
+
+% In both cases, we can observe that the same set of applications stages (as shown
+% in \figurename~\ref{fig:figures_application-stages}) can be applied, with APIs
+% defined as the inputs and outputs of those stages.  These APIs are very informal
+% and loose for the traditional applications, but more fixed and conservative for
+% the infrastructural applications. These APIs limit how new application
+% paradigms can be introduced for the infrastructural applications, unless those
+% paradigms happen to fit the existing APIs.  Another way of saying this is that
+% the abstractions for dynamism and distribution that can be used in the
+% infrastructural applications are those abstractions that the developers of the
+% original applications were aware of at the time the infrastructural applications
+% were defined.  This leads to a possible mismatch, where computer scientists have
+% new ideas that could be applied to the class of problems that an infrastructural
+% application was designed to solve, but that the infrastructural application
+% doesn't allow, due to the fixed APIs.  New tools may be developed to address a
+% narrow set of features while ignoring the larger set of problems that prevented
+% earlier tools from being used.  These tools then may be used by new applications
+% as those applications are developed; however, they are unlikely be used by the
+% existing applications they were meant to help.
+
+
+% constraints on the applications lead to new tools that are or could be developed
+% not being able to be applied in practice.
+
+% For example, while workflow systems are often sufficiently domain-independent
+% that there does not seem to be a tie of a particular system to a particular
+% infrastructural application, there are a very large number of workflow systems
+% that exist, and it is common in the authors' experience to hear about new ones
+% being developed from scratch because ``the ones that exist don't quite do what
+% is needed for my application or system.''
 
 \katznote{previous 2 paragraphs to be re-read.  Old comments about them
 are available as commented out comments.}
@@ -5675,20 +5604,14 @@ are available as commented out comments.}
 %  my more pessimistic view.  If others disagree, we can change it back
 %  or compromise.}
 
-As part of this survey, we also observe that there exist patterns in
-the described applications; however, implementation and deployment
-specific details can often mask these patterns.  For example,
-applications often differ in the way they handle distribution and
-dynamism, such as managing such as data/compute localities. This makes
-it difficult to support patterns of distribution and dynamism in a
-general-purpose fashion, for anything but the simplest patterns. In
-\S\ref{sec:quantifyingdistapps} we have attempted to initiate a
-discussion in this context however by considering two
-ratios %(identified as parameters $\alpha$ and $\beta$)
-to relate data volume and distribution with compute operations
-performed by an application. We believe determining values for these
-parameters would provide a useful starting point for comparing
-infrastructure requirements of Big Data applications.
+
+% In \S\ref{sec:quantifyingdistapps} we have attempted to initiate a discussion in
+% this context however by considering two ratios to relate data volume and
+% distribution with compute operations performed by an application. We believe
+% determining values for these parameters would provide a useful starting point
+% for comparing infrastructure requirements of data-intensive applications and
+% systems.
+
 %\jhanote{I transposed the last two paragraphs}
 
 
@@ -5730,35 +5653,97 @@ infrastructure requirements of Big Data applications.
 
 
 \section*{Acknowledgements}
-This paper is an outcome of the UK e-Science Institute sponsored
-Research Theme on Dynamic Distributed Data-Intensive Programming
-Abstractions and Systems. This work is also sponsored by NSF
-OCI-1059635.  We thank Jon Weissman and Jon Blower for useful initial
-discussions, as well as 3DPAS workshop attendees. Discussions of the
-selected applications benefited from the generous help of
-Adam Barker,
-Jon Blower,
-Julian Borrill,
-Silvia Delgado Olabarriaga,
-Steve Fisher,
-Keith Jackson,
-Scott Klasky,
-Bob Mann,
-Don Middleton,
-Kees Nieuwenhuis,
-Manish Parashar,
-Stephen Pascoe,
-and
-Jon Weissman,
-though any errors are the responsibility of the authors.
-Some of the work by Katz was
-supported by the National Science Foundation while working at the
-Foundation; any opinion, finding, and conclusions or recommendations
-expressed in this material are those of the author(s) and do not
-necessarily reflect the views of the National Science Foundation.
+This work was sponsored by NSF OCI-1059635 and made possible by the UK e-Science
+Institute Research Theme on Dynamic Distributed Data-Intensive Programming
+Abstractions and Systems. We thank Jon Weissman and Jon Blower for useful
+initial discussions, as well as 3DPAS workshop attendees. Discussions of the
+selected applications benefited from the generous help of Adam Barker, Jon
+Blower, Julian Borrill, Silvia Delgado Olabarriaga, Steve Fisher, Keith Jackson,
+Scott Klasky, Bob Mann, Don Middleton, Kees Nieuwenhuis, Manish Parashar,
+Stephen Pascoe, and Jon Weissman, though any errors are the responsibility of
+the authors.  Some of the work by Katz was supported by the National Science
+Foundation while working at the Foundation; any opinion, finding, and
+conclusions or recommendations expressed in this material are those of the
+author(s) and do not necessarily reflect the views of the National Science
+Foundation.
 
 \bibliographystyle{unsrt}
 \bibliography{3dpas}
+
+\section*{Methodology}
+
+This paper originated in work at the UK e-Science Institute (eSI) at
+the University of Edinburgh, in a research theme examining Dynamic
+Distributed Data-intensive Programming Abstractions and Systems,
+called 3DPAS~\cite{3dpas-theme}.  The description of
+this theme's work was:
+
+\begin{quote}
+Many problems at the forefront of science, engineering, medicine, and the social sciences, are increasingly complex and interdisciplinary due to the plethora of data sources and computational methods available today. A common feature across many of these problem domains is the amount and diversity of data and computation that must be integrated to yield insights.
+
+For many complex data-intensive applications, moving the data may have restrictions. Increasingly important type of data-intensive applications are data-driven applications. For example, data is increasingly large-scale, distributed arising from sensors, scientific instruments \& simulations. Such data-driven applications will involve computational activities triggered as a consequence of independent data creation; thus it is imperative for an application to be able to respond to unplanned changes in data load or content. Understanding how to support dynamic computations is a fundamental, but currently a critical missing element in data-intensive computing.
+
+The 3DPAS theme seeks to understand the landscape of dynamic, distributed, data-intensive computing: the programming models and abstractions, the run-time and middleware services, and the computational infrastructure. It will analyze existing tools and services, identify missing pieces and new abstractions, and propose practical solutions and best practices.
+\end{quote}
+
+The theme held three workshops, and in each, application scientists and computing technologists
+were invited to give presentations on their work, and then to be involved in discussions to
+organize and understand the presented materials.  Between the workshops, the theme
+organizers also drafted outlines of a report that was a predecessor of this paper, for
+discussion in the next workshop.  Overall, there were about 50 workshop attendees.
+
+In order to select applications and gather information about
+them, during the various workshop discussions, when an
+application that ``felt'' new was mentioned, we asked the person who
+mentioned it to provide a written set of answers to the following questions about the
+application:
+
+\begin{enumerate}
+\item What is the purpose of the application?
+\item How is the application used to do this?
+\item What infrastructure is used? (including compute, data, network, instruments, etc.)
+\item What dynamic data is used in the application?
+\begin{enumerate}
+\item What are the types of data,
+\item What is the size of the data set(s)?
+\end{enumerate}
+\item How does the application get the data?
+\item What are the time (or quality) constraints on the application?
+\item How much diverse data integration is involved?
+\item How diverse is the data?
+\item Please feel free to also talk about the current state of the
+application, if it exists today, and any specific gaps that you know
+need to be overcome.
+\end{enumerate}
+
+We then used the text of these answers to describe each of the applications (in \S\ref{sec:scenarios}) in terms of:
+
+\begin{itemize}
+\item What does the application do? What problem does it solve?
+\item How does it do it? How does the application run?  What infrastructure does it need/use?
+\item What are the big data aspects of the application?
+\item What are the distributed aspects of the application?
+\item What are the dynamic aspects  of the application?
+\item What else is important about the application?  What does it do well?  Poorly? How was the app written? What tools does it use?
+\end{itemize}
+
+After the workshops, the theme organizers and a set of attendees who
+were interested in participating started discussing how to organize
+and analyze the applications and the technologies, including
+infrastructure, programming systems and abstractions.  These
+participants are the current authors of this paper, and this paper is
+the result of that process.
+
+As part of the theme, two 3DPAS workshops~\cite{3dapas,D3-escience}
+were organized at major conferences: HPDC 2011 and IEEE eScience 2011.
+These workshops had both peer-reviewed and invited papers.
+
+A combination of invitation-only focused discussion meetings and
+broader community engagement events were used to ensure that the
+applications surveyed and ideas captured in this paper are
+representative of current community thinking as well as of
+intellectual relevance.
+
 
 \end{document}
 
