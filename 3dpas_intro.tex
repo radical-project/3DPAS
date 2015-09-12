@@ -62,11 +62,11 @@
   decisions are time-dependent. Collectively these give rise to dynamic
   distributed data intensive applications.  The characteristics, requirements,
   and software systems for the analysis of large volumes of ``static'' data have
-  received significant attention; dynamic, distributed and data intensive (3D)
-  have received relatively less. This work will ameliorate the state by
-  surveying several representative 3D application scenarios, to provide a common
-  conceptual framework to understand them as well as examine the infrastructure
-  used in support of applications.
+  received significant attention; dynamic, distributed and data intensive have
+  received relatively less. This work will ameliorate the state by surveying
+  several representative application scenarios, to provide a common conceptual
+  framework to understand them as well as examine the infrastructure used in
+  support of applications.
 
 %   Applications need access
 %   to these disparate data-sets and to the methods that operate on
@@ -100,28 +100,29 @@
   ``D''s. SJ to fix globally. Good catch Neil!}
 
 The landscape of scientific and enterprise computing is being fundamentally
-altered by the current surge in data. The resulting upheaval represents a new
-reality where the volumes of data produced by scientific applications are
-increasing rapidly, driven by advancing technologies (e.g., increasing compute
-capacity and higher resolution sensors) and decreasing costs for data
-acquisition and storage~\cite{tony-propaganda}. With the increase in data
-volumes, types, and sources of data, an important concomitant development has
-been an increase in the requirement for and complexity in the processing of
-data. Data are often naturally distributed and have to be processed in situ, and
-occasionally data that are localized have to be distributed in order to be
+altered by the prodigious volumes of data.  Not only are the volumes of data
+produced by scientific applications increasing rapidly, there is also a
+corresponding increase in the amount of data that needs to be processed and
+analyzed.  With the increase in data volumes, types, and sources of data, an
+important concomitant development has been an increase in the requirement for
+and complexity of the infrastructure needed to support these requirements.
+Furthermore, data are often naturally distributed and have to be processed in
+situ; occasionally data that are localized have to be distributed in order to be
 processed, either for reasons of performance or for collaborative analytics.
-Furthermore when processing large volumes of data, data source/destination, data
-production and transfer rates, and data processing capacity can all vary over
-time.
+The scale and significance of varying data source/destination and
+transfer/production rates makes temporal variations important, which in turn
+eventually impact the design and development of infrastructure to support them:
+resource scheduling, data placement, and transfer decisions that were statically
+determinable at small scales, emerge as dynamic and important considerations at
+large scales of data and distribution.
 
-The set of challenges is only partly defined by the large volumes of
-data. Properties such as resource scheduling, data placement, and transfer
-decisions, that were statically determinable at small scales, emerge as dynamic
-and important considerations at large scales of data and distribution.
+% driven by advancing technologies (e.g., increasing compute capacity and higher
+% resolution sensors) and decreasing costs for data acquisition and
+% storage~\cite{tony-propaganda}. 
 
-Our focus is on a subspace of the large set of problems associated with
-data-intensive sciences, namely that which is characterized by the distributed
-and dynamic aspects. We introduce the concept of Dynamic Distributed
+The focus of this paper is on a subspace of the large set of problems associated
+with data-intensive sciences, namely that which is characterized by {\it both}
+distributed and dynamic aspects. We introduce the concept of Dynamic Distributed
 Data-intensive science and refer to this subspace of data-intensive science as
 D3 science.  In order to appreciate the D3 subspace we will briefly discuss the
 importance and role of distribution and the pervasiveness of dynamical aspects.
@@ -5727,32 +5728,19 @@ infrastructure requirements of Big Data applications.
 
 
 \section*{Acknowledgements}
-This paper is an outcome of the UK e-Science Institute sponsored
-Research Theme on Dynamic Distributed Data-Intensive Programming
-Abstractions and Systems. This work is also sponsored by NSF
-OCI-1059635.  We thank Jon Weissman and Jon Blower for useful initial
-discussions, as well as 3DPAS workshop attendees. Discussions of the
-selected applications benefited from the generous help of
-Adam Barker,
-Jon Blower,
-Julian Borrill,
-Silvia Delgado Olabarriaga,
-Steve Fisher,
-Keith Jackson,
-Scott Klasky,
-Bob Mann,
-Don Middleton,
-Kees Nieuwenhuis,
-Manish Parashar,
-Stephen Pascoe,
-and
-Jon Weissman,
-though any errors are the responsibility of the authors.
-Some of the work by Katz was
-supported by the National Science Foundation while working at the
-Foundation; any opinion, finding, and conclusions or recommendations
-expressed in this material are those of the author(s) and do not
-necessarily reflect the views of the National Science Foundation.
+This work was sponsored by NSF OCI-1059635 as well as made possible by the UK
+e-Science Institute sponsored Research Theme on Dynamic Distributed
+Data-Intensive Programming Abstractions and Systems. We thank Jon Weissman and
+Jon Blower for useful initial discussions, as well as 3DPAS workshop
+attendees. Discussions of the selected applications benefited from the generous
+help of Adam Barker, Jon Blower, Julian Borrill, Silvia Delgado Olabarriaga,
+Steve Fisher, Keith Jackson, Scott Klasky, Bob Mann, Don Middleton, Kees
+Nieuwenhuis, Manish Parashar, Stephen Pascoe, and Jon Weissman, though any
+errors are the responsibility of the authors.  Some of the work by Katz was
+supported by the National Science Foundation while working at the Foundation;
+any opinion, finding, and conclusions or recommendations expressed in this
+material are those of the author(s) and do not necessarily reflect the views of
+the National Science Foundation.
 
 \bibliographystyle{unsrt}
 \bibliography{3dpas}
