@@ -718,7 +718,7 @@ processing stage and its associate data movement).
 
 \subsection{Next Generation Sequencing (NGS) Analytics \label{bioSilvia}}
 
-The (grand) challenge in bioinformatics is the need to provide support
+The (grand) challenge in bio-informatics is the need to provide support
 for the analysis of genome sequence data that is becoming available
 due to the abundance and high-throughput capability of the
 next-generation sequencing devices. The rate of growth of data from
@@ -798,7 +798,7 @@ incomplete information.
 The type of NGS research being conducted can distinguish the
 distributed properties of the application. Researcher groups that
 own sequencing machines need to deal with large dataset sizes that
-need to be resequenced and reduced for further analysis. Other
+need to be re-sequenced and reduced for further analysis. Other
 researchers may analyze large catalogs of sequenced genome databases
 are maintained, and perform pattern matching. Further, clinical may be
 interested in in-depth analysis of an individual sequence for disease
@@ -842,11 +842,11 @@ QCDOC or MD-GRAPE. But given the broad range of requirements, a
 hardware-only solution is unlikely for a broad range of problem
 instances, and a combination of hardware and software approaches will
 be employed. This reinforces the need for flexible programming systems
-and associated runtime environments that support collective
+and associated run-time environments that support collective
 (hardware-software) optimization.
 
 Nowadays, NGS sequencers are even being shipped with servers or small
-clusters for performing the alignment and resequencing as a pipeline
+clusters for performing the alignment and re-sequencing as a pipeline
 right after the reads have been generated~\cite{ilm}.
 %\alnote{What kind of codes are used
 %in these clusters? What are the characteristics of these codes?}
@@ -855,8 +855,8 @@ right after the reads have been generated~\cite{ilm}.
 %
 Scientific workflow systems like Taverna~\cite{Taverna:2006}, BioKepler~\cite{biokepler:2011}, and
 Galaxy~\cite{galaxy} (though Galaxy does not support distributed systems currently) have been successful in integrating genome
-analysis tools for bioinformatics. Script based pipelines that combine
-executables are also used often. Very few workflow systems have
+analysis tools for bio-informatics. Script based pipelines that combine
+executable are also used often. Very few workflow systems have
 explicit support for distributed data or dynamic data handling.
 Therefore reusable approaches at extending existing tools to support
 distributed and dynamic data are likely to be useful.
@@ -1406,7 +1406,7 @@ This subtracted image is then processed by a cluster of computers with 3 main st
 \begin{enumerate}[(i)]
 
 \item Using the existing object catalog (containing the known orbits of all known objects), find objects which are expected to appear in subtracted image, given the area of sky and time of day.
-Cross-match expected objects with sources in subtracted image, resulting in the unmatched-source catalog, which contains sources that cannot be matched with a previously known object.  If these sources can be tracked over a few images, an orbit can be determined for them and they can be added to the object catalog.  Also, the orbit catalog can be updated with redetections of known objects; each rediscovery provides information that improves the known orbits.
+Cross-match expected objects with sources in subtracted image, resulting in the unmatched-source catalog, which contains sources that cannot be matched with a previously known object.  If these sources can be tracked over a few images, an orbit can be determined for them and they can be added to the object catalog.  Also, the orbit catalog can be updated with re-detections of known objects; each rediscovery provides information that improves the known orbits.
 
 \item Attempt to classify all entries in the orbit catalog (i.e., all the objects which now have known orbits). If any Near Earth Objects are detected to be passing close to the earth, alerts are generated to astronomers so that follow up observations can be scheduled.
 
@@ -3208,12 +3208,12 @@ environmental applications.  It consists of data storage and processing stages.
 %\katznote{from answers to questions 2,3,5,6 below, also address cyberinfrastructure (where does the app run) -- perhaps have a diagram here of what happens in the app}
 
 The application~\cite{modisAzure, modis:ipdps:2010} is used to handle the processes of downloading data from different
-sites and integrating them. The integration consists of reprojecting the data from one map projection to another,
-spatial and temporal resampling, and gap filling. The application itself is a loosely-coupled data
+sites and integrating them. The integration consists of re-projecting the data from one map projection to another,
+spatial and temporal re-sampling, and gap filling. The application itself is a loosely-coupled data
 pipeline that coordinates these processes.
 
 In addition, scientists can submit Matlab scripts for further custom processing on subsets of
-the data that has been integrated. This includes some summarization processing and plotting
+the data that has been integrated. This includes some summarizing processing and plotting
 routines.  The only time constraints are on the debugging cycle for debugging the scientist-supplied
 reduction codes. These are purely driven by the users' patience.
 
@@ -3682,7 +3682,7 @@ into system from various FTP servers.  A pipeline of initial
 standardized processing steps on data is done on clouds or HPC
 resources.  Scientists can then submit executables and Matlab scripts
 that do further custom processing on subsets of the data, which likely
-include some summarization processing (building graphs).  The
+include some summarizing processing (building graphs).  The
 application has been run on a cloud and in an HPC environment.
 
 %Floating Sensors (\S\ref{floaterKeith}): Data from static and dynamic
@@ -4433,16 +4433,19 @@ resource manager/scheduler components, an orchestration component may also
 include specialist support for conversion and analysis components
 discussed above.
 
-{\em Bulk Data-parallel} frameworks use ``Bulk'' operators to express computations over 
-collections of data which are executed in a loosely-coupled, data-parallel manner.
-The {\em MapReduce} paradigm~\cite{MapReduce} and its variants~\cite{twister,hmr} are the most
-prominent among these, with those like Pregel and Apace Giraph~\cite{pregel} supporting specific domains like
-graph analytics. MapReduce forces programmers to model computation in two stages: 
-a \emph{map} phase in which a transformation is applied to every element of a collection independently of every other;  and a \emph{reduce} phase in which the transformed results 
-are aggregated through a binary function that is associative and commutative. 
-These properties serve to guarantee that the MapReduce computation can be efficiently 
-parallelized, by performing the map phase concurrently and
-then reducing without the reduction order affecting the final result. 
+{\em Bulk Data-parallel} frameworks use ``Bulk'' operators to express
+computations over collections of data which are executed in a loosely-coupled,
+data-parallel manner.  The {\em MapReduce} paradigm~\cite{MapReduce} and its
+variants~\cite{twister,hmr} are the most prominent among these, with those like
+Pregel and Apache Giraph~\cite{pregel} supporting specific domains like graph
+analytics. MapReduce forces programmers to model computation in two stages: a
+\emph{map} phase in which a transformation is applied to every element of a
+collection independently of every other; and a \emph{reduce} phase in which the
+transformed results are aggregated through a binary function that is associative
+and commutative.  These properties serve to guarantee that the MapReduce
+computation can be efficiently parallelized, by performing the map phase
+concurrently and then reducing without the reduction order affecting the final
+result.
 
 {\em Stream processing} (sometimes called event processing) is an approach modeled 
 on signal processing, in which a stream of data is transformed ``on-the-fly'' to produce one or
@@ -5137,7 +5140,7 @@ many sites), and the dynamic aspects associated with distribution,
 e.g., latency and relative scheduling flexibility (and thus tolerance
 or constraints on data transfer/aggregation).  Applications processing
 the largest volumes of data (O(PB)) typically run on specialized data
-cyberinfrastructure (e.g., the Atlas LHC Grid). Applications such as
+cyberinfrastructure (e.g., the ATLAS LHC Grid). Applications such as
 Fusion and NGS that run on smaller data sets mainly utilize HPC
 environments. On the other end of the spectrum are highly dynamic
 applications that process sensor data and make near-realtime
