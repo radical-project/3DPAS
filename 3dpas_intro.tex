@@ -64,7 +64,7 @@
   received significant attention; dynamic, distributed and data intensive have
   received relatively less. This work will ameliorate the state by surveying
   several representative application scenarios, to provide a common conceptual
-  framework to understand them as well as examine the infrastructure used in
+  framework to understand them as well as examining the infrastructure used in
   support of applications.
 
 %   Applications need access
@@ -83,20 +83,20 @@
 \maketitle
 
 
-\ifdraft
-\newpage
-\tableofcontents
+%\ifdraft
 %\newpage
-%\listoftables
-\newpage
-\fi
+%\tableofcontents
+%%\newpage
+%%\listoftables
+%\newpage
+%\fi
 
 %\input{notes}
 
 \section{Introduction: Context, Scope and Outline}
 
-\jhanote{NCH points out that we are inconsistent in the order of the
-  ``D''s. SJ to fix globally. Good catch Neil!}
+%\jhanote{NCH points out that we are inconsistent in the order of the
+%  ``D''s. SJ to fix globally. Good catch Neil!}
 
 The landscape of scientific and enterprise computing is being fundamentally
 altered by the prodigious volumes of data.  Not only are the volumes of data
@@ -210,8 +210,8 @@ programming systems.
 %  more diverse and complex) than business applications. That said, the
 %  volume and velocity dimensions of the 3V's partially capture the
 %  data-intensive and dynamic aspects of our study.''}  
-\jhanote{we do not discuss explicitly the 4th D, i.e. diversity (courtesy AL) it
-  is assumed but not discussed}
+%\jhanote{we do not discuss explicitly the 4th D, i.e. diversity (courtesy AL) it
+%  is assumed but not discussed}
   
 %\subsubsection*{Terminology}
 
@@ -315,7 +315,7 @@ programming systems.
 %  combined?}\jhanote{DSK, this should not be an issue now, given that
 %  this has now moved upstream}
 
-\jhanote{refine next four paragraph...} 
+%\jhanote{refine next four paragraph...} 
 
 % Further, we define the degree as the number of data sources and sites that are
 % used for storing and processing the data. A distributed application is an
@@ -373,6 +373,7 @@ We would like the reader to keep in mind some context and scope-setting points:
 \item This {\it survey} is not meant to be complete, either in scope of domains
   covered or types of infrastructure and application surveyed.  They by
   definition represent the interests and experience of the authors.
+  \katznote{need to add a note about the dates in which application data was collected?  I'm not sure the numbers are correct today, for example, from ATLAS}
 
 \item The focus is on applications and infrastructure that arise from science
   and engineering projects in academia; this is not exclusive but is more a
@@ -2765,7 +2766,7 @@ domains~\cite{Zhou:itng:2012}. Machine learning models using Matlab, Weka and Ha
 
 %\katznote{from answer to question 1}
 
-With ITER~\cite{iter} scheduled to operate before 2020, plasma fusion has become
+With ITER~\cite{iter} scheduled to operate perhaps around 2022, plasma fusion has become
 one of the highest priority research items for the US DOE. Scalability of
 first-principles fusion codes is an important part of fusion research
 needed to obtain predictive capability of plasma performance with
@@ -4425,7 +4426,7 @@ discussed above.
 {\em Bulk Data-parallel} frameworks use ``Bulk'' operators to express computations over 
 collections of data which are executed in a loosely-coupled, data-parallel manner.
 The {\em MapReduce} paradigm~\cite{MapReduce} and its variants~\cite{twister,hmr} are the most
-prominent among these, with recent ones like Pregel and Apace Giraph~\cite{pregel} supporting specific domains like
+prominent among these, with those like Pregel and Apace Giraph~\cite{pregel} supporting specific domains like
 graph analytics. MapReduce forces programmers to model computation in two stages: 
 a \emph{map} phase in which a transformation is applied to every element of a collection independently of every other;  and a \emph{reduce} phase in which the transformed results 
 are aggregated through a binary function that is associative and commutative. 
@@ -5010,7 +5011,8 @@ applications. Whereas (i) and (ii) are primarily observations that we
 can make on existing applications that we have discussed in
 \S\ref{sec:scenarios}, (iii) and (iv) attempt to synthesize general
 trends that can be applied to other applications we have not
-considered. \katznote{should this be split into two subsections then? Perhaps Observations \& Trends?}
+considered. 
+%\katznote{should this be split into two subsections then? Perhaps Observations \& Trends?}
 
 %\katznote{Some text is needed here to introduce the discussion subsection.}
 %\rananote{Added some text above -- does this make sense Dan?}
@@ -5132,7 +5134,7 @@ applications that process sensor data and make near-realtime
 decisions based on streaming data, e.g., the power grid and sensor
 network applications. These applications process much less data;
 often, sensor data is also archived and aggregated for historical
-analyses, which leads to higher data volumes. \katznote{not sure about the `other' part of this...}
+analyses, which leads to higher data volumes. %\katznote{not sure about the `other' part of this...}
 
 \begin{figure}[ht]
 	\centering
@@ -5335,7 +5337,7 @@ initial concepts.
 
 \subsubsection{Towards an Architecture for D3 Science?}
 
-\jhanote{Note to self: need smoothening}
+%\jhanote{Note to self: need smoothening}
 
 A survey of data-intensive distributed applications on production
 cyberinfrastructure leads us to posit that there are three primary
@@ -5350,8 +5352,7 @@ discovery of the Higgs Boson (similar to the application in
 wherein data is decomposed and committed to several infrastructure,
 which in turn could be a combination of either of the first two
 paradigms, similar to what is done in the Power grids application
-(\S\ref{power}). \jhanote{improve description....replace hybrid by
-  bottom-up? }
+(\S\ref{power}). %\jhanote{improve description....replace hybrid by bottom-up? }
 
 It is obvious that the first architecture can be used for large
 volumes of data, but surely there are limitations to the scalability
@@ -5582,8 +5583,8 @@ dynamism in a general-purpose fashion, for anything but the simplest patterns.
 % being developed from scratch because ``the ones that exist don't quite do what
 % is needed for my application or system.''
 
-\katznote{previous 2 paragraphs to be re-read.  Old comments about them
-are available as commented out comments.}
+%\katznote{previous 2 paragraphs to be re-read.  Old comments about them
+%are available as commented out comments.}
 %\jhanote{Irrespective, I find this past paragraph
 %  somewhat speculative. And I don't see the point of it? WHat is the
 %  latter half trying to say: there are problems with APIs and
@@ -5669,7 +5670,8 @@ Foundation.
 \bibliographystyle{unsrt}
 \bibliography{3dpas}
 
-\section*{Methodology}
+\appendix
+\section*{Appendix: Methodology}
 
 This paper originated in work at the UK e-Science Institute (eSI) at
 the University of Edinburgh, in a research theme examining Dynamic
