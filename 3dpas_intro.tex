@@ -16,7 +16,7 @@
 %  Cyberinfrastructure}
 
 \author{Shantenu Jha\affil{1}\corrauth\, Daniel S. Katz\affil{2},
-  Andre~Luckow\affil{1}, Omer Rana\affil{3}, Yogesh Simmhan\affil{4}, \\ Neil Chue
+  Andre~Luckow\affil{1}, \\ Omer Rana\affil{3}, Yogesh Simmhan\affil{4}, Neil Chue
   Hong\affil{5}}
 
 % \author{Shantenu Jha\affil{1}\corrauth\, Daniel S. Katz\affil{2},
@@ -175,9 +175,9 @@ D3 science.
 Analyzing the applications along an analytical space spanned by the three ``D''s
 of data-intensive, distributed, and dynamic provides a general and effective
 framework.  Subjecting a range of otherwise distinct applications to a common
-analytical framework provides advantages to the infrastructure scientists and
-cyberinfrastructure experts, namely suggestions for where effort is both needed
-and likely to yield maximum returns.  The diverse set of requirements to support
+analytical framework suggests to infrastructure scientists and
+cyberinfrastructure experts where effort is needed
+and is likely to yield maximum returns.  The diverse set of requirements to support
 D3 scenarios points to the need for a careful understanding of D3
 characteristics as well as sophisticated, extensible, and skillfully architected
 infrastructure.
@@ -186,9 +186,9 @@ As D3 applications evolve, our analysis can provide guidance on where to focus
 effort on infrastructure.  Last but not least, the advantages of providing a
 common but extensible vocabulary that can be used by the entire community,
 application end-users, developers and infrastructure scientists alike, in an
-emerging field cannot be overstated. One may argue that such vocabulary and
+emerging field cannot be overstated. We believe that such vocabulary and
 terminology has been missing from the practice of distributed
-cyberinfrastructure in general, with less than desirable consequences.
+cyberinfrastructure in general, with negative consequences.
 
 
 % Thus almost naturally, distributed data have attributes of dynamism, both
@@ -379,10 +379,10 @@ We would like the reader to keep in mind some context and scope-setting points:
 \begin{itemize}
 
 \item This {\it survey} is not meant to be complete, either in scope of domains
-  covered or types of infrastructure and application surveyed.  They by
-  definition represent the interests and experience of the authors. The
-  requirements and barriers of applications cited in this paper specific are
-  mostly representative of the time their representatives were surveyed
+  covered or types of infrastructure and application surveyed.  They
+  represent the interests and experience of the authors. The specific
+  requirements and barriers of applications cited in this paper are
+  representative of the time at which the applications were surveyed
   (2012-2013); this is also true of the quantitative analysis of applications.
   
   % \katznote{need to add a note about the dates in which application data was
@@ -722,7 +722,7 @@ processing stage and its associate data movement).
 
 \subsection{Next Generation Sequencing (NGS) Analytics \label{bioSilvia}}
 
-The (grand) challenge in bio-informatics is the need to provide support
+The (grand) challenge in bioinformatics is the need to provide support
 for the analysis of genome sequence data that is becoming available
 due to the abundance and high-throughput capability of the
 next-generation sequencing devices. The rate of growth of data from
@@ -859,8 +859,8 @@ right after the reads have been generated~\cite{ilm}.
 %
 Scientific workflow systems like Taverna~\cite{Taverna:2006}, BioKepler~\cite{biokepler:2011}, and
 Galaxy~\cite{galaxy} (though Galaxy does not support distributed systems currently) have been successful in integrating genome
-analysis tools for bio-informatics. Script based pipelines that combine
-executable are also used often. Very few workflow systems have
+analysis tools for bioinformatics. Script-based pipelines that combine
+executables are also often used. Very few workflow systems have
 explicit support for distributed data or dynamic data handling.
 Therefore reusable approaches at extending existing tools to support
 distributed and dynamic data are likely to be useful.
@@ -3217,7 +3217,7 @@ spatial and temporal re-sampling, and gap filling. The application itself is a l
 pipeline that coordinates these processes.
 
 In addition, scientists can submit Matlab scripts for further custom processing on subsets of
-the data that has been integrated. This includes some summarizing processing and plotting
+the data that has been integrated. This includes some summarization processing and plotting
 routines.  The only time constraints are on the debugging cycle for debugging the scientist-supplied
 reduction codes. These are purely driven by the users' patience.
 
@@ -3686,7 +3686,7 @@ into system from various FTP servers.  A pipeline of initial
 standardized processing steps on data is done on clouds or HPC
 resources.  Scientists can then submit executables and Matlab scripts
 that do further custom processing on subsets of the data, which likely
-include some summarizing processing (building graphs).  The
+include some summarization processing (building graphs).  The
 application has been run on a cloud and in an HPC environment.
 
 %Floating Sensors (\S\ref{floaterKeith}): Data from static and dynamic
