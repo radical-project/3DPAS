@@ -4930,45 +4930,35 @@ individual applications we have studied.
 
 %as take away messages. 
 
-This section brings together some key observations from the applications and
-infrastructure analysis carried out in this paper.  Section~\ref{sec:discussion}
-provides a discussion of dynamic and distributed characteristics of data
-associated with the applications we analyze in this work, attempting to infer
-more general characteristics that %can be applied
-may apply to other similar applications.  We also suggest two metrics that may
-suggest two metrics that may be associated with such applications, primarily as
-a basis to compare how compute and data processing (in terms of their number and
-distribution) may be used to find common features between them. Such feature
+This section brings together some key observations from the analysis of
+applications and infrastructure carried out in this paper.
+Section~\ref{sec:discussion} provides a discussion of dynamic and distributed
+characteristics of data associated with a set of applications.
+
+% we analyze in this work, attempting to infer more general characteristics
+% that %can be applied
+% may apply to other similar applications.
+%suggest two metrics that may
+
+We suggest two metrics that may be associated with such applications, primarily
+as a basis to compare how compute and data processing (in terms of their number
+and distribution) may be used to find common features between them. Such feature
 analysis is useful, we believe, for two main reasons: (i) to identify
 similarities between the applications covered in \S\ref{sec:scenarios} with
 others that are in the design phase or under development, so that common
 requirements can be identified; and (ii) to identify gaps in current software
 tools and programming systems that such applications use, thereby leading to the
-development of new tools and systems. As our application and infrastructure
-coverage is, by necessity, limited, identifying common features also enables the
-lessons learned to be generalized and applied more widely. We subsequently
-discuss a set of architectures for D3 science, and pose some questions we
-believe are pertinent as the community begins considering the next-generation
-architectures for D3 applications. In \S\ref{sec:conclusion} we conclude by
-providing a number of observations to inform applications and
-cyberinfrastructure developers, based on common trends found in our study.
+development of new tools and systems.
 
-An important motivation for this work is to capture the state of the
-art in the design and development of distributed dynamic applications
-and the associated infrastructure currently used for their
-execution. We have aimed to try to discern common
-approaches and challenges, and to identify any obvious gaps (or
-opportunities). Using a common vocabulary and terminology
-to describe otherwise distinct and unrelated applications allows
-potential application
-users/developers to benefit from the insight that a common
-analytical framework provides. For example, seeing how
-applications with similar patterns (e.g., pipelines) have addressed
-issues of dynamism and distribution enables common solutions and
-facilitates the emergence of best practices even in the absence of formal
-methods.  Similarly, our analysis sends a useful message to domain and
-application scientists that the challenges and barriers they face are not
-unique even if current solutions require a level of customization.
+As our application and infrastructure coverage is, by necessity, limited,
+identifying common features also enables the lessons learned to be generalized
+and applied more widely. We subsequently discuss a set of architectures for D3
+science, and pose some questions we believe are pertinent as the community
+begins considering the next-generation architectures for D3 applications. In
+\S\ref{sec:conclusion} we conclude by providing a number of observations to
+inform applications and cyberinfrastructure developers, based on common trends
+found in our study.
+
 
 
 %\subsection{Common Characteristics}\label{sec:vectors}
@@ -5507,16 +5497,29 @@ provision associated services.  Many fields, such as biology, that until
 recently were not characterized by their intensive use of data are rapidly
 becoming data-driven.
 
-
 Associated with the growth in data volumes are increasing levels of dynamism and
 distribution; sometimes distribution is logical, but sometimes the data is
 physically distributed for reasons of performance or convenience. At large
 scales, dynamism becomes intrinsic to the application and infrastructure;
 sometimes it occurs because of changing experimental or analytic conditions,
-sometimes due to the availability of infrastructure and resources. In this
-paper, we have identified many different applications characteristics,
-programming systems, and infrastructure techniques that either support dynamic
-data or produce it.
+sometimes due to the availability of infrastructure and resources.
+
+An important motivation for this work is to capture the state of the art in the
+design and development of distributed dynamic applications and the associated
+infrastructure currently used for their execution. We have aimed to try to
+discern common approaches and challenges, and to identify any obvious gaps (or
+opportunities). Using a common vocabulary and terminology to describe otherwise
+distinct and unrelated applications allows potential application
+users/developers to benefit from the insight that a common analytical framework
+provides. For example, seeing how applications with similar patterns (e.g.,
+pipelines) have addressed issues of dynamism and distribution enables common
+solutions and facilitates the emergence of best practices even in the absence of
+formal methods.  Similarly, our analysis sends a useful message to domain and
+application scientists that the challenges and barriers they face are not unique
+even if current solutions require a level of customization.  In this paper, we
+have identified many different applications characteristics, programming
+systems, and infrastructure techniques that either support dynamic data or
+produce it.
 
 % For example, there is a lifecycle to data that has often been ignored until
 % recently: the decreasing cost of storage has made it attractive to archive
