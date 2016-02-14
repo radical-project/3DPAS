@@ -88,23 +88,23 @@
 %\jhanote{NCH points out that we are inconsistent in the order of the
 %  ``D''s. SJ to fix globally. Good catch Neil!}
 
-The landscape of scientific and enterprise computing is being fundamentally
-altered by the prodigious volumes of data.  % Not only are the volumes of data
+% Not only are the volumes of data
 % produced by scientific applications increasing rapidly, there is also a
 % corresponding increase in the amount of data that needs to be processed and
 % analyzed.
-With the increase in data volumes, types, and sources of data, a concomitant
-development has been an increase in the sophistication and complexity of the
-infrastructure needed to support these requirements. For example, data are often
-naturally distributed and have to be processed in situ; occasionally data that
+
+The landscape of scientific and enterprise computing is being fundamentally
+altered by the prodigious volumes of data.  Occasionally data are often
+naturally distributed and have to be processed near source; sometimes data that
 are localized have to be distributed in order to be processed, either for
-reasons of performance or for collaborative analytics.  The scale and
-significance of varying data source/destination and transfer/production rates
-makes temporal variations important, which in turn eventually impact the design
-and development of infrastructure to support them: resource scheduling, data
-placement, and transfer decisions that were statically determinable at small
-scales, emerge as dynamic and important considerations at large scales of data
-and distribution.
+reasons of performance or for collaborative analytics. Further, the scale of
+varying data source and destination, as well as the transfer of production rates
+makes temporal variations in data properties increasingly important.  With an
+increase in the importance of distributed and temporal properties of data,
+systems and infrastructure aspects such as resource scheduling, data placement,
+and transfer decisions that were statically determinable at small scales, emerge
+as dynamic and important considerations at large scales of data and
+distribution.
 
 % driven by advancing technologies (e.g., increasing compute capacity and higher
 % resolution sensors) and decreasing costs for data acquisition and
@@ -141,13 +141,13 @@ and distribution.
 % \ysnote{distributed to ensure security also? Privacy
 %           controls on moving data out of a location or country.}
 
-The challenges of distributed data-intensive applications span beyond the
-management and curation of large volumes of data. A critical requirement is to
-transform the data into information en route to assembling knowledge. Among
-other things, the transformation from data to information requires extensive
-amounts of computational processing of the data; thus the data-intensive nature
-of the data-intensive science problem is strongly coupled with compute-intensive
-requirements.
+% The challenges of distributed data-intensive applications span beyond the
+% management and curation of large volumes of data. A critical requirement is to
+% transform the data into information en route to assembling knowledge. Among
+% other things, the transformation from data to information requires extensive
+% amounts of computational processing of the data; thus the data-intensive nature
+% of the data-intensive science problem is strongly coupled with compute-intensive
+% requirements.
 
 % As the data are often distributed, a consequence is that many attributes of
 % distributed systems permeate to data.
@@ -158,23 +158,36 @@ distributed and dynamic aspects. We introduce the concept of Dynamic Distributed
 Data-intensive science and refer to this subspace of data-intensive science as
 D3 science.  
 
-Analyzing the applications along an analytical space spanned by the three ``D''s
-of data-intensive, distributed, and dynamic provides a general and effective
-framework.  Subjecting a range of otherwise distinct applications to a common
-analytical framework suggests to infrastructure scientists and
-cyberinfrastructure experts where effort is needed
-and is likely to yield maximum returns.  The diverse set of requirements to support
+
+The analytical space spanned by the three ``D''s of data-intensive, distributed,
+and dynamic provides a common vocabulary and effective framework to analyze
+applications and infrastructure alike.  Subjecting a range of otherwise distinct
+applications to a common analytical framework provides an opportunity to search
+for similarities across applications and understand core differences.  The
+diverse % set of requirements to support
 D3 scenarios points to the need for a careful understanding of D3
 characteristics as well as sophisticated, extensible, and skillfully architected
-infrastructure.
+infrastructure.  A common framework thus informs infrastructure scientists and
+cyberinfrastructure experts where effort is likely to yield maximum returns.
+The advantages of providing a common but extensible vocabulary that can be used
+by the entire community, application end-users, developers and infrastructure
+scientists alike, in an emerging field cannot be overstated. We believe that
+such vocabulary and terminology has been missing from the practice of
+distributed cyberinfrastructure in general, with negative consequences.
+ 
+% As D3 applications
+% evolve, our analysis can provide guidance on where to focus effort on
+% infrastructure.  
 
-As D3 applications evolve, our analysis can provide guidance on where to focus
-effort on infrastructure.  Last but not least, the advantages of providing a
-common but extensible vocabulary that can be used by the entire community,
-application end-users, developers and infrastructure scientists alike, in an
-emerging field cannot be overstated. We believe that such vocabulary and
-terminology has been missing from the practice of distributed
-cyberinfrastructure in general, with negative consequences.
+% Analyzing the applications along an analytical space spanned by the three ``D''s
+% of data-intensive, distributed, and dynamic provides a general and effective
+% framework.  Subjecting a range of otherwise distinct applications to a common
+% analytical framework suggests to infrastructure scientists and
+% cyberinfrastructure experts where effort is needed and is likely to yield
+% maximum returns.  The diverse set of requirements to support D3 scenarios points
+% to the need for a careful understanding of D3 characteristics as well as
+% sophisticated, extensible, and skillfully architected infrastructure.
+
 
 
 % Thus almost naturally, distributed data have attributes of dynamism, both
