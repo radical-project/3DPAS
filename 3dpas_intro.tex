@@ -94,15 +94,15 @@
 % analyzed.
 
 The landscape of scientific and enterprise computing is being fundamentally
-altered by the prodigious volumes of data.  Occasionally data are often
-naturally distributed and have to be processed near source; sometimes data that
+altered by prodigious volumes of data.  Occasionally data are often
+naturally distributed and have to be processed near their source, and sometimes data that
 are localized have to be distributed in order to be processed, either for
 reasons of performance or for collaborative analytics. Further, the scale of
-varying data source and destination, as well as the transfer of production rates
+varying data source and destination, as well as the transfer of production rates \katznote{what are `transfer of production rates'?}
 makes temporal variations in data properties increasingly important.  With an
 increase in the importance of distributed and temporal properties of data,
 systems and infrastructure aspects such as resource scheduling, data placement,
-and transfer decisions that were statically determinable at small scales, emerge
+and transfer decisions that were statically determinable at small scales emerge
 as dynamic and important considerations at large scales of data and
 distribution.
 
@@ -159,19 +159,19 @@ Data-intensive science and refer to this subspace of data-intensive science as
 D3 science.  
 
 
-The analytical space spanned by the three ``D''s of data-intensive, distributed,
-and dynamic provides a common vocabulary and effective framework to analyze
+The analytical space spanned by the three ``D''s of dynamic, distributed,
+and data-intensive provides a common vocabulary and effective framework to analyze
 applications and infrastructure alike.  Subjecting a range of otherwise distinct
 applications to a common analytical framework provides an opportunity to search
 for similarities across applications and understand core differences.  The
-diverse D3 scenarios points to the need for a careful understanding of D3
+diverse D3 scenarios point to the need for a careful understanding of D3
 characteristics as well as sophisticated, extensible, and skillfully architected
 infrastructure.  A common framework thus informs infrastructure scientists and
 cyberinfrastructure experts where effort is likely to yield maximum returns.
 The advantages of providing a common but extensible vocabulary that can be used
-by the entire community, application end-users, developers and infrastructure
-scientists alike, in an emerging field cannot be overstated. We believe that
-such vocabulary and terminology has been missing from the practice of
+by the entire community---application end-users, developers and infrastructure
+scientists alike---in an emerging field cannot be overstated. We believe that
+such a vocabulary and terminology has been missing from the practice of
 distributed cyberinfrastructure in general, with negative consequences.
  
 % As D3 applications
@@ -365,19 +365,19 @@ One motivation of this work is to understand the dynamic properties
 and the distribution of applications, and the complex interplay
 between them that arises as a consequence of scale.  Additionally, we
 are motivated by an attempt to understand infrastructure---existing
-capabilities, trends, and limitations---available to the complexity,
+capabilities, trends, and limitations---available to support the complexity,
 challenges and characteristics of dynamic and distributed data at
 scale.
 
-We would like the reader to keep in mind some context and scope-setting points:
+We would like the reader to keep in mind some points regarding context and scope:
 
 %\katznote{a lot of this paragraph seems too repetitive of the previous
 %  section} \jhanote{Dan, I fixed the previous paragraph. OK?}
 
 \begin{itemize}
 
-\item This {\it survey} is not meant to be complete, either in scope of domains
-  covered or types of infrastructure and application surveyed.  They
+\item This {\it survey} is not meant to be complete, either in the scope of domains
+  covered or the types of infrastructure and application surveyed.  It
   represent the interests and experience of the authors. The specific
   requirements and barriers of applications cited in this paper are
   representative of the time at which the applications were surveyed
@@ -387,13 +387,13 @@ We would like the reader to keep in mind some context and scope-setting points:
   %   collected?  I'm not sure the numbers are correct today, for example, from
   %   ATLAS}\jhanote{Fixed. CF ATLAS: I'll ask Kaushik/ATLAS to check}
 
-\item The focus is on applications and infrastructure that arise from science
-  and engineering projects in academia; this is not exclusive but is more a
+\item The focus is generally on applications and infrastructure that arise from science
+  and engineering projects in academia in general; this is a
   guiding principle.  While we are cognizant of enterprise applications and
   infrastructure, and recognize the impressive advances made therein, we also
   acknowledge that the factors such as scale, distribution, open-source, and
   interoperability influence the solutions employed and infrastructures used; it
-  is important to therefore focus on problems that emerge as in the space
+  is important to therefore focus on problems that emerge in the space
   defined by these ``academic constraints''.
 
 \item Almost by definition, any attempt to capture the state-of-the-art of such
@@ -410,9 +410,9 @@ We would like the reader to keep in mind some context and scope-setting points:
     distributed} to indicate that data/compute resides on multiple nodes within
   one data center.  {\em Geographically distributed} describes the distribution
   of data and/or compute across multiple data centers.  Also, our focus is
-  primarily on infrastructure considerations at the large-scale, as searching
-  for common solutions and patterns at the large-scale is likely to be more
-  fruitful than at small-scales where customized tools and optimization of
+  primarily on infrastructure considerations at  large scale, as searching
+  for common solutions and patterns at  large scale is likely to be more
+  fruitful than at small scales where customized tools and optimization of
   low-level systems features is likely to return greater yield.
 
   % Analogous to the distinction between programming in the large versus system
@@ -492,7 +492,7 @@ We would like the reader to keep in mind some context and scope-setting points:
 
 \subsection{Outline of this paper}
 
-The rest of this paper consists of
+The remainder of this paper consists of
 the application scenarios (\S\ref{sec:scenarios}),
 a discussion of the aspects of distribution and dynamism in the
 applications (\S\ref{sec:distdyndata}),
@@ -5482,7 +5482,7 @@ characteristics? If so, what are these characteristics?
 \label{sec:conclusion}
 
 The growth in data volumes and its importance is having profound implications on
-the way applications are designed to the way we develop infrastructure and
+the way applications are designed and the way we develop infrastructure and
 provision associated services.  Many fields, such as biology, that until
 recently were not characterized by their intensive use of data are rapidly
 becoming data-driven.
@@ -5500,7 +5500,7 @@ infrastructure currently used for their execution. We have aimed to try to
 discern common approaches and challenges, and to identify any obvious gaps (or
 opportunities). Using a common vocabulary and terminology to describe otherwise
 distinct and unrelated applications allows potential application
-users/developers to benefit from the insight that a common analytical framework
+users\slash developers to benefit from the insights that a common analytical framework
 provides. For example, seeing how applications with similar patterns (e.g.,
 pipelines) have addressed issues of dynamism and distribution enables common
 solutions and facilitates the emergence of best practices even in the absence of
