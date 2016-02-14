@@ -5120,10 +5120,14 @@ find that applications with distributed data vary in the amount or volume of
 data distributed, the degree of distribution (scattered over one site or many
 sites), and the dynamic aspects associated with distribution, e.g., latency and
 relative scheduling flexibility (and thus tolerance or constraints on data
-transfer/aggregation).  Applications processing the largest volumes of data
-(O(PB)) typically run on specialized data cyberinfrastructure (e.g., the ATLAS
-LHC Grid). Applications such as Fusion and NGS that run on smaller data sets
-mainly utilize HPC environments. On the other end of the spectrum are highly
+transfer/aggregation).  
+% Applications processing the largest volumes of data typically run on
+% specialized data cyberinfrastructure (e.g., the ATLAS LHC Grid). Applications
+% such as Fusion and NGS that run on smaller data sets mainly utilize HPC
+% environments.
+
+Some applications use specialized data cyberinfrastructure, while some run
+utilize existing HPC environments.  On the other end of the spectrum are highly
 dynamic applications that process sensor data and make near-realtime decisions
 based on streaming data, e.g., the power grid and sensor network applications.
 
@@ -5208,8 +5212,7 @@ followed by constrained point of reuse.
 Some applications must collect and store all incoming data, with only minor
 pre-processing to clean the data ahead of the main processing. For others, a
 major constraint is to reduce the incoming data stream as quickly as possible,
-perhaps discarding a large fraction of the data before any processing
-occurs. 
+perhaps discarding a large fraction of the data before any processing occurs.
 
 Although dynamic and distributed properties have been characterized
 separately, it is important to remember, as the above patterns
@@ -5264,8 +5267,10 @@ data-intensive applications and systems:
 Note that this term is scale-invariant, i.e., a value of 1 could
 correspond to very small or very large values of both numerator and
 denominator, and that it does not capture the time scales over
-which data changes. However, we believe it captures most of the
-non-temporal {\it dynamic} properties.
+which data changes. 
+
+% However, we believe it captures most of the non-temporal {\it dynamic}
+% properties.
 
 % \jhanote{we might consider removing the definitions. More text about
 %   what is $\alpha$ and $\beta$ and say it is early work..}
@@ -5323,27 +5328,25 @@ initial concepts.
 
 %\jhanote{Note to self: need smoothening}
 
-A survey of data-intensive distributed applications on production
-cyberinfrastructure leads us to posit that there are three primary
-macroscopic architectures~\cite{pilot_clouds} and approaches for distributed
-data-intensive applications: (i) localize all data into a ``cloud''
-(or a large analytical engine) -- the paradigm adopted by several
-genome projects and the cancer atlas, (ii) decompose and distribute
-data to an appropriate number of computing/analytical engines as
-available -- the paradigm employed by particle physics for the
-discovery of the Higgs Boson (similar to the application in
-\S\ref{WLCGSteve}), and (iii) a hybrid of the above two paradigms,
-wherein data is decomposed and committed to several infrastructure,
-which in turn could be a combination of either of the first two
-paradigms, similar to what is done in the Power grids application
+An investigation of data-intensive distributed applications on production
+cyberinfrastructure, leads us to believe that there are three primary
+macroscopic architectures and approaches for distributed data-intensive
+applications: (i) localize all data into a ``cloud'' (or a large analytical
+engine) -- the paradigm adopted by several genome projects and the cancer atlas,
+(ii) decompose and distribute data to an appropriate number of
+computing/analytical engines as available -- the paradigm employed by particle
+physics for the discovery of the Higgs Boson (similar to the application in
+\S\ref{WLCGSteve}), and (iii) a hybrid of the above two paradigms, wherein data
+is decomposed and committed to several infrastructure, which in turn could be a
+combination of either of the first two paradigms, similar to what is done in the
+Power grids application
 (\S\ref{power}). %\jhanote{improve description....replace hybrid by bottom-up? }
 
-It is obvious that the first architecture can be used for large
-volumes of data, but surely there are limitations to the scalability
-or validity of this model. How does this limitation change,
-qualitatively or quantitatively, if dynamic data and/or applications
-are considered? This begets the question: how fundamental an issue is
-{\it dynamic}?
+It is obvious that the first architecture can be used for large volumes of data,
+but there are self-evident limitations to the scalability or validity of this
+model. How does this limitation change, qualitatively or quantitatively, if
+dynamic data and/or applications are considered? This begets the question: how
+fundamental an issue is {\it dynamic}?
 
 The high-energy physics (HEP) community has self-organized towards the
 second architectural approach.  Although distributed computing
@@ -5351,7 +5354,7 @@ infrastructures representing this approach, such as OSG and EGI, have
 been successful for this community and application, broad uptake
 across other application types, modes, and data volumes has not taken
 place. What lessons does the HEP experience teach us for the other
-communities, such as the bioinformatics?  Can an infrastructure
+communities, such as bioinformatics?  Can an infrastructure
 conforming to a particular architecture and developed for a specific
 application domain be generalized to another science domain, using the
 same underlying macro architecture but by providing a different set of
@@ -5667,6 +5670,7 @@ Foundation.
 \bibliographystyle{unsrt}
 \bibliography{3dpas}
 
+\newpage
 \appendix
 \section*{Appendix: Methodology}
 
