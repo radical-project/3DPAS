@@ -5115,22 +5115,21 @@ application makes it possible to modify or adapt it over time.
 
 \subsubsection{Understanding Distributed Data}
 
-From \S\ref{sec:distTypes} and
-\figurename~\ref{fig:figures_application}, we find that applications
-with distributed data differ based on the amount or volume of data
-distributed, the degree of distribution (scattered over one site or
-many sites), and the dynamic aspects associated with distribution,
-e.g., latency and relative scheduling flexibility (and thus tolerance
-or constraints on data transfer/aggregation).  Applications processing
-the largest volumes of data (O(PB)) typically run on specialized data
-cyberinfrastructure (e.g., the ATLAS LHC Grid). Applications such as
-Fusion and NGS that run on smaller data sets mainly utilize HPC
-environments. On the other end of the spectrum are highly dynamic
-applications that process sensor data and make near-realtime
-decisions based on streaming data, e.g., the power grid and sensor
-network applications. These applications process much less data;
-often, sensor data is also archived and aggregated for historical
-analyses, which leads to higher data volumes. %\katznote{not sure about the `other' part of this...}
+From \S\ref{sec:distTypes} and \figurename~\ref{fig:figures_application}, we
+find that applications with distributed data vary in the amount or volume of
+data distributed, the degree of distribution (scattered over one site or many
+sites), and the dynamic aspects associated with distribution, e.g., latency and
+relative scheduling flexibility (and thus tolerance or constraints on data
+transfer/aggregation).  Applications processing the largest volumes of data
+(O(PB)) typically run on specialized data cyberinfrastructure (e.g., the ATLAS
+LHC Grid). Applications such as Fusion and NGS that run on smaller data sets
+mainly utilize HPC environments. On the other end of the spectrum are highly
+dynamic applications that process sensor data and make near-realtime decisions
+based on streaming data, e.g., the power grid and sensor network applications.
+
+% These applications process much less data;
+% often, sensor data is also archived and aggregated for historical
+% analyses, which leads to higher data volumes. %\katznote{not sure about the `other' part of this...}
 
 \begin{figure}[ht]
 	\centering
@@ -5164,19 +5163,24 @@ analyses, which leads to higher data volumes. %\katznote{not sure about the `oth
 %\jhanote{the following does not make sense to
 %  me..}  Additional temporal aspects pertain to the stage(s) of an
 %application in which data can be distributed.
-Because application stages often have a distribution that makes sense
-to that stage, and because that distribution may not be appropriate for all other
-phases, applications must either use one particular distribution
-that may not work well in all phases or transform the data on input to
-some stages.  In particular, infrastructural applications
-require a specific distribution for the data storage, and thus
-the stages that read and process the data will need to make this choice.
 
-As seen, how application data is distributed depends upon which stage
-of an application is being considered. In spite of such variation,
-{\it data topology} can be used to identify the flow of data through
-the application, with nodes representing execution units and edges
-representing communication features.
+% Because application stages often have a distribution that makes sense to that
+% stage, and because that distribution may not be appropriate for other
+% phases, applications must either use one particular distribution that may not
+% work well in all phases or transform the data on input to some stages. 
+
+Applications must either use one particular distribution, or transform data on
+input to some stages. In particular, infrastructural applications require a
+specific distribution for the data storage, and thus the stages that read and
+process the data will need to make this choice.
+
+As seen, how application data is distributed depends upon which stage of an
+application is being considered. In spite of such variation, {\it data topology}
+can be used to identify the flow of data through the application, with nodes
+representing execution units and edges representing communication features.
+Additionally, how the application reacts to and handles dynamism is an important
+factor and may also indicate that some aspects of the data topology are unknown.
+
 % The overall shape of such a data connectivity pattern gives a sense
 % of {\it distributedness}; the thickness of edges gives a sense of
 % how data intensive the application is; and the change in the shape
@@ -5184,9 +5188,7 @@ representing communication features.
 % dynamism of the application. \katznote{it seems odd that we describe
 %   a picture here but don't actually have any such picture in the
 %   paper.}
-Additionally, how the application reacts to and handles dynamism is an
-important factor and may also indicate that some aspects of the data
-topology are unknown.
+
 
 One aspect of managing data topology is ``data planning," which refers
 to how the data is coordinated from ingest through analysis to
