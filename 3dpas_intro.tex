@@ -5169,61 +5169,47 @@ based on streaming data, e.g., the power grid and sensor network applications.
 % phases, applications must either use one particular distribution that may not
 % work well in all phases or transform the data on input to some stages. 
 
-Applications must either use one particular distribution, or transform data on
-input to some stages. In particular, infrastructural applications require a
-specific distribution for the data storage, and thus the stages that read and
-process the data will need to make this choice.
+% Applications must either use one particular distribution, or transform data on
+% input to some stages. In particular, 
 
-As seen, how application data is distributed depends upon which stage of an
-application is being considered. In spite of such variation, {\it data topology}
-can be used to identify the flow of data through the application, with nodes
-representing execution units and edges representing communication features.
-Additionally, how the application reacts to and handles dynamism is an important
-factor and may also indicate that some aspects of the data topology are unknown.
+% Infrastructural applications require a specific distribution for the data
+% storage, and thus  stages that read and process the data will need to make
+% this choice.  As seen, 
 
-% The overall shape of such a data connectivity pattern gives a sense
-% of {\it distributedness}; the thickness of edges gives a sense of
-% how data intensive the application is; and the change in the shape
-% and thickness (and rate) and number of edges gives a sense of the
-% dynamism of the application. \katznote{it seems odd that we describe
-%   a picture here but don't actually have any such picture in the
-%   paper.}
-
-
-One aspect of managing data topology is ``data planning," which refers
-to how the data is coordinated from ingest through analysis to
-output. In all cases, there is a coordination of the data with code
-used to analyze or transform it. In some cases these form clear,
-integrated stages where data flows from one to another. In others the
-way that data enters and flows through the application is more loosely
-defined and the execution of code is independent. Some examples
-include the ATLAS experiments, which have a single point of primary
-data generation which fans out to multiple analysis sites followed by
-mass exchange of derived data, and sensor grids, which have multiple
-sources of data generation collected to a single point of analysis
+{\it Data topology} can be used to identify the flow of data through the
+application, with nodes representing execution units and edges representing
+communication features.  One aspect of managing data topology is ``data
+planning," which refers to how the data is coordinated from ingest through
+analysis to output. In all cases, there is a coordination of the data with code
+used to analyze or transform it. In some cases these form clear, integrated
+stages where data flows from one to another. In others the way that data enters
+and flows through the application is more loosely defined and the execution of
+code is independent. Some examples include the ATLAS experiments, which have a
+single point of primary data generation which fans out to multiple analysis
+sites followed by mass exchange of derived data, and sensor grids, which have
+multiple sources of data generation collected to a single point of analysis
 followed by constrained point of reuse.
 
-We observe that pipelines provide a useful abstraction to represent
-the application stages identified in
-\figurename~\ref{fig:figures_application-stages}.  Many workflow tools
-also enable simple data capture and processing pipelines to be
-defined, where each pipeline stage may range from a complete
-application to a subroutine in Matlab (for instance).  It is useful to
-note that pipelines may also be dynamically constructed and adapted
-using context and monitoring information, as undertaken in the
-Industrial Incident Notification and Response application studied in
-this paper. In this instance, the actual pipeline stage to be invoked
-is triggered by the availability of particular types of data, a
-feature also relevant in the Power Grids application.  However, it is
-useful to note that different stages of the pipeline receive different
-emphases in different applications. Some applications must collect and
-store all incoming data, with only minor pre-processing to clean the
-data ahead of the main processing. For others, a major constraint is
-to reduce the incoming data stream as quickly as possible, perhaps
-discarding a large fraction of the data before any processing
-occurs. Reuse of pipeline stages across different applications must
-therefore be undertaken with care.
+% We observe that pipelines provide a useful abstraction to represent
+% the application stages identified in
+% \figurename~\ref{fig:figures_application-stages}.  Many workflow tools
+% also enable simple data capture and processing pipelines to be
+% defined, where each pipeline stage may range from a complete
+% application to a subroutine in Matlab (for instance).  It is useful to
+% note that pipelines may also be dynamically constructed and adapted
+% using context and monitoring information, as undertaken in the
+% Industrial Incident Notification and Response application studied in
+% this paper. In this instance, the actual pipeline stage to be invoked
+% is triggered by the availability of particular types of data, a
+% feature also relevant in the Power Grids application.  However, it is
+% useful to note that different stages of the pipeline receive different
+% emphases in different applications.
 
+Some applications must collect and store all incoming data, with only minor
+pre-processing to clean the data ahead of the main processing. For others, a
+major constraint is to reduce the incoming data stream as quickly as possible,
+perhaps discarding a large fraction of the data before any processing
+occurs. 
 
 Although dynamic and distributed properties have been characterized
 separately, it is important to remember, as the above patterns
