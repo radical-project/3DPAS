@@ -94,17 +94,16 @@
 % analyzed.
 
 The landscape of scientific and enterprise computing is being fundamentally
-altered by prodigious volumes of data.  Occasionally data are often
-naturally distributed and have to be processed near their source, and sometimes data that
+altered by prodigious volumes of data.  Occasionally data are often naturally
+distributed and have to be processed near their source, and sometimes data that
 are localized have to be distributed in order to be processed, either for
-reasons of performance or for collaborative analytics. Further, the scale of
-varying data source and destination, as well as the transfer of production rates \katznote{what are `transfer of production rates'?}
-makes temporal variations in data properties increasingly important.  With an
-increase in the importance of distributed and temporal properties of data,
-systems and infrastructure aspects such as resource scheduling, data placement,
-and transfer decisions that were statically determinable at small scales emerge
-as dynamic and important considerations at large scales of data and
-distribution.
+reasons of performance or for collaborative analytics.  Further, the variation
+of data production rates, data source and destination makes temporal variations
+in data properties increasingly important.  With an increase in the importance
+of distributed and temporal properties of data, systems and infrastructure
+aspects such as resource scheduling, data placement, and transfer decisions that
+were statically determinable at small scales emerge as dynamic and important
+considerations at large scales of data and distribution.
 
 % driven by advancing technologies (e.g., increasing compute capacity and higher
 % resolution sensors) and decreasing costs for data acquisition and
@@ -847,21 +846,22 @@ be employed. This reinforces the need for flexible programming systems
 and associated run-time environments that support collective
 (hardware-software) optimization.
 
-Nowadays, NGS sequencers are even being shipped with servers or small
-clusters for performing the alignment and re-sequencing as a pipeline
-right after the reads have been generated~\cite{ilm}.
 %\alnote{What kind of codes are used
 %in these clusters? What are the characteristics of these codes?}
 %But any additional analysis is not supported.
 %\alnote{What would be an additional analysis}
 %
-Scientific workflow systems like Taverna~\cite{Taverna:2006}, BioKepler~\cite{biokepler:2011}, and
-Galaxy~\cite{galaxy} (though Galaxy does not support distributed systems currently) have been successful in integrating genome
-analysis tools for bioinformatics. Script-based pipelines that combine
-executables are also often used. Very few workflow systems have
-explicit support for distributed data or dynamic data handling.
-Therefore reusable approaches at extending existing tools to support
-distributed and dynamic data are likely to be useful.
+
+NGS sequencers such Illumina and Ion Torrent provide the option of onsite
+servers or small clusters for performing the alignment and re-sequencing as a
+pipeline right after the reads have been generated.  Scientific workflow systems
+like Taverna~\cite{Taverna:2006}, BioKepler~\cite{biokepler:2011}, and
+Galaxy~\cite{galaxy} (though Galaxy does not support distributed systems
+currently) have been successful in integrating genome analysis tools for
+bioinformatics. Script-based pipelines that combine executables are also often
+used. Very few workflow systems have explicit support for distributed data or
+dynamic data handling.  Therefore reusable approaches at extending existing
+tools to support distributed and dynamic data are likely to be useful.
 %\katznote{Shantenu/Yogesh/Andre, please read this paragraph and tell me if changes
 %should be made to this section at this point}\alnote{ok with me}
 
