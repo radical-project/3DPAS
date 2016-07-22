@@ -1,0 +1,58 @@
+\documentclass{article}
+
+\begin{document}
+\title{Response to ``Introducing Distributed Dynamic Data-intensive (D3) Science: Understanding Applications and Infrastructure''}
+\maketitle
+
+We thank the reviewers for their ...
+
+\section{Reviewer 1}
+
+\begin{enumerate}
+\item \emph{Comments to the Author This paper has a really excellent collection of examples and this survey is very valuable. There are two problems. The first is easy to fix and it constitutes the "minor revision" requested: expand each acronym at first use. For example, page 3 has NGS, CMB, MODIS, etc. say "Next Generation Sequencing (NGS)", etc.}
+
+\textbf{Response:} We have made these changes.
+
+
+\item \emph{The other thing is not something I feel you should revise. It is something that disappointed me. In the analysis of the infrastructure there is little specific detail. For example, tables III and IV there are no details about the specific infrastructure used (except for citations to papers). This leaves the impression that the approaches are all ad hoc. Indeed that may be true as the use of common tools in the sciences is very low.}
+
+\textbf{Response:} Unfortunately, we do believe that this is true.
+
+\item \emph{Also, I like figure 2, but the introduction of alpha and beta are of little value as there is no analysis presented here that uses them. This is mathyness. (sounds like math but it isn't. )}
+
+\textbf{Response:} We have removed the formal defintion of alpha and beta, as we agree that we do not use these.  We added their names in the description since we do plan to use them in future work, and want to be able to point back to this paper as the place where they were introduced.
+\end{enumerate}
+
+\section{Reviewer: 2}
+
+%Comments to the Author General Comments
+
+\emph{This paper surveys several representative dynamic distributed data-intensive application scenarios, provides a common conceptual framework to understand them, and examines the infrastructure used in support of applications” I felt that the paper was useful and interesting regarding the first goal (describing data-intensive application scenarios), but was much less successful in the 2nd (providing a common conceptual framework to understand them). Terms are not well defined in the early parts before the survey, and so that makes it harder to understand and much less valuable. However, I think there is a relatively straightforward fix to many of these problems…. move the definitions in sections 3 and 4 before the survey. If this could be done, and the specific comments below addressed, then this would make the survey section (2) much more understandable and valuable. For example, the definition of “dynamic” is (I felt) not clear in section 1, and so this weakened the value I received from reading the survey. However, once I’d read section 3, things were much clearer. When I re-read the survey I got much more from it (but few readers will do this).}
+
+\emph{Overall, I think this could be a valuable paper, surveying and explaining the demands of a wide range of applications if these problems could be addressed.}
+
+\begin{enumerate}
+\item  \emph{Here are some specific comments on the text that try to explain this view in more detail (as well as 1 or 2 rewording suggestions): Summary: “Often data are increasingly large-scale and distributed; and their location, availability and properties are time-dependent.” Needs editing to make it flow better Section 1. “software systems for the analysis of large volumes of dynamic, distributed, and data intensive have received relatively less so” [data intensive -> frequently accessed data?] “Occasionally data are often naturally distributed and have to be processed near their source, and sometimes data that are localized have to be distributed in order to be processed, either for reasons of performance or for collaborative analytics.” There are 2 dimensions being described here: 1. data can be created in a set of distributed locations or it can be created in 1 place. 2. data can be processed in 1 place, or it can be processed in distributed locations. The 2 dimensions are orthogonal, and all 4 possibilities occur in real applications. However, the above sentence only captures 2 of the 4 quadrants of the space. “In this paper, we use locally distributed to indicate that data/compute resides on multiple nodes within one data center. Geographically distributed describes the distribution of data and/or compute across multiple data centers” Given the above, I think it would be better in this definition to also separate out data creation location from compute location. Intro: Define precisely what is meant by “dynamic” here as it is key to the paper but isn’t well defined in Section 1 (see recommendation above to fix this by moving definitions from Section 3).}
+
+\textbf{Response:} 
+
+\item \emph{Section 2. I didn’t think that the terminology and definitions of “traditional” and “infrastructural” applications made the 2 categories clear. Firstly, “traditional” is a poor choice of term as is not intuitively obvious what types of applications fall into this category. The definition didn’t really help me: “meaning a program that is developed by a user or project to try to answer a science question, usually with some input data needed and some output data produced.” Very few programs don’t require input or output data, so that wasn’t helpful to me. Also, “developed by a [..] project” seemed to also cover the community applications in the other category (if the community was focussed around a project). Also, the term “infrastructural” isn’t helpful for defining a type of application, as it suggests to me a generic, underpinning set of software services that can be used to build an application, rather than the application itself. The overloading of the term “application” in this category didn’t help to clarify the situation for me: “This allows different sub-applications (that we again refer to as ‘applications’)….”. Is the difference that applications in the 2nd category utilise services provided by an infrastructure that is shared by other applications (and users), unlike those in the first category? There may also be the distinction in that only 2nd category applications are distributed.. but that wasn’t clear from the text. The survey of applications in Section 2 is interesting, but suffers from using terms that are not well defined (see above for suggested fix). 2.1 “All algorithms, architectures, storage, and networks have broken or will break soon” Explain what is meant by “broken” and justify this claim. Section 3 see earlier comments on definitions. Section 4. “We also introduce the concept of an “infrastructure” application as a collection of infrastructure components that are packaged so that they can be used by many applications in deﬁned ways” See earlier comments. This doesn’t sound to me like an application, but instead a set of infrastructure support services (“components”) packaged from more basic services/components. Again, the use of application with 2 different meanings in this same sentence doesn’t help the read to understand what is meant here. 4.1 – 4.3 I found these definitions very helpful, but would again recommend that they come before the survey of specific applications so that these terms can be used, and understood by the reader, within the survey.}
+
+\textbf{Response:} 
+
+\end{enumerate}
+
+%Date Sent: 21-Jul-2016
+
+
+
+
+
+\end{document}
+
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 
