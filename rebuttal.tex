@@ -20,7 +20,7 @@ We thank the editor and reviewers for their helpful comments, and have addressed
 
 \item \emph{Also, I like figure 2, but the introduction of alpha and beta are of little value as there is no analysis presented here that uses them. This is mathyness. (sounds like math but it isn't. )}
 
-\textbf{Response:} We have removed the formal defintion of alpha and beta, as we agree that we do not use these.  We added their names in the description since we do plan to use them in future work, and want to be able to point back to this paper as the place where they were introduced.
+\textbf{Response:} We have removed the formal definition of alpha and beta, as we agree that we do not use these.  We added their names in the description since we do plan to use them in future work, and want to be able to point back to this paper as the place where they were introduced.
 \end{enumerate}
 
 \section{Reviewer: 2}
@@ -37,21 +37,49 @@ We thank the editor and reviewers for their helpful comments, and have addressed
 
 \item \emph{Summary: ``Often data are increasingly large-scale and distributed; and their location, availability and properties are time-dependent.'' Needs editing to make it flow better}
 
-\textbf{Response:} 
+\textbf{Response:} We've edited this.
 
-\item \emph{Section 1. ``software systems for the analysis of large volumes of dynamic, distributed, and data intensive have received relatively less soâ'' [data intensive -> frequently accessed data?] ``Occasionally data are often naturally distributed and have to be processed near their source, and sometimes data that are localized have to be distributed in order to be processed, either for reasons of performance or for collaborative analytics.'' There are 2 dimensions being described here: 1. data can be created in a set of distributed locations or it can be created in 1 place. 2. data can be processed in 1 place, or it can be processed in distributed locations. The 2 dimensions are orthogonal, and all 4 possibilities occur in real applications. However, the above sentence only captures 2 of the 4 quadrants of the space. â``In this paper, we use locally distributed to indicate that data/compute resides on multiple nodes within one data center. Geographically distributed describes the distribution of data and/or compute across multiple data centersâ'' Given the above, I think it would be better in this definition to also separate out data creation location from compute location. Intro: Define precisely what is meant by ``dynamic,'' here as it is key to the paper but isn't well defined in Section 1 (see recommendation above to fix this by moving definitions from Section 3).}
+\hspace{-0.7cm}Section 1. 
 
-\textbf{Response:} 
-
-\item \emph{Section 2. I didn't think that the terminology and definitions of ``traditional'' and ``infrastructural'' applications made the 2 categories clear. Firstly, ``traditional'' is a poor choice of term as is not intuitively obvious what types of applications fall into this category. The definition didn't really help me: ``meaning a program that is developed by a user or project to try to answer a science question, usually with some input data needed and some output data produced.'' Very few programs don't require input or output data, so that wasn't helpful to me. Also, ``developed by a [..] project'' seemed to also cover the community applications in the other category (if the community was focussed around a project). Also, the term ``infrastructural'' isn't helpful for defining a type of application, as it suggests to me a generic, underpinning set of software services that can be used to build an application, rather than the application itself. The overloading of the term ``application'' in this category didn't help to clarify the situation for me: ``This allows different sub-applications (that we again refer to as `applications')...''. Is the difference that applications in the 2nd category utilise services provided by an infrastructure that is shared by other applications (and users), unlike those in the first category? There may also be the distinction in that only 2nd category applications are distributed.. but that wasn't clear from the text. The survey of applications in Section 2 is interesting, but suffers from using terms that are not well defined (see above for suggested fix). 2.1 ``All algorithms, architectures, storage, and networks have broken or will break soon'' Explain what is meant by ``broken'' and justify this claim.} 
+\item \emph{``software systems for the analysis of large volumes of dynamic, distributed, and data intensive have received relatively less soâ'' [data intensive -> frequently accessed data?]}
 
 \textbf{Response:} 
 
-\item \emph{Section 3 see earlier comments on definitions.} 
+\item \emph{``Occasionally data are often naturally distributed and have to be processed near their source, and sometimes data that are localized have to be distributed in order to be processed, either for reasons of performance or for collaborative analytics.'' There are 2 dimensions being described here: 1. data can be created in a set of distributed locations or it can be created in 1 place. 2. data can be processed in 1 place, or it can be processed in distributed locations. The 2 dimensions are orthogonal, and all 4 possibilities occur in real applications. However, the above sentence only captures 2 of the 4 quadrants of the space.}
 
 \textbf{Response:} 
 
-\item \emph{Section 4. ``We also introduce the concept of an `infrastructure' application as a collection of infrastructure components that are packaged so that they can be used by many applications in defined ways'' See earlier comments. This doesn't sound to me like an application, but instead a set of infrastructure support services (``components'') packaged from more basic services/components. Again, the use of application with 2 different meanings in this same sentence doesn't help the read to understand what is meant here. 4.1 -- 4.3 I found these definitions very helpful, but would again recommend that they come before the survey of specific applications so that these terms can be used, and understood by the reader, within the survey.}
+\item \emph{``In this paper, we use locally distributed to indicate that data/compute resides on multiple nodes within one data center. Geographically distributed describes the distribution of data and/or compute across multiple data centersâ'' Given the above, I think it would be better in this definition to also separate out data creation location from compute location. Intro: Define precisely what is meant by ``dynamic,'' here as it is key to the paper but isn't well defined in Section 1 (see recommendation above to fix this by moving definitions from Section 3).}
+
+\textbf{Response:} 
+
+\hspace{-0.7cm}Section 2. 
+
+\item \emph{I didn't think that the terminology and definitions of ``traditional'' and ``infrastructural'' applications made the 2 categories clear. Firstly, ``traditional'' is a poor choice of term as is not intuitively obvious what types of applications fall into this category. The definition didn't really help me: ``meaning a program that is developed by a user or project to try to answer a science question, usually with some input data needed and some output data produced.'' Very few programs don't require input or output data, so that wasn't helpful to me. Also, ``developed by a [..] project'' seemed to also cover the community applications in the other category (if the community was focussed around a project). Also, the term ``infrastructural'' isn't helpful for defining a type of application, as it suggests to me a generic, underpinning set of software services that can be used to build an application, rather than the application itself. The overloading of the term ``application'' in this category didn't help to clarify the situation for me: ``This allows different sub-applications (that we again refer to as `applications')...''. Is the difference that applications in the 2nd category utilise services provided by an infrastructure that is shared by other applications (and users), unlike those in the first category? There may also be the distinction in that only 2nd category applications are distributed.. but that wasn't clear from the text.} 
+
+\textbf{Response:} 
+
+\item \emph{The survey of applications in Section 2 is interesting, but suffers from using terms that are not well defined (see above for suggested fix).} 
+
+\textbf{Response:} 
+
+\item \emph{2.1 ``All algorithms, architectures, storage, and networks have broken or will break soon'' Explain what is meant by ``broken'' and justify this claim.} 
+
+\textbf{Response:} 
+
+\hspace{-0.7cm}Section 3. 
+
+\item \emph{see earlier comments on definitions.} 
+
+\textbf{Response:} 
+
+\hspace{-0.7cm}Section 4. 
+
+\item \emph{``We also introduce the concept of an `infrastructure' application as a collection of infrastructure components that are packaged so that they can be used by many applications in defined ways'' See earlier comments. This doesn't sound to me like an application, but instead a set of infrastructure support services (``components'') packaged from more basic services/components. Again, the use of application with 2 different meanings in this same sentence doesn't help the read to understand what is meant here.}
+
+\textbf{Response:} 
+
+\item \emph{4.1 -- 4.3 I found these definitions very helpful, but would again recommend that they come before the survey of specific applications so that these terms can be used, and understood by the reader, within the survey.}
 
 \textbf{Response:} 
 
