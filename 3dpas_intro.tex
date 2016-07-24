@@ -59,13 +59,13 @@
 \begin{abstract}
   A common feature across many science and engineering applications is the
   amount and diversity of data and computation that must be integrated to yield
-  insights. Often data are increasingly large-scale and distributed; and their
-  location, availability and properties are time-dependent. Collectively, these
+  insights. Data sets are growing larger and becoming distributed; and their
+  location, availability and properties are often time-dependent. Collectively, these
   characteristics give rise to dynamic distributed data intensive
   applications. While ``static'' data application have received significant
   attention, the characteristics, requirements, and software systems for the
-  analysis of large volumes of dynamic, distributed, and data intensive have
-  received relatively less. This paper surveys several representative dynamic
+  analysis of large volumes of dynamic, distributed, and data intensive applications have
+  received relatively less attention. This paper surveys several representative dynamic
   distributed data-intensive application scenarios, provides a common conceptual
   framework to understand them, and examines the infrastructure used in support
   of applications. 
@@ -513,9 +513,9 @@ here.  In this document, some of our applications are really {\em
   traditional applications}, meaning a program that is developed by a
 user or project to try to answer a science question, usually with some
 input data needed and some output data produced.  Applications in this
-category are: NGS Analytics (\S\ref{bioSilvia}), CMB
+category are: NGS (next generation sequencing) Analytics (\S\ref{bioSilvia}), CMB (cosmic microwave background)
 (\S\ref{astroJulian}), Fusion (\S\ref{fusionScott}), Industrial
-Incident Notification and Response (\S\ref{Kees}), MODIS Data
+Incident Notification and Response (\S\ref{Kees}), MODIS (moderate resolution imaging spectroradiometer) Data
 Processing (\S\ref{modisKeith}), and Distributed Network Intrusion
 Detection (\S\ref{detectionJon}).
 
@@ -532,8 +532,8 @@ on different stages, such as generating data, or processing data.
 Answering a science question now may involve a set of applications
 that need to be run in series, perhaps in different stages, that may
 be run by different groups that do not frequently interact.  This type
-of application includes: ATLAS/WLCG (\S\ref{WLCGSteve}), LSST
-(\S\ref{astroAdam}), SOA Astronomy (\S\ref{astroSOAAdam}), Sensor
+of application includes: ATLAS/WLCG (a toroidal large hadron collider apparatus/worldwide large hadron collider computing grid, \S\ref{WLCGSteve}), LSST
+(large synoptic survey telescope, \S\ref{astroAdam}), SOA (service-oriented architecture) Astronomy (\S\ref{astroSOAAdam}), Sensor
 Network Application (\S\ref{sensorSimon}), Climate
 (\S\ref{climateDan}), Interactive Exploration of Environmental Data
 (\S\ref{envJon}), and Power Grids (\S\ref{power}).
@@ -5257,13 +5257,19 @@ dynamism and distributed properties were often intimately tied to
 application/scenario definition and specific usage modes.
 Notwithstanding, to quantify better dynamic properties of an
 application, we believe a term analogous to the use of Amdahl's
-number~\cite{10.1109/ICDE.2000.839382} could be used to characterize `static'
-data-intensive applications and systems:
-
+number~\cite{10.1109/ICDE.2000.839382} such as 
 \begin{itemize}
-\item[] $\alpha$ = Num. of Compute Operations / Amount of Data
+\item[] Num. of Compute Operations / Amount of Data
   (Consumed, Generated or Transformed)
 \end{itemize}
+  could be used to characterize `static'
+data-intensive applications and systems:
+
+%\begin{itemize}
+%\item[] $\alpha$ = Num. of Compute Operations / Amount of Data
+%  (Consumed, Generated or Transformed)
+%\end{itemize}
+
 
 Note that this term is scale-invariant, i.e., a value of 1 could
 correspond to very small or very large values of both numerator and
@@ -5278,17 +5284,20 @@ which data changes.
 
 % defined above for dynamic characteristics,
 
-Similarly, another term can be used to quantify the
+Similarly, another term 
+\begin{itemize}
+\item[] Amount of Data Transferred / Degree of
+  Distribution
+\end{itemize}
+could be used to quantify the
 ``scale'' of distribution, namely the degree of distribution as a
 function of the amount of data transferred, where the degree of
 distribution can be defined as the number of distinct data locations:
 
-\begin{itemize}
-\item[] $\beta$ = Amount of Data Transferred / Degree of
-  Distribution
-% \item[] $\beta_2$ = Number of Compute Operations / Degree of
-%   Distribution
-\end{itemize}
+%\begin{itemize}
+%\item[] $\beta$ = Amount of Data Transferred / Degree of
+%  Distribution
+%\end{itemize}
 
 %Specifically, we propose $\beta$ as a ratio of the amount of data
 %transferred to the number of distinct sites (i.e., degree) that it was
@@ -5317,7 +5326,8 @@ It has proven difficult to provide ``global'' quantitative values of
 these ratios, as often the value of the numerators is
 subject to how an application/scenario is defined, even more so for a
 ``class of applications'' as opposed to a specific application. We
-believe, nonetheless, that these measures suggest a possible way to
+believe, nonetheless, that these measures (which we refer to as $\alpha$ and $\beta$ respectively)
+suggest a possible way to
 quantify an application's dynamism and distribution and thereby find
 possible common approaches solutions.  We plan to explore this in our
 future work, and also hope others will consider building on these
