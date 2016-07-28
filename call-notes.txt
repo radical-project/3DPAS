@@ -1,6 +1,6 @@
 - Section 3 and 4 move concepts in Section 1.1. (Omer)
 
-- Dan Katz: Text about how diff groups may choose to read this paper.
+- Dan Katz: Text about how diff groups may choose to read this paper. - added at end of 1
 
 
 - SJ/DSK: to write about hierarchy of applications..fix sloppiness..correlating to the size of applications. 
