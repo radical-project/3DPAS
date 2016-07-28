@@ -1,0 +1,13 @@
+- Section 3 and 4 move concepts in Section 1.1. (Omer)
+
+- Dan Katz: Text about how diff groups may choose to read this paper.
+
+
+- SJ/DSK: to write about hierarchy of applications..fix sloppiness..correlating to the size of applications. 
+ —- Multiple contributors.
+ —- Make sure the definitions map to the examples.
+
+— Point 3: NCH to add suitable language to make explicit our omission / scope.
+
+- Remove Point 7.
+
