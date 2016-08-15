@@ -23,7 +23,7 @@
 %   Andre~Luckow\affil{1}, Omer Rana\affil{3}, Yogesh Simmhan\affil{4}, Neil Chue
 %   Hong\affil{5}, Simon Dobson\affil{6}}
 
-%\affilnum{6}University of St.~Andrews\break 
+%\affilnum{6}University of St.~Andrews\break
 
 
 \address{\affilnum{1}Rutgers University\break
@@ -68,7 +68,7 @@
   received relatively less attention. This paper surveys several representative dynamic
   distributed data-intensive application scenarios, provides a common conceptual
   framework to understand them, and examines the infrastructure used in support
-  of applications. 
+  of applications.
 
 \end{abstract}
 \maketitle
@@ -108,7 +108,7 @@ considerations at large scales of data and distribution.
 
 % driven by advancing technologies (e.g., increasing compute capacity and higher
 % resolution sensors) and decreasing costs for data acquisition and
-% storage~\cite{tony-propaganda}. 
+% storage~\cite{tony-propaganda}.
 
 
 % \begin{itemize}
@@ -156,7 +156,7 @@ The focus of this paper is on a subspace of the large set of problems associated
 with data-intensive sciences, namely that which is characterized by {\it both}
 distributed and dynamic aspects. We introduce the concept of Dynamic Distributed
 Data-intensive science and refer to this subspace of data-intensive science as
-D3 science.  
+D3 science.
 
 
 The analytical space spanned by the three ``D''s of dynamic, distributed,
@@ -173,10 +173,10 @@ by the entire community---application end-users, developers and infrastructure
 scientists alike---in an emerging field cannot be overstated. We believe that
 such a vocabulary and terminology has been missing from the practice of
 distributed cyberinfrastructure in general, with negative consequences.
- 
+
 % As D3 applications
 % evolve, our analysis can provide guidance on where to focus effort on
-% infrastructure.  
+% infrastructure.
 
 % Analyzing the applications along an analytical space spanned by the three ``D''s
 % of data-intensive, distributed, and dynamic provides a general and effective
@@ -215,10 +215,10 @@ distributed cyberinfrastructure in general, with negative consequences.
 %  the role of Big Data in science, which is less studied (and arguably
 %  more diverse and complex) than business applications. That said, the
 %  volume and velocity dimensions of the 3V's partially capture the
-%  data-intensive and dynamic aspects of our study.''}  
+%  data-intensive and dynamic aspects of our study.''}
 %\jhanote{we do not discuss explicitly the 4th D, i.e. diversity (courtesy AL) it
 %  is assumed but not discussed}
-  
+
 %\subsubsection*{Terminology}
 
 %\alnote{Should we introduce a degree of distribution? machine,
@@ -227,13 +227,13 @@ distributed cyberinfrastructure in general, with negative consequences.
 %  vocabulary. Not sure this would be a conflict or self-plagiarism?
 %  Either way, this should be in the sub-section on ``Scope''}
 
-%, as shown in  
-%\figurename~\ref{fig:figures_terminology}.  
+%, as shown in
+%\figurename~\ref{fig:figures_terminology}.
 
 
 %\jhanote{terminology defined elsewhere in the paper isn't defined
 %  here.. so a bit misleading to call this part terminology. AL points
-%  out ``dynamic'' as an example.}  
+%  out ``dynamic'' as an example.}
 
 %\katznote{AL thinking about changes to the figure, according to SJ -
 %  now SJ to remove this figure completely.}
@@ -321,7 +321,7 @@ distributed cyberinfrastructure in general, with negative consequences.
 %  combined?}\jhanote{DSK, this should not be an issue now, given that
 %  this has now moved upstream}
 
-%\jhanote{refine next four paragraph...} 
+%\jhanote{refine next four paragraph...}
 
 % Further, we define the degree as the number of data sources and sites that are
 % used for storing and processing the data. A distributed application is an
@@ -382,7 +382,7 @@ We would like the reader to keep in mind some points regarding context and scope
   requirements and barriers of applications cited in this paper are
   representative of the time at which the applications were surveyed
   (2012-2013); this is also true of the quantitative analysis of applications.
-  
+
   % \katznote{need to add a note about the dates in which application data was
   %   collected?  I'm not sure the numbers are correct today, for example, from
   %   ATLAS}\jhanote{Fixed. CF ATLAS: I'll ask Kaushik/ATLAS to check}
@@ -502,7 +502,20 @@ a description of the software infrastructure required for D3 applications
 % software frameworks, tools, and middleware and platform services
 (\S\ref{sec:infrastructure}),
 analysis and characterization of the applications and
-conclusions (\S\ref{sec:conclusions}).
+conclusions (\S\ref{sec:conclusions}). Each of these sections is briefly described below:
+
+\begin{itemize}
+
+\item Section~\ref{sec:scenarios} provides a description of thirteen D3 applications based on our survey. For each application, both the {\it dynamic} and {\it distributed} aspects are described. The methodology used to carry out the survey is described in the Appendix.
+
+\item Based on the application survey, we derive a set of  definitions for {\it Distribution} and {\it Dynamism} in \S\ref{sec:distdyndata}. Note that these definitions are based on the application survey. A variety of definitions of these concepts already exist in computer science literature. Our intention is
+to provide context for the use of these terms with reference to our survey. The distributed and dynamic characteristics of each application surveyed in \S\ref{sec:scenarios} is summarized in this section.
+
+\item In \S\ref{sec:infrastructure}, we subsequently describe the software/systems infrastructure used to support the distributed and dynamic characteristics of applications in \S\ref{sec:scenarios}. We outline support for data management, analysis, and coordination, providing examples of actual Cyberinfrastructure made use of by our surveyed applications for these purposes.
+
+\item In \S\ref{sec:conclusions}, we bring together key observations based on the analysis of applications, their distributed and dynamic characteristics, and infrastructure use. An attempt is made to compare these applications and suggest the need for an ``architecture for D3 science".
+
+\end{itemize}
 
 \textit{Guidance for the reader}: Readers who are generally knowledge about distributed
 applications will likely feel comfortable reading the paper from start to end.
@@ -637,7 +650,7 @@ we have studied can be mapped to a set of stages or phases.  This is
 illustrated in \figurename~\ref{fig:figures_application-stages}.
 
 The question of where the application, as opposed to the entire
-system, %(where the system is defined as all of \figurename~\ref{fig:figures_terminology}), 
+system, %(where the system is defined as all of \figurename~\ref{fig:figures_terminology}),
 actually starts
 is somewhat difficult.  In this paper, we have decided not to treat
 hardware data sources (e.g., sensors, telescopes) as part of the
@@ -4423,12 +4436,12 @@ deployed for specific domains but others which are more generic (e.g., Weka, Gra
 with the Data Processing stage.
 
 \subsection{Infrastructure to Support Coordination within Applications}
-\label{sec:infra_coord} 
+\label{sec:infra_coord}
 
 Programming abstractions and orchestration frameworks cut across both data
 management and analysis functions. While different in character from the other
 infrastructure discussed in this section, they enable the coordination of the
-different stages of the application, sometimes enforcing a particular constraint to improve, e.g., scalability. These approaches can allow the composition of sequential data processing pipelines and further offer the flexibility of modeling more complex constructs. 
+different stages of the application, sometimes enforcing a particular constraint to improve, e.g., scalability. These approaches can allow the composition of sequential data processing pipelines and further offer the flexibility of modeling more complex constructs.
 Standardization of APIs and components within these frameworks can allow
 interchangeability of components with similar functionality, such as those described in \S\ref{sec:infra_mgt} and \S\ref{sec:infra_analysis}.
 
@@ -4459,23 +4472,23 @@ computation can be efficiently parallelized, by performing the map phase
 concurrently and then reducing without the reduction order affecting the final
 result.
 
-{\em Stream processing} (sometimes called event processing) is an approach modeled 
+{\em Stream processing} (sometimes called event processing) is an approach modeled
 on signal processing, in which a stream of data is transformed ``on-the-fly'' to produce one or
 more further streams of values. As such it is a programming
 abstraction suitable for continuous data feeds, or when results need
 to be pushed to users of interactive applications. Since the data is
 not assumed to be available \textit{en masse}, it can be used in
 situations where storing the entire data set is undesirable,
-unnecessary, or impossible. 
+unnecessary, or impossible.
 
 {\em Sensor networks} and other intelligent front-end data collection systems are sometimes seen as an extension of stream processing and application pipelines.
-They often have the feature of being \emph{adaptive}, in that they can vary their exact behavior according either to external control stimuli or from observations made of the data they are 
+They often have the feature of being \emph{adaptive}, in that they can vary their exact behavior according either to external control stimuli or from observations made of the data they are
 themselves observing. Adaptation may also be through users interactively changing the
 the pipeline, either by changing parameters or by adding or removing
 tasks in the pipeline. This allows decision logic to be initiated by
 the pipeline itself, or using an external control signal that may come
 from users or an instrument. This form of ``computational steering''
-is especially useful in systems being used to explore a data set. In these cases, it is important to 
+is especially useful in systems being used to explore a data set. In these cases, it is important to
 note that the infrastructure is adaptive, rather than the scenario itself.
 
 %Gomes et al.~\cite{gomes08} describe how a pipeline may be
@@ -4494,7 +4507,7 @@ The software infrastructure components we have classified above
 address different characteristics of D3
 applications. \tablename~\ref{tab:inf_app_mapping} summarizes the role of
 these components in addressing dynamic and distributed characteristics
-of the D3 applications in \S\ref{sec:scenarios}. Each application makes use of different components, though it can be seen that applications that utilize stream or event processing %(see \ref{tab:progSystems} \katznote{this table name doesn't resolve...} 
+of the D3 applications in \S\ref{sec:scenarios}. Each application makes use of different components, though it can be seen that applications that utilize stream or event processing %(see \ref{tab:progSystems} \katznote{this table name doesn't resolve...}
 have larger requirements on notification and orchestration components.
 
 
@@ -4821,11 +4834,11 @@ second, to the extent that principled data reduction forms one of the
 major scientific challenges for the project.
 
 There are also significant variations in where ``the pipeline'' begins
-and ends. This represents the difficulty in differentiating between ``traditional'' applications 
+and ends. This represents the difficulty in differentiating between ``traditional'' applications
 and ``infrastructure'' applications. Many systems are driven by data sets collected and shared
-widely, against which several different applications may be applied. 
-Here the infrastructure application is the collection of components used to allow the 
-data sets to be accessed and analyzed by the different applications. 
+widely, against which several different applications may be applied.
+Here the infrastructure application is the collection of components used to allow the
+data sets to be accessed and analyzed by the different applications.
 Climate science is a good example of this approach. In this
 case the data is ``pre-collected'' in the sense of existing outside
 most of the applications, although its collection may have been a
@@ -4938,7 +4951,7 @@ individual applications we have studied.
 
 %\jhanote{summarize contribution at front before 5.1 begins}
 
-%as take away messages. 
+%as take away messages.
 
 This section brings together some key observations from the analysis of
 applications and infrastructure carried out in this paper.
@@ -5130,7 +5143,7 @@ find that applications with distributed data vary in the amount or volume of
 data distributed, the degree of distribution (scattered over one site or many
 sites), and the dynamic aspects associated with distribution, e.g., latency and
 relative scheduling flexibility (and thus tolerance or constraints on data
-transfer/aggregation).  
+transfer/aggregation).
 % Applications processing the largest volumes of data typically run on
 % specialized data cyberinfrastructure (e.g., the ATLAS LHC Grid). Applications
 % such as Fusion and NGS that run on smaller data sets mainly utilize HPC
@@ -5181,14 +5194,14 @@ based on streaming data, e.g., the power grid and sensor network applications.
 % Because application stages often have a distribution that makes sense to that
 % stage, and because that distribution may not be appropriate for other
 % phases, applications must either use one particular distribution that may not
-% work well in all phases or transform the data on input to some stages. 
+% work well in all phases or transform the data on input to some stages.
 
 % Applications must either use one particular distribution, or transform data on
-% input to some stages. In particular, 
+% input to some stages. In particular,
 
 % Infrastructural applications require a specific distribution for the data
 % storage, and thus  stages that read and process the data will need to make
-% this choice.  As seen, 
+% this choice.  As seen,
 
 {\it Data topology} can be used to identify the flow of data through the
 application, with nodes representing execution units and edges representing
@@ -5266,7 +5279,7 @@ dynamism and distributed properties were often intimately tied to
 application/scenario definition and specific usage modes.
 Notwithstanding, to quantify better dynamic properties of an
 application, we believe a term analogous to the use of Amdahl's
-number~\cite{10.1109/ICDE.2000.839382} such as 
+number~\cite{10.1109/ICDE.2000.839382} such as
 \begin{itemize}
 \item[] Num. of Compute Operations / Amount of Data
   (Consumed, Generated or Transformed)
@@ -5283,7 +5296,7 @@ data-intensive applications and systems:
 Note that this term is scale-invariant, i.e., a value of 1 could
 correspond to very small or very large values of both numerator and
 denominator, and that it does not capture the time scales over
-which data changes. 
+which data changes.
 
 % However, we believe it captures most of the non-temporal {\it dynamic}
 % properties.
@@ -5293,7 +5306,7 @@ which data changes.
 
 % defined above for dynamic characteristics,
 
-Similarly, another term 
+Similarly, another term
 \begin{itemize}
 \item[] Amount of Data Transferred / Degree of
   Distribution
@@ -5554,7 +5567,7 @@ produce it.
 % domain.
 
 % From the previous discussion we can draw out some conclusions about the trends
-% within dynamic, distributed, data-intensive science. For instance, 
+% within dynamic, distributed, data-intensive science. For instance,
 
 In \S\ref{sec:scenarios}, we divided applications into groups: traditional and
 infrastructural applications.  Traditional applications have been built by one
