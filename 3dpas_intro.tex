@@ -527,24 +527,44 @@ paper that is best for all readers.
 
 \section{D3 Application Scenarios \label{sec:scenarios}}
 
-Starting with the experience of the attendees of the 3DPAS workshops,
-we have assembled a set of D3 ``applications'' that we describe in
-this section.  We realize that we have overloaded the term application
-here.  In this document, some of our applications are really {\em
-  traditional applications}, meaning a program that is developed by a
-user or project to try to answer a science question, usually with some
-input data needed and some output data produced.  Applications in this
-category are: NGS (next generation sequencing) Analytics (\S\ref{bioSilvia}), CMB (cosmic microwave background)
-(\S\ref{astroJulian}), Fusion (\S\ref{fusionScott}), Industrial
-Incident Notification and Response (\S\ref{Kees}), MODIS (moderate resolution imaging spectroradiometer) Data
-Processing (\S\ref{modisKeith}), and Distributed Network Intrusion
-Detection (\S\ref{detectionJon}).
+Starting with the experience of the attendees of the 3DPAS workshops, we have
+assembled a set of D3 ``applications'' that we describe in this section.  
+%We realize that we have overloaded the term ``application'' here.
+
+The term ``application'' is often overloaded in literature and the computational
+science discourse.  Sometimes the term is a reference to a stand-alone,
+independent executable (e.g., a Molecular Dynamics simulation kernel such as
+AMBER or Gromacs). Sometimes an application refers to science problem to which
+the executable is put to use (e.g., compute the free-energy of binding energy of
+a drug candidate), but sometimes it is also used to reference the end-to-end
+workflow (i.e., a multi-stage computational process requiring a sequence of
+possibly distinct simulations and executables).  To add chaos to the confusion,
+applications are sometimes also as a proxy for projects (e.g., the ATLAS
+project), where the project could in of itself possibly be a series of
+independent applications, each with application in turn a reference to a defined
+science objective achieved using a set of executables.
+
+In addition to the aforementioned hierarchy and granularity to which the term
+application has been applied, the class of applications in any level differ
+widely in scale, sophistication and type as well different objective and
+objects.  Thus, it is inevitable that the non-contextual use of the word
+application be a recipe for befuddlement.
+
+In this document, some of our applications are really {\em traditional
+  applications}, meaning a program that is developed by a user or project to try
+to answer a science question, usually with some input data needed and some
+output data produced.  Applications in this category are: NGS (next generation
+sequencing) Analytics (\S\ref{bioSilvia}), CMB (cosmic microwave background)
+(\S\ref{astroJulian}), Fusion (\S\ref{fusionScott}), Industrial Incident
+Notification and Response (\S\ref{Kees}), MODIS (moderate resolution imaging
+spectroradiometer) Data Processing (\S\ref{modisKeith}), and Distributed Network
+Intrusion Detection (\S\ref{detectionJon}).
 
 Another group of applications are {\em infrastructural applications}.
-Applications of this type are collaborative, in that they depend on a
-context that is often agreed upon by a community, most often in terms
-of how data is stored by the community and how it is accessed, as well
-as, more often than not, a weak consensus on the infrastructure to be
+Applications of this type are collaborative, in that they depend on a context
+that is often agreed upon by a community, most often in terms of how data is
+stored by the community and how it is accessed, as well as, more often than not,
+a weak consensus on the infrastructure to be
 used. %\jhanote{Dan: Please confirm you are OK with this modified
 %  defintion of infrastructural application}
 This allows different
