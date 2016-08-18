@@ -527,46 +527,77 @@ paper that is best for all readers.
 
 \section{D3 Application Scenarios \label{sec:scenarios}}
 
-Starting with the experience of the attendees of the 3DPAS workshops,
-we have assembled a set of D3 ``applications'' that we describe in
-this section.  We realize that we have overloaded the term application
-here.  In this document, some of our applications are really {\em
-  traditional applications}, meaning a program that is developed by a
-user or project to try to answer a science question, usually with some
-input data needed and some output data produced.  Applications in this
-category are: NGS (next generation sequencing) Analytics (\S\ref{bioSilvia}), CMB (cosmic microwave background)
-(\S\ref{astroJulian}), Fusion (\S\ref{fusionScott}), Industrial
-Incident Notification and Response (\S\ref{Kees}), MODIS (moderate resolution imaging spectroradiometer) Data
-Processing (\S\ref{modisKeith}), and Distributed Network Intrusion
-Detection (\S\ref{detectionJon}).
+Starting with the experience of the attendees of the 3DPAS workshops, we have
+assembled a set of D3 ``applications'' that we describe in this section.  
+%We realize that we have overloaded the term ``application'' here.
+
+The term ``application'' is often overloaded in literature and the computational
+science discourse.  Sometimes the term is a reference to a stand-alone,
+independent executable (e.g., a Molecular Dynamics simulation kernel such as
+AMBER or Gromacs). Sometimes an application refers to science problem to which
+the executable is put to use (e.g., compute the free-energy of binding energy of
+a drug candidate), but sometimes it is also used to reference the end-to-end
+workflow (i.e., a multi-stage computational process requiring a sequence of
+possibly distinct simulations and executables).  To add chaos to the confusion,
+applications are sometimes also as a proxy for projects (e.g., the ATLAS
+project), where the project could in of itself possibly be a series of
+independent applications, each with application in turn a reference to a defined
+science objective achieved using a set of executables.
+
+In addition to the aforementioned hierarchy and granularity to which the term
+application has been applied, the class of applications in any level differ
+widely in scale, sophistication and type as well different objective and
+objects.  Thus, we warn the reader of the inevitable befuddlement that the
+casual and non-contextual use of the word application can cause.
+
+
+% In this document, some of our applications are really {\em traditional
+% applications}, meaning a program that is developed by a user or project to try
+% to answer a science question, usually with some input data needed and some
+% output data produced.  
+
+Against this backdrop, we eschew a formal classification of application types,
+however, to facilitate understanding we categorise applications into two
+categories: the first is that of {\em traditional applications}, where
+% traditional is  applications are {\em traditional applications}, in that 
+a program (or set of programs) is developed by a user or project to try to
+answer a science question (or set of related questions). Traditional application
+might A single standalone computer program, a distributed application or a
+complex workflow could fall under the category of a {\em traditional
+  application}.  Applications in this category are: NGS (next generation
+sequencing) Analytics (\S\ref{bioSilvia}), CMB (cosmic microwave background)
+(\S\ref{astroJulian}), Fusion (\S\ref{fusionScott}), Industrial Incident
+Notification and Response (\S\ref{Kees}), MODIS (moderate resolution imaging
+spectroradiometer) Data Processing (\S\ref{modisKeith}), and Distributed Network
+Intrusion Detection (\S\ref{detectionJon}).
 
 Another group of applications are {\em infrastructural applications}.
-Applications of this type are collaborative, in that they depend on a
-context that is often agreed upon by a community, most often in terms
-of how data is stored by the community and how it is accessed, as well
-as, more often than not, a weak consensus on the infrastructure to be
-used. %\jhanote{Dan: Please confirm you are OK with this modified
-%  defintion of infrastructural application}
-This allows different
-sub-applications (that we again refer to as `applications') to focus
-on different stages, such as generating data, or processing data.
-Answering a science question now may involve a set of applications
-that need to be run in series, perhaps in different stages, that may
-be run by different groups that do not frequently interact.  This type
-of application includes: ATLAS/WLCG (a toroidal large hadron collider apparatus/worldwide large hadron collider computing grid, \S\ref{WLCGSteve}), LSST
-(large synoptic survey telescope, \S\ref{astroAdam}), SOA (service-oriented architecture) Astronomy (\S\ref{astroSOAAdam}), Sensor
-Network Application (\S\ref{sensorSimon}), Climate
-(\S\ref{climateDan}), Interactive Exploration of Environmental Data
+Applications of this type are collaborative, in that they depend on a context
+that is often agreed upon by a community, most often in terms of how data is
+stored by the community and how it is accessed, as well as, more often than not,
+a weak consensus on the infrastructure to be used.  This allows different
+sub-applications (that we again refer to as `applications') to focus on
+different stages, such as generating data, or processing data.  Answering a
+science question now may involve a set of applications that need to be run in
+series, perhaps in different stages, that may be run by different groups that do
+not frequently interact.  This type of application includes: ATLAS/WLCG (a
+toroidal large hadron collider apparatus/worldwide large hadron collider
+computing grid, \S\ref{WLCGSteve}), LSST (large synoptic survey telescope,
+\S\ref{astroAdam}), SOA (service-oriented architecture) Astronomy
+(\S\ref{astroSOAAdam}), Sensor Network Application (\S\ref{sensorSimon}),
+Climate (\S\ref{climateDan}), Interactive Exploration of Environmental Data
 (\S\ref{envJon}), and Power Grids (\S\ref{power}).
 
-In other words, multiple infrastructural applications are used together in particular
-science domains.  Furthermore, infrastructural
-applications involve more than just the end user (scientist), and
-typically require exerting control at layers below, i.e.,
-``programming the system (infrastructure)'', as opposed to a
-traditional applications, where end user effort and control is often
-confined to a well-defined application kernel.
-
+In other words, multiple infrastructural applications are used together in
+particular science domains.  Furthermore, infrastructural applications involve
+more than just the end user (scientist), and typically require exerting control
+at layers below, i.e., ``programming the system (infrastructure)'', as opposed
+to a traditional applications, where end user effort and control is often
+confined to a well-defined application kernel and their communication and
+coordination.  Also, for some {\em traditional applications} (e.g., NGS) the
+number of users of an instance of the application is typically small, i.e., the
+predominant use is by the long-tail of science. In contrast, some
+infrastructural applications are correlated with ``big science'' projects.
 
 % \jhanote{Need better distinction between infrastructure and
 %   traditional applications. They are the same at the scale-up and
@@ -790,11 +821,11 @@ alignment, SNP calling, haplotyping, and so on, with different tools
 used in each stage. These pipelines can often be performed
 independently on each chromosome to provide simple parallelism.
 
-All algorithms, architectures, storage, and networks have broken or
-will break soon.  Some NGS analytics are not good fits for core-rich
-and memory-poor modern architectures. Some problems (e.g., comparing
-k-mers across metagenomic data sets) need terabyte-scale memory, not
-thousands of cores.~\cite{ngs-gap}
+% All algorithms, architectures, storage, and networks have broken or
+% will break soon. 
+Some NGS analytics are not good fits for core-rich and memory-poor modern
+architectures. Some problems (e.g., comparing k-mers across metagenomic data
+sets) need terabyte-scale memory, not thousands of cores.~\cite{ngs-gap}
 
 Individual data sets, which will be terabyte-scale, are generated by
 NGS machines at a variety of locations. There could be many thousands
@@ -5686,7 +5717,7 @@ dynamism in a general-purpose fashion, for anything but the simplest patterns.
 
 
 \section*{Acknowledgements}
-The workshop was sponsored by NSF OCI-1059635 and made possible by the UK
+The work was sponsored by NSF OCI-1059635 and made possible by the UK
 e-Science Institute Research Theme on Dynamic Distributed Data-Intensive
 Programming Abstractions and Systems.  SJ contribution was also funded by NSF
 CAREER ACI-1253644.  We thank Simon Dobson, Jon Weissman and Jon Blower for
