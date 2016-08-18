@@ -1,3 +1,20 @@
+#10: 
+
+Rebuttal (Omer happy to update)
+ ----  Avoid replication. have clarified. provide explaination.
+ ----  DSK to send partial draft to Omer.
+
+#4: 
+ --- brief discussion of distributed + dynamic but without any change of use
+cases.
+ --- fix in 3.1?
+ --- distribution of data creation, processing?
+
+# Neil to address distribution and dynamic in Section 2
+
+# Omer to check point 10 of rebuttal.
+------
+
 - Section 3 and 4 move concepts in Section 1.1. (Omer)
 
 - Dan Katz: Text about how diff groups may choose to read this paper. - added at end of 1

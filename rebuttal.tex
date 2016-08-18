@@ -5,10 +5,10 @@
 \newcommand\BibTeX{{\rmfamily B\kern-.05em \textsc{i\kern-.025em b}\kern-.08emT\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 
 \usepackage{graphicx}
-\usepackage{url} 
-\usepackage{color} 
+\usepackage{url}
+\usepackage{color}
 \usepackage{enumerate}
-\usepackage{longtable} 
+\usepackage{longtable}
 \usepackage{textcomp} % \usepackage{srcltx} % \usepackage{fancyhdr} %
 \usepackage{setspace} \usepackage{lscape} % \usepackage{longtable} %
 \usepackage{paralist}
@@ -38,31 +38,31 @@
 \long\def\finalcomment#1{{\bf \textcolor{red}{\bf #1}}}
 \newcommand{\CF}{\finalcomment}
 
-\newif\ifdraft 
-\drafttrue 
-\ifdraft 
-\newcommand{\katznote}[1]{{\textcolor{magenta} { ***Dan: #1 }}} 
-\newcommand{\rananote}[1]{{\textcolor{cyan} { ***Omer: #1 }}} 
-\newcommand{\omernote}[1]{ {\textcolor{cyan}{ ***Omer: #1 }}} 
+\newif\ifdraft
+\drafttrue
+\ifdraft
+\newcommand{\katznote}[1]{{\textcolor{magenta} { ***Dan: #1 }}}
+\newcommand{\rananote}[1]{{\textcolor{cyan} { ***Omer: #1 }}}
+\newcommand{\omernote}[1]{ {\textcolor{cyan}{ ***Omer: #1 }}}
 \newcommand{\note}[1]{ {\textcolor{red} { #1 }}}
 \newcommand{\jhanote}[1]{ {\textcolor{blue} { ***Shantenu: #1 }}}
 \newcommand{\jonnote}[1]{ {\textcolor{red} { ***Jon: #1 }}}
 \newcommand{\alnote}[1]{ {\textcolor{darkgreen} { ***Andre: #1 }}}
 \newcommand{\nchnote}[1]{ {\textcolor{orange} { ***Neil: #1 }}}
 \newcommand{\ysnote}[1]{ {\textcolor{violet} { ***Yogesh: #1 }}}
-\newcommand{\sdnote}[1]{ {\textcolor{blueish} { ***Simon: #1 }}} 
-\else 
+\newcommand{\sdnote}[1]{ {\textcolor{blueish} { ***Simon: #1 }}}
+\else
 \newcommand{\katznote}[1]{}
-\newcommand{\rananote}[1]{} 
-\newcommand{\note}[1]{} 
+\newcommand{\rananote}[1]{}
+\newcommand{\note}[1]{}
 \newcommand{\jhanote}[1]{}
-\newcommand{\jonnote}[1]{} 
-\newcommand{\alnote}[1]{} 
+\newcommand{\jonnote}[1]{}
+\newcommand{\alnote}[1]{}
 \newcommand{\nchnote}[1]{}
-\newcommand{\ysnote}[1]{} 
+\newcommand{\ysnote}[1]{}
 \fi
 
-\usepackage[pdftex,colorlinks=true, linkcolor=blue,citecolor=blue]{hyperref} 
+\usepackage[pdftex,colorlinks=true, linkcolor=blue,citecolor=blue]{hyperref}
 
 
 
@@ -98,14 +98,14 @@ We thank the editor and reviewers for their helpful comments, and have addressed
 \emph{Overall, I think this could be a valuable paper, surveying and explaining the demands of a wide range of applications if these problems could be addressed.}
 
 \emph{Here are some specific comments on the text that try to explain this view in more detail (as well as 1 or 2 rewording suggestions):}
- 
+
 \begin{enumerate}
 
 \item \emph{Summary: ``Often data are increasingly large-scale and distributed; and their location, availability and properties are time-dependent.'' Needs editing to make it flow better}
 
 \textbf{Response:} We've edited this to: ``Data sets are growing larger and becoming distributed; and their location, availability and properties are often time-dependent.''
 
-\hspace{-0.7cm}Section 1. 
+\hspace{-0.7cm}Section 1.
 
 \item \emph{``software systems for the analysis of large volumes of dynamic, distributed, and data intensive have received relatively less so'' [data intensive $\rightarrow$ frequently accessed data?]}
 
@@ -113,11 +113,13 @@ We thank the editor and reviewers for their helpful comments, and have addressed
 
 \item \emph{``Occasionally data are often naturally distributed and have to be processed near their source, and sometimes data that are localized have to be distributed in order to be processed, either for reasons of performance or for collaborative analytics.'' There are 2 dimensions being described here: 1. data can be created in a set of distributed locations or it can be created in 1 place. 2. data can be processed in 1 place, or it can be processed in distributed locations. The 2 dimensions are orthogonal, and all 4 possibilities occur in real applications. However, the above sentence only captures 2 of the 4 quadrants of the space.}
 
-\textbf{Response:} We've reworded the first paragraph of Section 1 to address this.
+\textbf{Response:} We've reworked the first paragraph of Section 1 to address this.
 
 \item \emph{``In this paper, we use locally distributed to indicate that data/compute resides on multiple nodes within one data center. Geographically distributed describes the distribution of data and/or compute across multiple data centers'' Given the above, I think it would be better in this definition to also separate out data creation location from compute location. Intro: Define precisely what is meant by ``dynamic,'' here as it is key to the paper but isn't well defined in Section 1 (see recommendation above to fix this by moving definitions from Section 3).}
 
-\textbf{Response:} \katznote{attention needed here}
+\textbf{Response:}
+
+\katznote{attention needed here re distributed and dynamic part of comment}
 
 \nchnote{Partial response:} We have added a summary description of what we mean by distributed and dynamic at the start of Section 2 to reflect the fact that definition of the terminology arose and was refined by the discussions at the workshops, and the analysis of the application scenarios presented.
 
@@ -125,11 +127,11 @@ We thank the editor and reviewers for their helpful comments, and have addressed
 and different areas of expertise (as do we as authors), we have added a paragraph at the end
 of Section 1 to explain how different types of readers might want to approach this paper.  We do
 not believe that there is one single way of organizing it that would satisfy all readers.  We have also
-added a longer description of each section at this same place.
+added a longer description of each section at this same place.  Also, see our response to point 10 below.
 
-\hspace{-0.7cm}Section 2. 
+\hspace{-0.7cm}Section 2.
 
-\item \emph{I didn't think that the terminology and definitions of ``traditional'' and ``infrastructural'' applications made the 2 categories clear. Firstly, ``traditional'' is a poor choice of term as is not intuitively obvious what types of applications fall into this category. The definition didn't really help me: ``meaning a program that is developed by a user or project to try to answer a science question, usually with some input data needed and some output data produced.'' Very few programs don't require input or output data, so that wasn't helpful to me. Also, ``developed by a [..] project'' seemed to also cover the community applications in the other category (if the community was focussed around a project). Also, the term ``infrastructural'' isn't helpful for defining a type of application, as it suggests to me a generic, underpinning set of software services that can be used to build an application, rather than the application itself. The overloading of the term ``application'' in this category didn't help to clarify the situation for me: ``This allows different sub-applications (that we again refer to as `applications')...''. Is the difference that applications in the 2nd category utilise services provided by an infrastructure that is shared by other applications (and users), unlike those in the first category? There may also be the distinction in that only 2nd category applications are distributed.. but that wasn't clear from the text.} 
+\item \emph{I didn't think that the terminology and definitions of ``traditional'' and ``infrastructural'' applications made the 2 categories clear. Firstly, ``traditional'' is a poor choice of term as is not intuitively obvious what types of applications fall into this category. The definition didn't really help me: ``meaning a program that is developed by a user or project to try to answer a science question, usually with some input data needed and some output data produced.'' Very few programs don't require input or output data, so that wasn't helpful to me. Also, ``developed by a [..] project'' seemed to also cover the community applications in the other category (if the community was focussed around a project). Also, the term ``infrastructural'' isn't helpful for defining a type of application, as it suggests to me a generic, underpinning set of software services that can be used to build an application, rather than the application itself. The overloading of the term ``application'' in this category didn't help to clarify the situation for me: ``This allows different sub-applications (that we again refer to as `applications')...''. Is the difference that applications in the 2nd category utilise services provided by an infrastructure that is shared by other applications (and users), unlike those in the first category? There may also be the distinction in that only 2nd category applications are distributed.. but that wasn't clear from the text.}
 
 
 \textbf{Response:} Although we have retained the terms, we have also modified the definitions and specifically, we have refined the discussion of ``infrastructural'' applications.  We believe that
@@ -137,19 +139,19 @@ understanding the types of applications, which may be a multi-stage process (rea
 
 \item \emph{The survey of applications in Section 2 is interesting, but suffers from using terms that are not well defined (see above for suggested fix).}
 
-\textbf{Response:} \katznote{attention needed here}\jhanote{this should also have been addressed by Omer's work. Omer can you confirm please?} \katznote{no, Omer's work added a better description of the paper at the end of Section 1.}
+\textbf{Response:} See above response.
 
-\item \emph{2.1 ``All algorithms, architectures, storage, and networks have broken or will break soon'' Explain what is meant by ``broken'' and justify this claim.} 
+\item \emph{2.1 ``All algorithms, architectures, storage, and networks have broken or will break soon'' Explain what is meant by ``broken'' and justify this claim.}
 
   \textbf{Response:} This was a legacy remark which should have been removed when we deleted contextual discussion. We have removed this over-reaching claim.
 
-\hspace{-0.7cm}Section 3. 
+\hspace{-0.7cm}Section 3.
 
-\item \emph{see earlier comments on definitions.} 
+\item \emph{see earlier comments on definitions.}
 
 \textbf{Response:} See earlier response about definitions, in point 4.
 
-\hspace{-0.7cm}Section 4. 
+\hspace{-0.7cm}Section 4.
 
 \item \emph{``We also introduce the concept of an `infrastructure' application as a collection of infrastructure components that are packaged so that they can be used by many applications in defined ways'' See earlier comments. This doesn't sound to me like an application, but instead a set of infrastructure support services (``components'') packaged from more basic services/components. Again, the use of application with 2 different meanings in this same sentence doesn't help the read to understand what is meant here.}
 
@@ -157,7 +159,9 @@ understanding the types of applications, which may be a multi-stage process (rea
 
 \item \emph{4.1 -- 4.3 I found these definitions very helpful, but would again recommend that they come before the survey of specific applications so that these terms can be used, and understood by the reader, within the survey.}
 
-  \textbf{Response:} \katznote{attention needed here}\jhanote{this should also have been addressed by Omer's work. Omer can you confirm please?} \katznote{no, Omer's work added a better description of the paper at the end of Section 1.}
+  \textbf{Response:}
+There are a number of possible definitions related to terms used in Sections 4.1--4.3 in the computer science literature. Our intention in this work was to derive what these mean based on the application survey we carried out. The definitions are therefore provided in Section 3 they are since they are derived from the applications provided in Section 2.  We have clarified this in Section 1.2 to provide greater guidance to a reader, justifying the order of the sections.
+
 
 
 \end{enumerate}
@@ -172,7 +176,7 @@ understanding the types of applications, which may be a multi-stage process (rea
 
 
 
-%%% Local Variables: 
+%%% Local Variables:
 %%% mode: latex
 %%% TeX-master: t
-%%% End: 
+%%% End:
