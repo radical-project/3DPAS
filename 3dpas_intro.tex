@@ -85,7 +85,7 @@
 %\input{notes}
 
 \section{Introduction: Context, Scope and Outline}
-
+ 
 %\jhanote{NCH points out that we are inconsistent in the order of the
 %  ``D''s. SJ to fix globally. Good catch Neil!}
 
@@ -95,14 +95,21 @@
 % analyzed.
 
 The landscape of scientific and enterprise computing is being fundamentally
-altered by prodigious volumes of data.  Occasionally data are often naturally
-distributed and have to be processed near their source, and sometimes data that
-are localized have to be distributed in order to be processed, either for
-reasons of performance or for collaborative analytics.  Further, the variation
-of data production rates, data source and destination makes temporal variations
-in data properties increasingly important.  With an increase in the importance
-of distributed and temporal properties of data, systems and infrastructure
-aspects such as resource scheduling, data placement, and transfer decisions that
+altered by prodigious volumes of data.  
+%Occasionally data are often naturally
+%distributed and have to be processed near their source, and sometimes data that
+%are localized have to be distributed in order to be processed, Data can be naturally distributed because they are
+%being created in a set of distributed locations, rather than in one place. 
+Data can also be transported to be processed in multiple, distributed
+locations, rather than being processed near their source, or be brought together for processing at
+a particular location. These two orthogonal dimensions lead to a number of patterns of data
+generation and processing being present in real applications,
+either for reasons of performance or for collaborative analytics.  
+Further, the variation of data production rates, data source and destination makes 
+temporal variations in data properties increasingly important.  
+With an increase in the importance of distributed and temporal properties of 
+data, systems and infrastructure aspects such as resource scheduling, d
+ata placement, and transfer decisions that
 were statically determinable at small scales emerge as dynamic and important
 considerations at large scales of data and distribution.
 
