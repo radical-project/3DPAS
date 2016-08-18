@@ -532,16 +532,16 @@ assembled a set of D3 ``applications'' that we describe in this section.
 %We realize that we have overloaded the term ``application'' here.
 
 The term ``application'' is often overloaded in literature and the computational
-science discourse.  Sometimes the term is a reference to a stand-alone,
+science discourse.  Sometimes the term is a reference to a standalone,
 independent executable (e.g., a Molecular Dynamics simulation kernel such as
-AMBER or Gromacs). Sometimes an application refers to science problem to which
-the executable is put to use (e.g., compute the free-energy of binding energy of
+AMBER or Gromacs). Sometimes it refers to science problem to which
+the executable is put to use (e.g., computing the free-energy of binding energy of
 a drug candidate), but sometimes it is also used to reference the end-to-end
 workflow (i.e., a multi-stage computational process requiring a sequence of
 possibly distinct simulations and executables).  To add chaos to the confusion,
 applications are sometimes also as a proxy for projects (e.g., the ATLAS
-project), where the project could in of itself possibly be a series of
-independent applications, each with application in turn a reference to a defined
+project), where the project could itself possibly be a series of
+independent applications, with each application in turn a reference to a defined
 science objective achieved using a set of executables.
 
 In addition to the aforementioned hierarchy and granularity to which the term
@@ -557,14 +557,14 @@ casual and non-contextual use of the word application can cause.
 % output data produced.  
 
 Against this backdrop, we eschew a formal classification of application types,
-however, to facilitate understanding we categorise applications into two
+however, to facilitate understanding we categorize applications into two
 categories: the first is that of {\em traditional applications}, where
 % traditional is  applications are {\em traditional applications}, in that 
 a program (or set of programs) is developed by a user or project to try to
-answer a science question (or set of related questions). Traditional application
-might A single standalone computer program, a distributed application or a
+answer a science question (or set of related questions). 
+A single standalone computer program, a distributed application, or a
 complex workflow could fall under the category of a {\em traditional
-  application}.  Applications in this category are: NGS (next generation
+application}.  Applications in this paper that are in this category are: NGS (next generation
 sequencing) Analytics (\S\ref{bioSilvia}), CMB (cosmic microwave background)
 (\S\ref{astroJulian}), Fusion (\S\ref{fusionScott}), Industrial Incident
 Notification and Response (\S\ref{Kees}), MODIS (moderate resolution imaging
@@ -580,7 +580,7 @@ sub-applications (that we again refer to as `applications') to focus on
 different stages, such as generating data, or processing data.  Answering a
 science question now may involve a set of applications that need to be run in
 series, perhaps in different stages, that may be run by different groups that do
-not frequently interact.  This type of application includes: ATLAS/WLCG (a
+not frequently interact.  In this paper, examples of this type of application includes: ATLAS/WLCG (a
 toroidal large hadron collider apparatus/worldwide large hadron collider
 computing grid, \S\ref{WLCGSteve}), LSST (large synoptic survey telescope,
 \S\ref{astroAdam}), SOA (service-oriented architecture) Astronomy
@@ -591,8 +591,8 @@ Climate (\S\ref{climateDan}), Interactive Exploration of Environmental Data
 In other words, multiple infrastructural applications are used together in
 particular science domains.  Furthermore, infrastructural applications involve
 more than just the end user (scientist), and typically require exerting control
-at layers below, i.e., ``programming the system (infrastructure)'', as opposed
-to a traditional applications, where end user effort and control is often
+at lower layers, i.e., ``programming the system (infrastructure)'', as opposed
+to a traditional applications where end user effort and control is often
 confined to a well-defined application kernel and their communication and
 coordination.  Also, for some {\em traditional applications} (e.g., NGS) the
 number of users of an instance of the application is typically small, i.e., the
