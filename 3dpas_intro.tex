@@ -3703,7 +3703,7 @@ processing of each data element is independent of other elements, so
 processing is decomposed/parallelized over the data elements.  All
 data is stored in files.  Later analysis may want to operate on files
 from multiple data stores distributed around the world, e.g., to
-compare O(1000s) of TB-scale data sets (metagenomics) with each other.
+compare O(1000s) of TB-scale datasets (metagenomics) with each other.
 Dynamic elements include the choice of executables in each instance of
 the pipeline, the design of the pipeline itself, and the choice of
 computing infrastructure to provide the best resource usage and
@@ -3921,7 +3921,7 @@ applications involve greater constraints between the components,
 either in latency tolerance, coordination requirements or relative
 scheduling. \emph{Decoupled} distribution results in the separation of
 application components elements of the same task, for example, sharing
-a spatial data set between components that cooperate to perform a
+a spatial dataset between components that cooperate to perform a
 single logical task~\cite{dpa_surveypaper}.
 % thebookthatchangedtheworld
 Most of the applications in \S\ref{sec:scenarios} are loosely-coupled,
@@ -4108,7 +4108,7 @@ classified into three categories.
 \item  % Dynamism in the Application,
   % Software/Services use of the data:
   \emph{Application} dynamism
-  involves changing the processes or components applied to a data set,
+  involves changing the processes or components applied to a dataset,
   and might encapsulate changes in workflow, \textit{ad hoc} queries,
   or parameterization.  There may be variability in the data queries
   enacted by the application, or in the behavior
@@ -4149,7 +4149,7 @@ probability.  Similarly, high levels of dynamism, for example, in the
 data sources, data rates, and queries, usually correlate with a high
 degree of distribution.  For example, the Interactive Exploration of
 Environmental Data application (\S\ref{envJon}) manages various
-sources of data, from archived data sets to real-time feeds.
+sources of data, from archived datasets to real-time feeds.
 Depending on the spatiotemporal properties of data, computation can be
 carried out on a set of distributed grid resources or the user's
 desktop, i.e., distributed processing is used to efficiently handle
@@ -4522,7 +4522,7 @@ more further streams of values. As such it is a programming
 abstraction suitable for continuous data feeds, or when results need
 to be pushed to users of interactive applications. Since the data is
 not assumed to be available \textit{en masse}, it can be used in
-situations where storing the entire data set is undesirable,
+situations where storing the entire dataset is undesirable,
 unnecessary, or impossible.
 
 {\em Sensor networks} and other intelligent front-end data collection systems are sometimes seen as an extension of stream processing and application pipelines.
@@ -4532,7 +4532,7 @@ the pipeline, either by changing parameters or by adding or removing
 tasks in the pipeline. This allows decision logic to be initiated by
 the pipeline itself, or using an external control signal that may come
 from users or an instrument. This form of ``computational steering''
-is especially useful in systems being used to explore a data set. In these cases, it is important to
+is especially useful in systems being used to explore a dataset. In these cases, it is important to
 note that the infrastructure is adaptive, rather than the scenario itself.
 
 %Gomes et al.~\cite{gomes08} describe how a pipeline may be
@@ -4879,10 +4879,10 @@ major scientific challenges for the project.
 
 There are also significant variations in where ``the pipeline'' begins
 and ends. This represents the difficulty in differentiating between ``traditional'' applications
-and ``infrastructure'' applications. Many systems are driven by data sets collected and shared
+and ``infrastructure'' applications. Many systems are driven by datasets collected and shared
 widely, against which several different applications may be applied.
 Here the infrastructure application is the collection of components used to allow the
-data sets to be accessed and analyzed by the different applications.
+datasets to be accessed and analyzed by the different applications.
 Climate science is a good example of this approach. In this
 case the data is ``pre-collected'' in the sense of existing outside
 most of the applications, although its collection may have been a
@@ -5190,7 +5190,7 @@ relative scheduling flexibility (and thus tolerance or constraints on data
 transfer/aggregation).
 % Applications processing the largest volumes of data typically run on
 % specialized data cyberinfrastructure (e.g., the ATLAS LHC Grid). Applications
-% such as Fusion and NGS that run on smaller data sets mainly utilize HPC
+% such as Fusion and NGS that run on smaller datasets mainly utilize HPC
 % environments.
 
 Some applications use specialized data cyberinfrastructure, while some run
@@ -5786,7 +5786,7 @@ application:
 \item What dynamic data is used in the application?
 \begin{enumerate}
 \item What are the types of data,
-\item What is the size of the data set(s)?
+\item What is the size of the dataset(s)?
 \end{enumerate}
 \item How does the application get the data?
 \item What are the time (or quality) constraints on the application?
