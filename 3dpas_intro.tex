@@ -62,9 +62,9 @@
   insights. Data sets are growing larger and becoming distributed; and their
   location, availability and properties are often time-dependent. Collectively, these
   characteristics give rise to dynamic distributed data intensive
-  applications. While ``static'' data application have received significant
+  applications. While ``static'' data applications have received significant
   attention, the characteristics, requirements, and software systems for the
-  analysis of large volumes of dynamic, distributed, and data intensive applications have
+  analysis of large volumes of dynamic, distributed data, and data-intensive applications have
   received relatively less attention. This paper surveys several representative dynamic
   distributed data-intensive application scenarios, provides a common conceptual
   framework to understand them, and examines the infrastructure used in support
@@ -518,7 +518,7 @@ conclusions (\S\ref{sec:conclusions}). Each of these sections is briefly describ
 \item Based on the application survey, we derive a set of  definitions for {\it Distribution} and {\it Dynamism} in \S\ref{sec:distdyndata}. Note that these definitions are based on the application survey. A variety of definitions of these concepts already exist in computer science literature. Our intention is
 to provide context for the use of these terms with reference to our survey. The distributed and dynamic characteristics of each application surveyed in \S\ref{sec:scenarios} is summarized in this section.
 
-\item In \S\ref{sec:infrastructure}, we subsequently describe the software/systems infrastructure used to support the distributed and dynamic characteristics of applications in \S\ref{sec:scenarios}. We outline support for data management, analysis, and coordination, providing examples of actual Cyberinfrastructure made use of by our surveyed applications for these purposes.
+\item In \S\ref{sec:infrastructure}, we subsequently describe the software/systems infrastructure used to support the distributed and dynamic characteristics of applications in \S\ref{sec:scenarios}. We outline support for data management, analysis, and coordination, providing examples of actual cyberinfrastructure made use of by our surveyed applications for these purposes.
 
 \item In \S\ref{sec:conclusions}, we bring together key observations based on the analysis of applications, their distributed and dynamic characteristics, and infrastructure use. An attempt is made to compare these applications and suggest the need for an ``architecture for D3 science".
 
@@ -679,7 +679,13 @@ applications.
 
 The discussions in the workshops and our analysis of the applications
 led us to examine the use of data in different parts of the
-applications, where we found some common patterns
+applications, 
+and informed the terminology we use in the rest of the paper.
+We have split the presentation of information on each scenario into three aspects: 
+{\em big data aspects}, concerned with the number and volume of data; 
+{\em distributed aspects}, concerned with the way data generation, storage and processing are separated; and 
+{\em dynamic aspects}, concerned with the spatio-temporal variability of the data or application.
+Doing this has enabled us to identify some common patterns
 across applications.  For example, applications that involve
 streaming data collect data from sensors, transform and
 filter the data, store the results, and then later process (analyze)
@@ -3697,7 +3703,7 @@ processing of each data element is independent of other elements, so
 processing is decomposed/parallelized over the data elements.  All
 data is stored in files.  Later analysis may want to operate on files
 from multiple data stores distributed around the world, e.g., to
-compare O(1000s) of TB-scale data sets (metagenomics) with each other.
+compare O(1000s) of TB-scale datasets (metagenomics) with each other.
 Dynamic elements include the choice of executables in each instance of
 the pipeline, the design of the pipeline itself, and the choice of
 computing infrastructure to provide the best resource usage and
@@ -3856,13 +3862,14 @@ are not limited to:
   data can be thematically partitioned with respect to its type, such
   as sensor data vs. simulated data, or data can be partitioned
   according to a spatial or temporal attributes. This can be an opaque
-  (e.g., ID) and or a domain dependent (e.g., spatial) attribute.
+  (e.g., ID) and/or a domain dependent (e.g., spatial) attribute.
 \item \textbf{Streaming}: A form of distributed data processing in
   which data arrives from a source; often the stream is a steady,
   continuous flow, but often it fluctuates both spatially and
   temporally. Also, typically, the stream of data must be processed in
-  near real-time. Streaming thus also has attributes of dynamism, which is
-  discussed in the next subsection.
+  near real-time. 
+  %Streaming thus also has attributes of dynamism, which is
+  %discussed in the next subsection.
 \end{itemize}
 
 Which of the above approaches is employed cannot be reduced to a simple
@@ -3914,10 +3921,10 @@ applications involve greater constraints between the components,
 either in latency tolerance, coordination requirements or relative
 scheduling. \emph{Decoupled} distribution results in the separation of
 application components elements of the same task, for example, sharing
-a spatial data set between components that cooperate to perform a
+a spatial dataset between components that cooperate to perform a
 single logical task~\cite{dpa_surveypaper}.
 % thebookthatchangedtheworld
-Most of the applications in \S\ref{sec:scenarios} are loosely coupled,
+Most of the applications in \S\ref{sec:scenarios} are loosely-coupled,
 with the CMB (\S\ref{astroJulian}) and Fusion (\S\ref{fusionScott})
 applications as examples of tight coupling.
 
@@ -4101,7 +4108,7 @@ classified into three categories.
 \item  % Dynamism in the Application,
   % Software/Services use of the data:
   \emph{Application} dynamism
-  involves changing the processes or components applied to a data set,
+  involves changing the processes or components applied to a dataset,
   and might encapsulate changes in workflow, \textit{ad hoc} queries,
   or parameterization.  There may be variability in the data queries
   enacted by the application, or in the behavior
@@ -4142,7 +4149,7 @@ probability.  Similarly, high levels of dynamism, for example, in the
 data sources, data rates, and queries, usually correlate with a high
 degree of distribution.  For example, the Interactive Exploration of
 Environmental Data application (\S\ref{envJon}) manages various
-sources of data, from archived data sets to real-time feeds.
+sources of data, from archived datasets to real-time feeds.
 Depending on the spatiotemporal properties of data, computation can be
 carried out on a set of distributed grid resources or the user's
 desktop, i.e., distributed processing is used to efficiently handle
@@ -4166,10 +4173,9 @@ applications, we observe:
   each other if the volume permits.  The Fusion application is a counterexample,
   due to data volumes and velocity.
 
-\item Details of the storage system are often not known. Often data is
-  stored in a distributed way, e.g., on a distributed file system,
-  which commonly fits into the medium degree of distribution (the same
-  data center).
+\item Details of the storage system are often not known. Often, data is
+  stored in a distributed way, e.g., on a distributed file system in the same
+  data center (locally distributed).
 
 %\item Mapping: The most common pattern is to copy data to an available
 %  compute resource. \katznote{I'm not sure about this bullet:  1. It's not a sentence;
@@ -4516,7 +4522,7 @@ more further streams of values. As such it is a programming
 abstraction suitable for continuous data feeds, or when results need
 to be pushed to users of interactive applications. Since the data is
 not assumed to be available \textit{en masse}, it can be used in
-situations where storing the entire data set is undesirable,
+situations where storing the entire dataset is undesirable,
 unnecessary, or impossible.
 
 {\em Sensor networks} and other intelligent front-end data collection systems are sometimes seen as an extension of stream processing and application pipelines.
@@ -4526,7 +4532,7 @@ the pipeline, either by changing parameters or by adding or removing
 tasks in the pipeline. This allows decision logic to be initiated by
 the pipeline itself, or using an external control signal that may come
 from users or an instrument. This form of ``computational steering''
-is especially useful in systems being used to explore a data set. In these cases, it is important to
+is especially useful in systems being used to explore a dataset. In these cases, it is important to
 note that the infrastructure is adaptive, rather than the scenario itself.
 
 %Gomes et al.~\cite{gomes08} describe how a pipeline may be
@@ -4842,7 +4848,7 @@ techniques such as web services, coupled with web technologies for
 metadata representation, assist in reuse, re-purposing and
 integration, for instance into different workflow systems.
 
-The {\em MapReduce} paradigm~\cite{MapReduce} and its variants~\cite{twister,hmr} are the most prominent among the bulk data-parallel frameworks which use bulk operators to express computations over collections of data in an loosely coupled manner.  Applications such as Next Generation Sequencing (NGS) (\S\ref{bioSilvia}) and Power Grids (\S\ref{power}) use MapReduce for
+The {\em MapReduce} paradigm~\cite{MapReduce} and its variants~\cite{twister,hmr} are the most prominent among the bulk data-parallel frameworks which use bulk operators to express computations over collections of data in an loosely-coupled manner.  Applications such as Next Generation Sequencing (NGS) (\S\ref{bioSilvia}) and Power Grids (\S\ref{power}) use MapReduce for
 their analytics~\cite{cloudburst,genometoolkit,Yin:mapreduce:2012}.
 
 There are many examples of stream~\cite{chandrasekaran:telegraphcq2003,
@@ -4873,10 +4879,10 @@ major scientific challenges for the project.
 
 There are also significant variations in where ``the pipeline'' begins
 and ends. This represents the difficulty in differentiating between ``traditional'' applications
-and ``infrastructure'' applications. Many systems are driven by data sets collected and shared
+and ``infrastructure'' applications. Many systems are driven by datasets collected and shared
 widely, against which several different applications may be applied.
 Here the infrastructure application is the collection of components used to allow the
-data sets to be accessed and analyzed by the different applications.
+datasets to be accessed and analyzed by the different applications.
 Climate science is a good example of this approach. In this
 case the data is ``pre-collected'' in the sense of existing outside
 most of the applications, although its collection may have been a
@@ -5113,7 +5119,7 @@ location or distribution.
 %   Coordination mechanisms to support dynamic behavior remains an
 %   important feature across D3 Science applications.
 
-\emph{Application Dynamism: } In many scientific applications the
+\emph{Application dynamism: } In many scientific applications the
 workflow structure is well defined, but either the components used
 within this structure or the location of the data that feeds the
 workflow may change dynamically.  Data coordination and planning
@@ -5184,7 +5190,7 @@ relative scheduling flexibility (and thus tolerance or constraints on data
 transfer/aggregation).
 % Applications processing the largest volumes of data typically run on
 % specialized data cyberinfrastructure (e.g., the ATLAS LHC Grid). Applications
-% such as Fusion and NGS that run on smaller data sets mainly utilize HPC
+% such as Fusion and NGS that run on smaller datasets mainly utilize HPC
 % environments.
 
 Some applications use specialized data cyberinfrastructure, while some run
@@ -5307,7 +5313,7 @@ versa.
 % Nonetheless, understanding the trend of say, $\beta_1$ as the degree
 % of distribution changes can be insightful.
 
-\subsubsection{Understanding Distributed Dynamic Applications: }
+\subsubsection{Understanding Distributed Dynamic Applications }
 \label{sec:quantifyingdistapps}
 
 In \S\ref{sec:distdyndata} we characterized dynamic and distributed
@@ -5780,7 +5786,7 @@ application:
 \item What dynamic data is used in the application?
 \begin{enumerate}
 \item What are the types of data,
-\item What is the size of the data set(s)?
+\item What is the size of the dataset(s)?
 \end{enumerate}
 \item How does the application get the data?
 \item What are the time (or quality) constraints on the application?
