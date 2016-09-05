@@ -54,14 +54,14 @@
 % \author{Jon Weissman}
 % \address{University of Minnesota; \texttt{jon@cs.umn.edu}}
 
-\keywords{dynamic, distributed, data intensive, scientific applications}
+\keywords{dynamic, distributed, data-intensive, scientific applications}
 
 \begin{abstract}
   A common feature across many science and engineering applications is the
   amount and diversity of data and computation that must be integrated to yield
   insights. Data sets are growing larger and becoming distributed; and their
   location, availability and properties are often time-dependent. Collectively, these
-  characteristics give rise to dynamic distributed data intensive
+  characteristics give rise to dynamic distributed data-intensive
   applications. While ``static'' data applications have received significant
   attention, the characteristics, requirements, and software systems for the
   analysis of large volumes of dynamic, distributed data, and data-intensive applications have
@@ -100,18 +100,21 @@ altered by prodigious volumes of data.
 %distributed and have to be processed near their source, and sometimes data that
 %are localized have to be distributed in order to be processed, Data can be naturally distributed because they are
 %being created in a set of distributed locations, rather than in one place. 
-Data can also be transported to be processed in multiple, distributed
-locations, rather than being processed near their source, or be brought together for processing at
-a particular location. These two orthogonal dimensions lead to a number of patterns of data
-generation and processing being present in real applications,
-either for reasons of performance or for collaborative analytics.  
-Further, the variation of data production rates, data source, and destination makes 
-temporal variations in data properties increasingly important.  
-With an increase in the importance of distributed and temporal properties of 
-data, systems and infrastructure aspects such as resource scheduling, 
-data placement, and transfer decisions that
-were statically determinable at small scales emerge as dynamic and important
-considerations at large scales of data and distribution.
+This massive data generation can be naturally distributed because they are being created in a set of distributed
+locations, rather than in one place. At the same time, data can also be
+transported to be processed in multiple, distributed locations, rather than
+being processed near their source, or be brought together for centrally
+processing at a particular location. These two orthogonal dimensions lead to a
+number of patterns of data generation and processing being present in real
+applications, either for reasons of performance or for collaborative analytics.
+Further, the variation of data production rates, data source, and destination
+makes temporal variations in data properties increasingly important. With an
+increase in the importance of distributed and temporal properties of data,
+systems and infrastructure aspects such as resource scheduling, data placement,
+and transfer decisions that were statically determinable at small scales emerge
+as dynamic and important considerations at large scales of data and
+distribution.
+
 
 % driven by advancing technologies (e.g., increasing compute capacity and higher
 % resolution sensors) and decreasing costs for data acquisition and
@@ -404,8 +407,9 @@ We would like the reader to keep in mind some points regarding context and scope
   defined by these ``academic constraints''.
 
 \item Almost by definition, any attempt to capture the state-of-the-art of such
-  a dynamic and emerging domain is bound to be fraught with limitations and
-  issues of scoping.  A complete and rigorous survey is bound to be obsolete by
+  a fast-changing and emerging domain is bound to be fraught with limitations 
+  and issues of scoping.  A complete and rigorous survey is bound to be 
+  obsolete by
   the time it emerges; so given the rate of change, we asked what could be
   done. What we present is a partial analysis motivated by a set of existing and
   active D3 applications, their trials and tribulations, successes and
@@ -414,14 +418,21 @@ We would like the reader to keep in mind some points regarding context and scope
   presenting these to the community.
 
 \item Distribution can occur on many levels.  In this paper, we use {\em locally
-    distributed} to indicate that data/compute resides on multiple nodes within
-  one data center.  {\em Geographically distributed} describes the distribution
-  of data and/or compute across multiple data centers.  Also, our focus is
+    distributed} to indicate that data generation and storage, or computation 
+	over it, occurs on multiple nodes within one data center.  
+  {\em Geographically distributed} describes the distribution
+  of data generation, storage and/or compute across multiple data centers.  
+  Also, our focus is
   primarily on infrastructure considerations at  large scale, as searching
   for common solutions and patterns at  large scale is likely to be more
   fruitful than at small scales where customized tools and optimization of
   low-level systems features is likely to return greater yield.
-
+  
+ \item We use the term dynamism to refer to the spatio-temporal variability of 
+ data (e.\,g.\ data rates and formats), applications (e.\,g., workflows that 
+ depend on data values) and infrastructures (e.\,g.\ availability). 
+ 
+ 
   % Analogous to the distinction between programming in the large versus system
   % level programming, there is a distinction between the ``infrastructure''
   % considerations at the large-scale versus the small-scale.
@@ -534,7 +545,7 @@ paper that is best for all readers.
 
 \section{D3 Application Scenarios \label{sec:scenarios}}
 
-Starting with the experience of the attendees of the 3DPAS workshops, we have
+Starting with the experience of the attendees of the Dynamic Distributed Data Programming Abstractions and Systems workshops (3DPAS), we have
 assembled a set of D3 ``applications'' that we describe in this section.  
 %We realize that we have overloaded the term ``application'' here.
 
@@ -567,7 +578,7 @@ Against this backdrop, we eschew a formal classification of application types,
 however, to facilitate understanding we categorize applications into two
 categories: the first is that of {\em traditional applications}, where
 % traditional is  applications are {\em traditional applications}, in that 
-a program (or set of programs) is developed by a user or project to try to
+a program (or set of programs) is developed independently by a user or project to try to
 answer a science question (or set of related questions). 
 A single standalone computer program, a distributed application, or a
 complex workflow could fall under the category of a {\em traditional
@@ -583,7 +594,7 @@ Applications of this type are collaborative, in that they depend on a context
 that is often agreed upon by a community, most often in terms of how data is
 stored by the community and how it is accessed, as well as, more often than not,
 a weak consensus on the infrastructure to be used.  This allows different
-sub-applications (that we again refer to as `applications') to focus on
+sub-applications (which themselves are full-fledged ``applications'', but with dependencies on the collaborative infrastructure) to focus on
 different stages, such as generating data, or processing data.  Answering a
 science question now may involve a set of applications that need to be run in
 series, perhaps in different stages, that may be run by different groups that do
@@ -5323,20 +5334,17 @@ dynamism and distributed properties were often intimately tied to
 application/scenario definition and specific usage modes.
 Notwithstanding, to quantify better dynamic properties of an
 application, we believe a term analogous to the use of Amdahl's
-number~\cite{10.1109/ICDE.2000.839382} such as
-\begin{itemize}
-\item[] Num. of Compute Operations / Amount of Data
-  (Consumed, Generated or Transformed)
-\end{itemize}
-  could be used to characterize `static'
-data-intensive applications and systems:
-
+number~\cite{10.1109/ICDE.2000.839382}, such as $\alpha$ defined as Number\ of
+Compute\ Operation / Amount\ Data (Consumed,\ Generated\ or\ Transformed)
+% \begin{itemize}
+% \item[] Num. of Compute Operations / Amount of Data
+%   (Consumed, Generated or Transformed)
+% \end{itemize}
+could be used to characterize `static' data-intensive applications and systems.
 %\begin{itemize}
 %\item[] $\alpha$ = Num. of Compute Operations / Amount of Data
 %  (Consumed, Generated or Transformed)
 %\end{itemize}
-
-
 Note that this term is scale-invariant, i.e., a value of 1 could
 correspond to very small or very large values of both numerator and
 denominator, and that it does not capture the time scales over
@@ -5350,15 +5358,15 @@ which data changes.
 
 % defined above for dynamic characteristics,
 
-Similarly, another term
-\begin{itemize}
-\item[] Amount of Data Transferred / Degree of
-  Distribution
-\end{itemize}
+Similarly, another term $\beta$ defined as Amount of Data Transferred / Degree of Distribution
+% \begin{itemize}
+% \item[] Amount of Data Transferred / Degree of
+%   Distribution
+% \end{itemize}
 could be used to quantify the
 ``scale'' of distribution, namely the degree of distribution as a
 function of the amount of data transferred, where the degree of
-distribution can be defined as the number of distinct data locations:
+distribution can be defined as the number of distinct data locations.
 
 %\begin{itemize}
 %\item[] $\beta$ = Amount of Data Transferred / Degree of
@@ -5392,11 +5400,11 @@ It has proven difficult to provide ``global'' quantitative values of
 these ratios, as often the value of the numerators is
 subject to how an application/scenario is defined, even more so for a
 ``class of applications'' as opposed to a specific application. We
-believe, nonetheless, that these measures (which we refer to as $\alpha$ and $\beta$ respectively)
-suggest a possible way to
-quantify an application's dynamism and distribution and thereby find
-possible common approaches solutions.  We plan to explore this in our
-future work, and also hope others will consider building on these
+believe, nonetheless, that these measures 
+%(which we refer to as $\alpha$ and $\beta$ respectively)
+suggest a possible way to quantify an application's dynamism and distribution 
+and thereby find possible common approaches solutions.  We plan to explore this 
+in our future work, and also hope others will consider building on these
 initial concepts.
 
 %and thus providing well-defined numbers is difficult,
